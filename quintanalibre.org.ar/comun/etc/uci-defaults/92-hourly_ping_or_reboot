@@ -1,0 +1,4 @@
+#!/bin/sh
+mkdir -p /etc/crontabs ; touch /etc/crontabs/root
+sed "\| \* \* \* .*Iniciando reboot.*|d" -i /etc/crontabs/root
+echo "0 */1 * * * if ping -c 10 -W 10 10.5.32.20 &> /dev/null; then logger -t watchping_trucho 'ciudamerica: accesible'; else logger -t watchping_trucho 'ciudamerica: inaccesible. Iniciando reboot'; /sbin/reboot; fi" >> /etc/crontabs/root

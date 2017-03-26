@@ -5,9 +5,20 @@
 # Read the documentation in /etc/config/lime.example file
 # and on https://libremesh.org
 
+####
+#
+# este perfil tiene por default los valores de la nube bbone
+#
+# cada nodo tiene que tener en su /etc/config/lime:
+# hostname, mainipv4 y mainipv6, canales 2.4 y 5Ghz, wifi modes
+#
+###
+
 config lime system
 	option hostname 'QL-%M4%M5%M6'
-	option domain 'lan'
+	option domain 'red.quintana.libre.org.ar'
+	option timezone 'ART3'
+	option log_ip '10.5.1.4'
 
 config lime network
 	option primary_interface eth0
@@ -26,12 +37,13 @@ config lime network
 	list resolvers 2001:470:20::2 # ordns.he.net
 
 config lime wifi
-	option channel_2ghz '6'
-	option channel_5ghz '161'
-  option country 'TZ'
+# setear los canales en el /etc/config/lime de cada nodo segun su nube
+	option channel_2ghz '13'
+	option channel_5ghz '108'
+	option country 'TZ'
 	option htmode_5ghz 'HT40'
-  option distance '3000'
-	list modes 'ap'
+ 	option distance '2000'
+#	list modes 'ap'
 #	list modes 'apname'
 	list modes 'adhoc'
 	option ap_ssid 'quintanalibre.org.ar'
