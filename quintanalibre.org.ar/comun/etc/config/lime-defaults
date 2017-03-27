@@ -46,7 +46,7 @@ config lime wifi
 #	list modes 'ap'
 #	list modes 'apname'
 	list modes 'adhoc'
-	option ap_ssid 'quintanalibre.org.ar'
+	option ap_ssid 'quintana.libre.org.ar'
 	option apname_ssid 'LibreMesh.org/%H'
 	option adhoc_ssid 'LiMe.%H'
 	option adhoc_bssid 'ca:fe:00:c0:ff:ee'
