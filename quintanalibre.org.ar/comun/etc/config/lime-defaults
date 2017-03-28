@@ -17,8 +17,6 @@
 config lime system
 	option hostname 'QL-%M4%M5%M6'
 	option domain 'red.quintana.libre.org.ar'
-	option timezone 'ART3'
-	option log_ip '10.5.1.4'
 
 config lime network
 	option primary_interface eth0
