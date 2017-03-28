@@ -17,11 +17,13 @@
 config lime system
 	option hostname 'QL-%M4%M5%M6'
 	option domain 'red.quintana.libre.org.ar'
+	option keep_on_upgrade 'libremesh base-files-essential /etc/sysupgrade.conf'
 
 config lime network
 	option primary_interface eth0
 	option main_ipv4_address '10.5.0.0/21'
 	option main_ipv6_address '2801:01e8:2::/64'
+	option bmx6_mtu '1398'
 	list protocols adhoc
 	list protocols lan
 	list protocols anygw
