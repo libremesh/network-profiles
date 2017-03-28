@@ -1,2 +1,2 @@
 #!/usr/bin/sh
-cp /www/luci/index.html /www/index.html
+cp /www/luci-index.html /www/index.html
