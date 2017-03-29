@@ -12,7 +12,7 @@ logger "deaf_phys: checking wlan$num-adhoc status..."
     
     success_a=`cat /sys/kernel/debug/ieee80211/phy$num/statistics/dot11RTSSuccessCount`
     for fe80 in `bmx6 -c show links | grep fe80 |  grep wlan$num |  awk '{ print $2 }'`; do
-        ping6 -c 30 -i 0.1 -q -w 5  $fe80%wlan$num-adhoc
+        ping6 -c 100 -i 0.1 -q -w 12  $fe80%wlan$num-adhoc
     done
     success_b=`cat /sys/kernel/debug/ieee80211/phy$num/statistics/dot11RTSSuccessCount`
 
