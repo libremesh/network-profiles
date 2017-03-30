@@ -1,16 +1,16 @@
 #!/bin/sh
-uci set bmx6.inet6ciudamerica=tunOut
-uci set bmx6.inet6ciudamerica.tunOut='inet6ciudamerica'
-uci set bmx6.inet6ciudamerica.network='::/0'
-uci set bmx6.inet6ciudamerica.maxPrefixLen='0'
-uci set bmx6.inet6ciudamerica.gwName='ciudamerica'
-uci set bmx6.inet6ciudamerica.rating='1000'
+uci set bmx6.inet6torreunc=tunOut
+uci set bmx6.inet6torreunc.tunOut='inet6torreunc'
+uci set bmx6.inet6torreunc.network='::/0'
+uci set bmx6.inet6torreunc.maxPrefixLen='0'
+uci set bmx6.inet6torreunc.gwName='torreunc'
+uci set bmx6.inet6torreunc.rating='1000'
 
-uci set bmx6.inet4ciudamerica=tunOut
-uci set bmx6.inet4ciudamerica.tunOut='inet4ciudanmerica'
-uci set bmx6.inet4ciudamerica.network='0.0.0.0/0'
-uci set bmx6.inet4ciudamerica.maxPrefixLen='0'
-uci set bmx6.inet4ciudamerica.gwName='ciudamerica'
-uci set bmx6.inet4ciudamerica.rating='1000'
+uci set bmx6.inet4torreunc=tunOut
+uci set bmx6.inet4torreunc.tunOut='inet4torreunc'
+uci set bmx6.inet4torreunc.network='0.0.0.0/0'
+uci set bmx6.inet4torreunc.maxPrefixLen='0'
+uci set bmx6.inet4torreunc.gwName='torreunc'
+uci set bmx6.inet4torreunc.rating='1000'
 
 uci commit bmx6
