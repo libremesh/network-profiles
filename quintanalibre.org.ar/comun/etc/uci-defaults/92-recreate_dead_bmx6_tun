@@ -1,5 +1,0 @@
-#!/bin/sh
-mkdir -p /etc/crontabs ; touch /etc/crontabs/root
-sed "\| \* \* \* .*Recreando tuneles bmx6.*|d" -i /etc/crontabs/root
-echo "*/4 * * * * if ping -c 5 -W 5 10.5.24.12 &> /dev/null; then logger -t watchping_trucho 'torreunc OK'; else logger -t watchping_trucho 'torreunc: fallo. Recreando tuneles bmx6'; bmx6 -c tunouttimeout=20000; bmx6 -c tunouttimeout=20001; fi" >> /etc/crontabs/root
-

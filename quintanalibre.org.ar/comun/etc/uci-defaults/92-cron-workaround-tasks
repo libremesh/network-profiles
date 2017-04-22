@@ -1,0 +1,33 @@
+#!/bin/sh
+
+internet_gw=torreunc
+internet_gw_ip=10.5.24.12
+
+# cada 3hs, si falla ping a la salida a internet, rebooteamos. Es el último recurso para no quedar desconectados del nodo si queda en un estado inaccesible.
+mkdir -p /etc/crontabs ; touch /etc/crontabs/root
+sed "\| \* \* \* .*Iniciando reboot.*|d" -i /etc/crontabs/root
+echo "7 */3 * * * if ping -c 10 -W 10 $internet_gw_ip &> /dev/null; then logger -t workarounds 'ping c/3hs a $internet_gw OK'; else logger -t workarounds '*ping c/3hs* a torreunc FAIL. Iniciando reboot'; logread > /root/debug && /sbin/reboot; fi" >> /etc/crontabs/root
+
+# cada 1 min, si el tunel con la salida a internet está caido, recreamos túneles modificando el timeout.
+sed "\| \* \* \* .*Recreando tuneles bmx6.*|d" -i /etc/crontabs/root
+echo "*/1 * * * * if ping -c 5 -W 5 $internet_gw_ip &> /dev/null; then logger -t workarounds 'ping frecuente a $internet_gw OK'; else logger -t workarounds '*ping frecuente* a torreunc FAIL. Recreando tuneles bmx6'; bmx6 -c tunouttimeout=20000; bmx6 -c tunouttimeout=20001; fi" >> /etc/crontabs/root
+
+# no hace falta correr esto porque ya estamos corriendo in scan frecuente
+# reset_deaf phys se fija si hay radios sin stations y las levanta haciendo un scan
+#sed "\| \* \* \* .*reset_deaf_phys.*|d" -i /etc/crontabs/root
+#echo "*/20 * * * * /usr/sbin/reset_deaf_phys.sh" >> /etc/crontabs/root
+
+# corremos un scan frecuente porque encontramos que las radios a veces quedan en un estado donde creen que pueden levanar MCS superior a 7 cuando no es así y el throughput se reduce a un goteo. Un scan las vuelve a su estado normal. El kill es porque a veces el sacn queda colgado. Mientras esté habilitado este cron, no hace falta chequear reset_deaf_phys porque al escanear se levantan las interfaces 'bobas'. Escanea en un par de frecuencias para que el scan sea rapido. Escanear solamente en la propia frecuencia no arregla el problema.
+	sed "\| \* \* \* .*regular scan.*|d" -i /etc/crontabs/root
+echo "*/5 * * * * killall iw; logger -t workarounds 'regular scan on wlan1'; iw wlan1-adhoc scan freq 5745 5825 &" >> /etc/crontabs/root
+echo "*/5 * * * * killall iw; logger -t workarounds 'regular scan on wlan0'; iw wlan0-adhoc scan freq 2412 2457 &" >> /etc/crontabs/root
+
+# si dnsmasq está muerto, lo reiniciamos. Chequeamos que haya acceso a Internet antes de intentar resolver.
+sed "\| \* \* \* .*dnsmasq is alive.*|d" -i /etc/crontabs/root
+echo "*/8 * * * * if ping -c5 -w10 8.8.8.8; then if nslookup google.com 127.0.0.1 &>/dev/null; then logger -t workarounds 'OK. dnsmasq is alive'; else logger -t workarounds '*dnsmasq* FAIL. name resolution unsuccessful. Restarting the process'; /etc/init.d/dnsmasq stop; kill -9 `cat /var/run/dnsmasq/dnsmasq*.pid`; /etc/init.d/dnsmasq start; logger -t workarounds 'restarted zombie dnsmasq'; fi; else logger -t workarounds 'skipping dnsmasq check because Internet is unreachable'; fi" >> /etc/crontabs/root
+
+# si hay ping al gateway pero no hay ping a Internet, reloadeamos bmx6
+sed "\| \* \* \* .*Reloading bmx6.*|d" -i /etc/crontabs/root
+echo "*/12 * * * * if ping -c5 -w10 $internet_gw_ip; then if ping -c5 -w10 8.8.8.8; then logger -t workarounds 'OK. gateway reachable and Internet too'; else logger -t workarounds 'FAIL. gateway is reachable but Internet is not. *Reloading bmx6*'; /etc/init.d/bmx6 reload; fi; fi" >> /etc/crontabs/root
+
+

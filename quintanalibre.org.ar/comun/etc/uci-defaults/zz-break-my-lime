@@ -1,0 +1,35 @@
+#!/bin/sh
+
+echo  'ebtables -t nat -A POSTROUTING -o bat0 -p ipv6 --ip6-proto udp   --ip6-sport 6240 --ip6-dport 6240 -j DROP' >   /etc/firewall.lime.d/20-bmx-not-over-bat0-ebtables
+echo   'ebtables -t nat -A POSTROUTING -o bat0 -p ipv6 --ip6-proto udp    --ip6-sport 6240 --ip6-dport 6240 -j DROP' >    /etc/firewall.user.d/20-bmx-not-over-bat0-ebtables
+
+# para cambiar el mtu sin lime-config, basta con:
+sed -i s/1398/1500/ /etc/config/*
+
+### Hotfix MTU en batadv over ethernet
+### (aunque no entiendo por queh batadv esta saliendo por eth0)
+uci set network.lm_net_eth0_batadv_dev.mtu='1496'
+uci set network.lm_net_eth0_1_batadv_dev.mtu='1496'
+uci set network.lm_net_eth0_2_batadv_dev.mtu='1496'
+uci set network.lm_net_eth1_batadv_dev.mtu='1496'
+
+### esta idea es para mandar bmx6 por br-lan, pero evitando q sus paquetes salgan por bat0
+
+uci set bmx6.lm_net_br_lan=dev
+uci set bmx6.lm_net_br_lan.dev='br-lan'
+uci set bmx6.lm_net_eth0_2=dev
+uci set bmx6.lm_net_eth0_2.dev='eth0.2'
+uci set bmx6.lm_net_eth0_3=dev
+uci set bmx6.lm_net_eth0_3.dev='eth0.3'
+uci set bmx6.lm_net_eth1=dev
+uci set bmx6.lm_net_eth1.dev='eth1'
+uci delete bmx6.lm_net_eth0_bmx6_if
+uci delete bmx6.lm_net_eth0_1_bmx6_if
+uci delete bmx6.lm_net_eth0_2_bmx6_if
+uci delete bmx6.lm_net_eth1_bmx6_if
+uci delete bmx6.lm_eth0_1_bmx6_if
+uci delete bmx6.lm_eth0_2_bmx6_if
+uci delete bmx6.lm_eth0_3_bmx6_if
+uci delete bmx6.lm_eth1_bmx6_if
+uci commit
+

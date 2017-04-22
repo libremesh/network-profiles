@@ -1,5 +1,0 @@
-#!/bin/sh
-mkdir -p /etc/crontabs ; touch /etc/crontabs/root
-sed "\| \* \* \* .*Iniciando reboot.*|d" -i /etc/crontabs/root
-echo "7 */3 * * * if ping -c 10 -W 10 10.5.24.12 &> /dev/null; then logger -t watchping_trucho 'torreunc c/3h: accesible'; else logger -t watchping_trucho 'torreunc c/3h: fallo. Iniciando reboot'; /sbin/reboot; fi" >> /etc/crontabs/root
-

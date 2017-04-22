@@ -38,8 +38,8 @@ config lime network
 
 config lime wifi
 # setear los canales en el /etc/config/lime de cada nodo segun su nube
-	option channel_2ghz '13'
-	option channel_5ghz '108'
+	option channel_2ghz '6'
+	option channel_5ghz '161'
 	option country 'TZ'
 	option htmode_5ghz 'HT40'
  	option distance '2000'
