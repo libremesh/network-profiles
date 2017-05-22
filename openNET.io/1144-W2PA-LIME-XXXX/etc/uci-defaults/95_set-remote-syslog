@@ -1,0 +1,7 @@
+#!/bin/sh
+
+### Uncomment to send UDP syslog packets through network
+if ! uci -q get system.@system[0].log_ip > /dev/null ; then
+    uci set system.@system[0].log_ip="100.248.248.1"
+    uci commit system
+fi
