@@ -1,0 +1,6 @@
+#!/bin/sh
+
+### Uncomment to create additional alias equivalent to thisnode.info
+### (useful for adapting to local language)
+#sed -i '\|^address=/anygw/|{p;s|^address=/anygw/|address=/tplinklogin.net/|}' /etc/dnsmasq.d/*
+#sed -i '\|^address=/anygw/|{p;s|^address=/anygw/|address=/roteador.info/|}' /etc/dnsmasq.d/*
