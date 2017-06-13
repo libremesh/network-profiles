@@ -1,0 +1,3 @@
+# Restart network after 64 seconds from boot as temporary workaround to gateway-changed-while-node-offline issue [20170514 | Nk]
+
+sleep 64 && /etc/init.d/network restart
