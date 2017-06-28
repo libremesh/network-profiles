@@ -13,7 +13,7 @@ config plugin 'altermap'
 config plugin 'contact'
 	option enabled '0'
 	option name 'Nk'
-	option email 'nk@os.vu'
+	option email 'on@nksn.os.vu'
 
 config plugin 'freifunk'
 	option enabled '0'
