@@ -6,52 +6,52 @@
 # and on https://libremesh.org
 
 config lime system
-	option hostname 'OPNT-%M4%M5%M6'
-	option domain 'lan'
-	option keep_on_upgrade 'libremesh base-files-essential /etc/sysupgrade.conf'
+    option hostname 'OPNT-%M4%M5%M6'
+    option domain 'lan'
+    option keep_on_upgrade 'libremesh base-files-essential /etc/sysupgrade.conf'
 
 config lime network
-	option primary_interface eth0
-	option main_ipv4_address '10.42.0.0/16'
-	option main_ipv6_address '2a00:1508:0a42:2400::/64'
-	option bmx6_mtu '1500'
-	list protocols ieee80211s
-	list protocols lan
-	list protocols anygw
-	list protocols batadv:42
-	list protocols bmx6:13
-	list protocols olsr:14
-	list protocols olsr6:15
-	list protocols olsr2:16
-	list resolvers 4.2.2.2   # b.resolvers.Level3.net
-	list resolvers 141.1.1.1 # cns1.cw.net
-	list resolvers 2001:470:20::2 # ordns.he.net
-	option bmx6_over_batman false
-	option bmx6_pref_gw none
-	option bmx7_over_batman false
-	option anygw_mac "aa:aa:aa:42:24:aa"
+    option primary_interface eth0
+    option main_ipv4_address '10.42.0.0/16'
+    option main_ipv6_address '2a00:1508:0a42:2400::/64'
+    option bmx6_mtu '1500'
+    list protocols ieee80211s
+    list protocols lan
+    list protocols anygw
+    list protocols batadv:42
+    list protocols bmx6:13
+    list protocols olsr:14
+    list protocols olsr6:15
+    list protocols olsr2:16
+    list resolvers 4.2.2.2   # b.resolvers.Level3.net
+    list resolvers 141.1.1.1 # cns1.cw.net
+    list resolvers 2001:470:20::2 # ordns.he.net
+    option bmx6_over_batman false
+    option bmx6_pref_gw none
+    option bmx7_over_batman false
+    option anygw_mac "aa:aa:aa:42:24:aa"
 
 config lime wifi
-	option channel_2ghz '11'
-	option channel_5ghz '44'
-  option htmode_2ghz 'HT20'
-	option htmode_5ghz 'VHT40'
-	list modes 'ap'
-	list modes 'apname'
-	list modes 'ieee80211s'
- 	option ap_ssid 'openNET.io'
-  option apname_ssid 'openNET.io | %H'
-  option adhoc_ssid 'openNET.io | 1144-W2PA-LIME-XXXX'
-  option adhoc_bssid '16:27:F6:27:57:14'
-	option adhoc_mcast_rate_2ghz '24000'
-	option adhoc_mcast_rate_5ghz '6000'
-	option ieee80211s_mesh_fwding '0'
-	option ieee80211s_mesh_id 'openNET.io | 1144-81SX-LIME-XXXX'
-  option ap_encryption 'psk2+ccmp'
-  option ap_key 'Aurora42+'
-  option apname_encryption 'psk2+ccmp'
-  option apname_key 'Aurora42+node'
-  option adhoc_encryption 'psk2+ccmp'
-  option adhoc_key 'z[|$X~8bqN{a3A$YL_USxpni'
-# option ieee80211s_encryption 'psk2+ccmp'
-# option ieee80211s_key 'z[|$X~8bqN{a3A$YL_USxpni'
+    option channel_2ghz '11'
+    option channel_5ghz '44'
+    option htmode_2ghz 'HT20'
+    option htmode_5ghz 'VHT40'
+    list modes 'ap'
+    list modes 'apname'
+    list modes 'ieee80211s'
+    option ap_ssid 'openNET.io'
+    option apname_ssid 'openNET.io | %H'
+    option adhoc_ssid 'openNET.io | 1144-W2PA-LIME-XXXX'
+    option adhoc_bssid '16:27:F6:27:57:14'
+    option adhoc_mcast_rate_2ghz '24000'
+    option adhoc_mcast_rate_5ghz '6000'
+    option ieee80211s_mesh_fwding '0'
+    option ieee80211s_mesh_id 'openNET.io_1144-81SX-LIME-XXXX'
+    option ap_encryption 'psk2+ccmp'
+    option ap_key 'Aurora42+'
+    option apname_encryption 'psk2+ccmp'
+    option apname_key 'Aurora42+node'
+#   option adhoc_encryption 'psk2+ccmp'
+#   option adhoc_key 'z[|$X~8bqN{a3A$YL_USxpni'
+#   option ieee80211s_encryption 'psk2+ccmp'
+#   option ieee80211s_key 'z[|$X~8bqN{a3A$YL_USxpni'
