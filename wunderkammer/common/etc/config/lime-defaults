@@ -5,26 +5,17 @@
 # Read the documentation in /etc/config/lime.example file
 # and on https://libremesh.org
 
-####
-#
-# este perfil tiene por default los valores de la nube bbone
-#
-# cada nodo tiene que tener en su /etc/config/lime:
-# hostname, mainipv4 y mainipv6, canales 2.4 y 5Ghz, wifi modes
-#
-###
-
 config lime system
 	option hostname '%M4%M5%M6'
-	option domain 'mesh.wunderkammer.local'
+	option domain 'lan'
 	option keep_on_upgrade 'libremesh base-files-essential /etc/sysupgrade.conf'
 
 config lime network
 	option primary_interface eth0
-	option main_ipv4_address '10.5.0.0/21'
-	option main_ipv6_address '2801:01e8:2::/64'
+	option main_ipv4_address '10.%N1.0.0/16'
+	option main_ipv6_address '2a00:1508:0a%N1:%N200::/64'
 	option bmx6_mtu '1500'
-	list protocols adhoc
+	list protocols ieee80211s
 	list protocols lan
 	list protocols anygw
 	list protocols batadv:%N1
@@ -46,19 +37,12 @@ config lime wifi
 	option htmode_5ghz 'HT40'
 	list modes 'ap'
 	list modes 'apname'
-	list modes 'adhoc'
-	# list modes 'ieee80211s'
+	list modes 'ieee80211s'
 	option ap_ssid 'Wunderkammer'
-	# option ap_encryption 'psk2'
-	# option ap_key 'takecare'
 	option apname_ssid 'Wunderkammer/%H'
-	# option apname_encryption 'psk2'
-	# option apname_key 'takecare'
 	option adhoc_ssid 'LiMe'
 	option adhoc_bssid 'ca:fe:00:c0:ff:ee'
 	option adhoc_mcast_rate_2ghz '24000'
 	option adhoc_mcast_rate_5ghz '6000'
 	option ieee80211s_mesh_fwding '0'
 	option ieee80211s_mesh_id 'LiMe'
-#	option ieee80211s_encryption 'psk2/aes'
-#	option ieee80211s_key 'password-for-mesh'
