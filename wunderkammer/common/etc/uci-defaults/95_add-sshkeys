@@ -1,0 +1,16 @@
+#!/bin/sh
+
+sshkeys="
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC9f+Z36iEyXcpPAwZMQxDTbAHEDrTxFQuMXGu0CiR11RVcnbFsF2rEvuo20WhSuMl2yd4cDZlikYpkAzQVqZyx1RXsCK7F1s0c9p1sx5UIddljBHsjYn16UCBz0OjSznGb4Q1qVmQr9ZoTamvn/OMSTE1YujCe8r3ti6w3rYXAZKFEGIvLWfu1g4VRmEeaKhE/zNrgqtLb+B7zS6zSbpNyAiXECOgcp4iKQzh/StK+H9qghBRlxfVFl6R/22sVIRx25vgOXiiMXGXaZr8DqJ3Puqa8q3HI0yL0ySp/GuMahD1rC4hXKm6G1Q+d26qkHKtZukO8bYSci0GfExmUKyOz2vmXoPNmiWs4PtoUTlDrQcYaDZycDLd6PTG2RlpexZO4WDfHgz7n8tpIknudEFXj/V9DWjvQclxtqoP1AVgsa5g0DAVAOakQSJPeb4DI8BDkvq5l6SFasOiSCg+n0XyoOE3YjR4U6bckDFm+d9ah+BjLIR4MLqI1TcsPb3jmjyZfMs3gc50Z9QpaNKtbAEXwk4xaVDiR3sMZ3BM99NNhj9dM4HD2w1yIIZuw5KkNpOJ/AO3OaPvkVxgrsRsBZanEhLW+uryZO8kmWnpAR77V3q/52mpjq6cmuVdtm+hXMlnfzgKjJrJbQ/qUZgKMr9PUgYK2i7iozAmwe1EDRBtAmw==
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDBNNT9RX2m9RP+UKyE3wgMrU6bstXxnI2K2MikIACAtCylMvowEw/ahypoI8njLLzYSmA+iIIoUWwYmJ6ZZBwsTMEH4C3z4HH+9+jsZSAXw34DpBvzejg67wfBmJZtzUch8+ZUwASM9MuM22eN/5sq+ya+UHTHWvfd095C+knG6UfRIsx7I8GrLLnagJHaJrh9LczHdOdlA+SXHZeUIDQOG2eXgUj9bcoXTxG0FUfA4YJV66uvum0Zcxt8dUYU2Nhwlks6DDtNLiY8qPWg4nhRh7Sk/g5Vh+GZBqibnuwjm0PEv+XqGnAiQWZZi9xLcsAfWCNl682L0Vfw68C4cf7V nickar@ingorian
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDt933ssQuBzLF92GP23bbp1kAlicSDe7LRb3h9Nj4LPi+1H3YpzQ9kB+lGyyBUvhCK5EqQHr7JjY+fRkT5TYCFLh0GV+dCqyQVUfajqiswCMZvMuAtQcCynuxa81VFkpgC7Yjs2Ax91XMLx4zgPDGNPAqIQPeFCNV2bHkmWu9ye6YEKxS2KWU+bY+ewJau9osQdoC26RL86db+1o59U7QdEEdVveztu2fwrvIzClMnVWlMoUs1Mw5U5u4kSxWO+aqwOta1fpO3atf7yVZzrys7aUncsnE36Sty4m2RyEPGdKQMUpJMpFLMNuknGfyGMCfQdFrZ+1JVSkIvVNWqihSJ panayotis@panayotis-ThinkPad-T450s
+"
+ 
+authkeys="/etc/dropbear/authorized_keys"
+umask 077 ; mkdir -p $(dirname $authkeys) ; touch $authkeys
+IFS="
+"    
+for key in $sshkeys ; do
+  sed "\|^$key$|d" -i $authkeys
+  echo   "$key"    >> $authkeys
+done                           
