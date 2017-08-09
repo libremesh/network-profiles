@@ -1,0 +1,5 @@
+#!/bin/sh
+uci set libremap.settings.community='nono.libre.org.ar'
+uci set libremap.settings.community_lat='-31.808685'
+uci set libremap.settings.community_lon='-64.977965'
+uci commit libremap
