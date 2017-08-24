@@ -34,3 +34,5 @@ config lime wifi
 	option distance '100'
 	list modes 'ap'
 	option ap_ssid 'CalPobre'
+	option ap_key 'changemepls'
+	option ap_encryption 'psk2'
