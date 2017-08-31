@@ -1,0 +1,4 @@
+#!/bin/sh
+### dnsmasq disable ipv6
+sed "\|enable-ra|d" -i /etc/dnsmasq.d/lime-proto-anygw-20-ipv6.conf
+sed "\|dhcp-range*|d" -i /etc/dnsmasq.d/lime-proto-anygw-20-ipv6.conf

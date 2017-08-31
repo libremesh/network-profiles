@@ -1,0 +1,4 @@
+#!/bin/sh
+### Change dhcp range
+sed -i 's,65536,32765,' /etc/config/dhcp
+

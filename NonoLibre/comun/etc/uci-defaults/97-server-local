@@ -1,0 +1,4 @@
+#!/bin/sh
+uci del_list dhcp.@dnsmasq[0].address='/server.nono.libre.org.ar/10.6.1.1'
+uci add_list dhcp.@dnsmasq[0].address='/server.nono.libre.org.ar/10.6.1.1'
+
