@@ -29,10 +29,11 @@ config lime network
 	option anygw_mac "aa:aa:aa:%N1:%N2:aa"
 
 config lime wifi
-	option channel_2ghz '1'
+	option channel_2ghz '11'
 	option channel_5ghz '48'
 	option htmode_5ghz 'HT40'
 	option distance '100'
+	option ap_ssid 'CalPobre'
 	list modes 'ieee80211s'
 	option ieee80211s_mesh_fwding '0'
 	option ieee80211s_mesh_id 'LibreMesh'
