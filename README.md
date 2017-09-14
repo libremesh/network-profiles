@@ -13,3 +13,5 @@ The expected files to be into this repository are:
 * Any other stuff you need to customize your own community network firmware
 
 There will be a branch per LibreMesh release so the set of files might be different according to the release.
+
+A special file named PACKAGES might be placed on the root of the community profile (_community/device/PACKAGES_) to include a list (separated by spaces or lines) of extra packages which will be included in the firmware.
