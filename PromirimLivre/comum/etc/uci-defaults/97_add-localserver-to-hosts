@@ -1,0 +1,5 @@
+#!/bin/sh
+
+### Adds local server do /etc/hosts
+
+echo "10.%N.128.10 biblioteca" >> /etc/hosts
