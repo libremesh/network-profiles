@@ -7,7 +7,7 @@
 
 config lime system
 	option hostname 'LiMe-%M4%M5%M6'
-	option domain 'lan'
+	option domain 'promirim'
 	option keep_on_upgrade 'libremesh base-files-essential /etc/sysupgrade.conf'
 
 config lime network
@@ -33,8 +33,8 @@ config lime wifi
 	option distance '1000'
 	list modes 'apname'
 	list modes 'ieee80211s'
-	option ap_ssid 'LibreUKEME'
-	option apname_ssid 'LibreUKEME/%H'
+	option ap_ssid 'PromirimLivre'
+	option apname_ssid 'PromirimLivre/%H'
 	option adhoc_ssid 'LiMe'
 	option adhoc_bssid 'ca:fe:00:c0:ff:ee'
 	option adhoc_mcast_rate_2ghz '24000'
