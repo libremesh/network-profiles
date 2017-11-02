@@ -1,8 +1,0 @@
-#!/bin/sh
-
-#changes permissions on offline script
-chmod u+x /usr/bin/offline-redirect.sh
-
-### Checks every minute if there is internet. Otherwise redirects
-
-echo "* * * * * /usr/bin/offline-redirect.sh" >> /etc/crontabs/root
