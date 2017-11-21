@@ -15,6 +15,8 @@ config lime network
 	option main_ipv4_address '10.13.0.0/16'  
 	option main_ipv6_address '2a00:1508:0a%M4:%M600::/64'
 	option bmx6_mtu '1500'
+	option anygw_dhcp_start '2'
+	option anygw_dhcp_limit '0'
 #	list protocols ieee80211s
 	list protocols lan
 	list protocols anygw
