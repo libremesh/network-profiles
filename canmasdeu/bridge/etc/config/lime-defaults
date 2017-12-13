@@ -15,9 +15,7 @@ config lime network
 	option main_ipv4_address '10.0.0.0/29/21'
 	option main_ipv6_address '2a00:1508:0a%M4:%M600::/64'
 	option bmx6_mtu '1500'
-#	list protocols ieee80211s
 	list protocols lan
-	list protocols bmx6:13
 	list resolvers 4.2.2.2   # b.resolvers.Level3.net
 	list resolvers 141.1.1.1 # cns1.cw.net
 	list resolvers 2001:470:20::2 # ordns.he.net
@@ -32,7 +30,6 @@ config lime wifi
 	option htmode_5ghz 'HT40'
 	option distance '1000'
 	list modes 'ap'
-#	list modes 'ieee80211s'
 	option ap_ssid 'CanMasdeu'
 	option apname_ssid 'CanMasdeu/%H'
 	option adhoc_ssid 'LiMe'
