@@ -1,0 +1,9 @@
+#!/bin/sh
+#GPIO=20 # TP-LINK CPE210/510
+GPIO=8 # Ubiquiti Nanostation M2/M5 (XM)
+#GPIO=2 # Ubiquiti Nanostation M2/M5 (XW)
+set -x
+echo $GPIO > /sys/class/gpio/export
+echo out > /sys/class/gpio/gpio$GPIO/direction
+echo 1 > /sys/class/gpio/gpio$GPIO/value
+set +x
