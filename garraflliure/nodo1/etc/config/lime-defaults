@@ -12,7 +12,7 @@ config lime system
 
 config lime network
 	option primary_interface eth0
-	option main_ipv4_address '10.3.64.0/27/16'
+	option main_ipv4_address '10.3.0.0/27/16'
 	option main_ipv6_address '2a00:1508:0a%M4:%M600::/64'
 	option bmx6_mtu '1500'
 	list protocols ieee80211s
