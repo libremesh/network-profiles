@@ -12,7 +12,7 @@ config lime system
 
 config lime network
 	option primary_interface eth0
-	option main_ipv4_address '10.3.64.0/27/18'
+	option main_ipv4_address '10.3.64.0/27/16'
 	option main_ipv6_address '2a00:1508:0a%M4:%M600::/64'
 	option bmx6_mtu '1500'
 	list protocols ieee80211s
@@ -33,8 +33,8 @@ config lime wifi
 	option distance '1000'
 	list modes 'apname'
 	list modes 'ieee80211s'
-	option ap_ssid 'GarrafLliure'
-	option apname_ssid 'GarrafLliure/%H'
+	option ap_ssid 'garraflliure.guifi.net'
+	option apname_ssid 'garraflliure.guifi.net/%H'
 	option adhoc_ssid 'LiMe'
 	option adhoc_bssid 'ca:fe:00:c0:ff:ee'
 	option adhoc_mcast_rate_2ghz '24000'
