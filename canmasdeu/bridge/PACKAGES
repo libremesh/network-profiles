@@ -1,0 +1,9 @@
+-6relayd
+-dnsmasq
+-iptables
+-ip6tables
+lime-system
+-odhcp6c
+-odhcpd
+-ppp
+-ppp-mod-pppoe

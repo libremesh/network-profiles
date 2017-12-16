@@ -12,32 +12,25 @@ config lime system
 
 config lime network
 	option primary_interface eth0
-	option main_ipv4_address '10.13.0.0/16'  
+	option main_ipv4_address '10.13.0.0/16'
 	option main_ipv6_address '2a00:1508:0a%M4:%M600::/64'
-	option bmx6_mtu '1500'
 	option anygw_dhcp_start '2'
 	option anygw_dhcp_limit '0'
+	option anygw_mac "aa:aa:aa:%N1:%N2:aa"
 	list protocols lan
 	list protocols anygw
+	list protocols bmx6:13
 	list resolvers 4.2.2.2   # b.resolvers.Level3.net
 	list resolvers 141.1.1.1 # cns1.cw.net
 	list resolvers 2001:470:20::2 # ordns.he.net
+	option bmx6_mtu '1500'
 	option bmx6_over_batman false
 	option bmx6_pref_gw none
-	option bmx7_over_batman false
-	option anygw_mac "aa:aa:aa:%N1:%N2:aa"
 
 config lime wifi
+	option ap_ssid 'CanMasdeu'
 	option channel_2ghz '11'
 	option channel_5ghz '48'
 	option htmode_5ghz 'HT40'
 	option distance '1000'
 	list modes 'ap'
-	option ap_ssid 'CanMasdeu'
-	option apname_ssid 'CanMasdeu/%H'
-	option adhoc_ssid 'LiMe'
-	option adhoc_bssid 'ca:fe:00:c0:ff:ee'
-	option adhoc_mcast_rate_2ghz '24000'
-	option adhoc_mcast_rate_5ghz '6000'
-	option ieee80211s_mesh_fwding '0'
-	option ieee80211s_mesh_id 'LiMe'

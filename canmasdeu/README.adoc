@@ -1,0 +1,25 @@
+Can Masdeu Network profiles
+===========================
+
+There are two profile, one called +dhcp+ is used only for the upstream gateway
+and provides routing, NAT, DHCP, DNS cashing with web interface to
+look at router status, and the other profile called +bridge+ is used for
+the rest of the devices, and provide just bridged WiFi access point
+functionality.
+
+.Compiling
+[source,bash]
+--------------------------------------------------------------------------------
+
+for profile in \
+	 tl-wdr4310-v1 tl-wr841-v1.5 tl-wr841-v3 tl-wr841-v5 tl-wr841-v7 \
+	 tl-wr841-v8 tl-wr841-v9 tl-wr841-v10 tl-wr841-v11 tl-wr841-v12
+do
+	./cooker -c ar71xx/generic --profile=${profile} --flavor=lede_vanilla \
+		--community=canmasdeu/bridge
+done
+
+./cooker -c ar71xx/generic --profile=tl-wdr4310-v1 --flavor=lede_vanilla \
+	--community=canmasdeu/dhcp
+
+--------------------------------------------------------------------------------
