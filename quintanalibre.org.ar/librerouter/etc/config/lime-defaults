@@ -14,12 +14,12 @@
 #
 ###
 
-config lime system
+config lime 'system'
 	option hostname 'QL-%M4%M5%M6'
 	option domain 'red.quintana.libre.org.ar'
 	option keep_on_upgrade 'libremesh base-files-essential /etc/sysupgrade.conf'
 
-config lime network
+config lime 'network'
 	option primary_interface eth0
 	option main_ipv4_address '10.5.0.0/21'
 	option main_ipv6_address '2801:01e8:2::/64'
@@ -40,7 +40,7 @@ config lime network
 	option bmx7_over_batman false
 	option anygw_mac "aa:aa:aa:%N1:%N2:aa"
 
-config lime wifi
+config lime 'wifi'
 # setear los canales en el /etc/config/lime de cada nodo segun su nube
 	option channel_2ghz '1'
 	option channel_5ghz '112'
@@ -58,3 +58,4 @@ config lime wifi
 	option adhoc_mcast_rate_5ghz '18000'
 	option ieee80211s_mesh_fwding '0'
 	option ieee80211s_mesh_id 'LiMe'
+
