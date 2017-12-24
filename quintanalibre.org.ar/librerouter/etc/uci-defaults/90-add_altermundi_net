@@ -1,0 +1,5 @@
+#!/bin/sh
+uci set bmx6.altermundiV4="tunOut"
+uci set bmx6.altermundiV4.tunOut="altermundiV4"
+uci set bmx6.altermundiV4.network="138.255.88.0/22"
+uci commit bmx6

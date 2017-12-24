@@ -1,0 +1,5 @@
+#!/bin/sh
+uci set libremap.settings.community='quintana.libre.org.ar'
+uci set libremap.settings.community_lat='-31.80461'
+uci set libremap.settings.community_lon='-64.41609'
+uci commit libremap
