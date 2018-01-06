@@ -1,7 +1,7 @@
 #!/bin/sh
 
 internet_gw=torreunc
-internet_gw_ip=10.5.24.12
+internet_gw_ip=8.8.8.8
 
 # cada 3hs, si falla ping a la salida a internet, rebooteamos. Es el último recurso para no quedar desconectados del nodo si queda en un estado inaccesible.
 mkdir -p /etc/crontabs ; touch /etc/crontabs/root
