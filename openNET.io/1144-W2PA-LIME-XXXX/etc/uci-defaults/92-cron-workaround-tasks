@@ -10,7 +10,7 @@ internet_gw_ip=8.8.8.8
 # cada 3hs, si falla ping a la salida a internet, rebooteamos. Es el último recurso para no quedar desconectados del nodo si queda en un estado inaccesible.
 mkdir -p /etc/crontabs ; touch /etc/crontabs/root
 sed "\| \* \* \* .*Iniciando reboot.*|d" -i /etc/crontabs/root
-echo "7 */3 * * * if ping -c 10 -W 10 $internet_gw_ip &> /dev/null; then logger -t workarounds 'ping c/3hs a $internet_gw OK'; else logger -t workarounds '*ping c/3hs* a torreunc FAIL. Iniciando reboot'; logread > /root/debug && /sbin/reboot; fi" >> /etc/crontabs/root
+echo "7 */3 * * * if ping -c 10 -W 10 $internet_gw_ip &> /dev/null; then logger -t workarounds 'ping c/3hs a $internet_gw OK'; else logger -t workarounds '*ping c/3hs* a torreunc FAIL. Iniciando reboot'; logread > /root/debug && /etc/init.d/network restart; fi" >> /etc/crontabs/root
 
 # cada 1 min, si el tunel con la salida a internet está caido, recreamos túneles modificando el timeout.
 sed "\| \* \* \* .*Recreando tuneles bmx6.*|d" -i /etc/crontabs/root
