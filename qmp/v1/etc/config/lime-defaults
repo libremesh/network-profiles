@@ -1,0 +1,40 @@
+config lime system
+    option hostname 'qMp-%M4%M5%M6'
+    option domain 'qmp'
+    option keep_on_upgrade 'libremesh base-files-essential /etc/sysupgrade.conf'
+
+config lime network
+    option primary_interface eth0
+    option main_ipv4_address '10.202.%N1.0/24'
+    option anygw_dhcp_start '2'
+    option anygw_dhcp_limit '0'
+    option main_ipv6_address '2012:0:0::/48'
+    option bmx6_mtu '1500'
+    list protocols ieee80211s
+    ist protocols adhoc
+    list protocols lan
+    list protocols anygw
+    list protocols bmx6:12:8021q
+    list resolvers 4.2.2.2   # b.resolvers.Level3.net
+    list resolvers 141.1.1.1 # cns1.cw.net
+    list resolvers 2001:470:20::2 # ordns.he.net
+    option bmx6_pref_gw none
+    option anygw_mac "aa:aa:aa:%N1:%N2:aa"
+
+config lime wifi
+    option channel_2ghz '1'
+    option channel_5ghz '165'
+    option htmode_5ghz 'HT20'
+    option distance '1000'
+    list modes 'ap'
+    list modes 'apname'
+    list modes 'ieee80211s'
+    list modes 'adhoc'
+    option ap_ssid 'qMp-AP'
+    option apname_ssid '%H'
+    option adhoc_ssid 'qMp'
+    option adhoc_bssid '02:ca:ff:ee:ba:be'
+    option adhoc_mcast_rate_2ghz '24000'
+    option adhoc_mcast_rate_5ghz '6000'
+    option ieee80211s_mesh_fwding '0'
+    option ieee80211s_mesh_id 'qMp'
