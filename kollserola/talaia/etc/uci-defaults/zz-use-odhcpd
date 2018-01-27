@@ -1,3 +1,8 @@
 #!/bin/sh
 uci set dhcp.odhcpd.maindhcp='1'
+uci set dhcp.lan.dhcpv4='server'
 uci commit dhcp
+
+/etc/init.d/dnsmasq restart
+/etc/init.d/odhcpd restart
+/etc/init.d/odhcpd enable
