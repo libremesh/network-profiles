@@ -24,7 +24,7 @@ echo "*/5 * * * * killall iw; logger -t workarounds 'regular scan on wlan0'; iw 
 
 # si dnsmasq está muerto, lo reiniciamos. Chequeamos que haya acceso a Internet antes de intentar resolver.
 sed "\| \* \* \* .*dnsmasq is alive.*|d" -i /etc/crontabs/root
-echo "*/8 * * * * if ping -c5 -w10 8.8.8.8; then if nslookup google.com 127.0.0.1 &>/dev/null; then logger -t workarounds 'OK. dnsmasq is alive'; else logger -t workarounds '*dnsmasq* FAIL. name resolution unsuccessful. Restarting the process'; /etc/init.d/dnsmasq stop; kill -9 `cat /var/run/dnsmasq/dnsmasq*.pid`; /etc/init.d/dnsmasq start; logger -t workarounds 'restarted zombie dnsmasq'; fi; else logger -t workarounds 'skipping dnsmasq check because Internet is unreachable'; fi" >> /etc/crontabs/root
+echo "*/8 * * * * if ping -c5 -w10 8.8.8.8; then if nslookup google.com 127.0.0.1 &>/dev/null; then logger -t workarounds 'OK. dnsmasq is alive'; else logger -t workarounds '*dnsmasq* FAIL. name resolution unsuccessful. Restarting the process'; /etc/init.d/dnsmasq stop; killall -9 dnsmasq; /etc/init.d/dnsmasq start; logger -t workarounds 'restarted zombie dnsmasq'; fi; else logger -t workarounds 'skipping dnsmasq check because Internet is unreachable'; fi" >> /etc/crontabs/root
 
 # si hay ping al gateway pero no hay ping a Internet, reloadeamos bmx6
 sed "\| \* \* \* .*Reloading bmx6.*|d" -i /etc/crontabs/root
