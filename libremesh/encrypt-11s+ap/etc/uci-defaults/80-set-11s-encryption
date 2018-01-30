@@ -1,0 +1,13 @@
+#!/bin/sh
+uci delete lime-defaults.wifi.modes
+uci add_list lime-defaults.wifi.modes='ap_2ghz'
+uci add_list lime-defaults.wifi.modes='apname_2ghz'
+uci add_list lime-defaults.wifi.modes='ieee80211s_5ghz'
+uci set lime-defaults.wifi.ap_encryption='psk2'
+uci set lime-defaults.wifi.ap_key='libremesh'
+uci set lime-defaults.wifi.apname_encryption='psk2'
+uci set lime-defaults.wifi.apname_key='libremesh'
+uci set lime-defaults.wifi.ieee80211s_encryption='psk2+aes'
+uci set lime-defaults.wifi.ieee80211s_key='libremesh'
+uci commit lime-defaults
+
