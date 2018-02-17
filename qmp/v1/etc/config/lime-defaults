@@ -25,6 +25,7 @@ config lime network
 config lime wifi
     option channel_2ghz '1'
     option channel_5ghz '165'
+    option country 'TZ'
     option htmode_5ghz 'HT20'
     option distance '1000'
     list modes 'ap'
