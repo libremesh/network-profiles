@@ -37,8 +37,15 @@ then
 	rm -rf $repo/output-previous_run/
 fi
 
-mv $repo/communities $repo/communities-previous_run
-mv $repo/output $repo/output-previous_run
+if [ -d $repo/communities ]
+then
+        mv $repo/communities $repo/communities-previous_run
+fi
+
+if [ -d $repo/output ]
+then
+        mv $repo/output $repo/output-previous_run
+fi
 
 cd $repo
 
