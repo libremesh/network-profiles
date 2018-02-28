@@ -1,0 +1,13 @@
+#!/bin/sh
+
+# LibreRouter V1 Prototypes come with a fake MAC on all network interfaces
+# Generate 4 random bytes on first boot, and assign arbitrary macaddr
+# to all eth interfaces, prepending 02:, and appending a unique index
+
+rand4bytes=$(head -c 256 /dev/urandom | md5sum | sed 's/\(..\)/\1:/g' | head -c 11)
+
+for index in 0 1; do
+    uci set network.lm_net_eth$index.macaddr="02:$rand4bytes":4$index
+    uci commit network
+done
+
