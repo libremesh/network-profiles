@@ -1,0 +1,5 @@
+#!/bin/sh
+uci set libremap.settings.community='LaSerranitaLibre'
+uci set libremap.settings.community_lat='-31.7389071667272'
+uci set libremap.settings.community_lon='-64.45805311203003'
+uci commit libremap
