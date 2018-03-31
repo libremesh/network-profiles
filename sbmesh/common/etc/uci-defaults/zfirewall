@@ -1,0 +1,4 @@
+#!/bin/sh
+echo "#block access to private address space" >> /etc/firewall.user
+echo "iptables -I FORWARD -d 192.168.0.0/16 -j DROP" >> /etc/firewall.user
+echo "iptables -I FORWARD -d 172.16.0.0/12 -j DROP" >> /etc/firewall.user

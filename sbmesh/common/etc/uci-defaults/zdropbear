@@ -1,0 +1,6 @@
+#!/bin/sh
+uci set dropbear.@dropbear[0].RootPasswordAuth='off'
+uci set dropbear.@dropbear[0].Port='22'
+uci set dropbear.@dropbear[0].PasswordAuth='off'
+uci commit
+/etc/init.d/network restart
