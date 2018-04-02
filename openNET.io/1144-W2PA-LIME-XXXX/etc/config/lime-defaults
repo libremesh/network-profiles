@@ -25,9 +25,10 @@ config lime network
     list protocols olsr:14
     list protocols olsr6:15
     list protocols olsr2:16
-    list resolvers 4.2.2.2   # b.resolvers.Level3.net
-    list resolvers 141.1.1.1 # cns1.cw.net
-    list resolvers 2001:470:20::2 # ordns.he.net
+    list resolvers 1.1.1.1
+    list resolvers 1.0.0.1
+    list resolvers 2606:4700:4700::1111
+    list resolvers 2606:4700:4700::1001
     option bmx6_over_batman false
     option bmx6_pref_gw none
     option bmx7_over_batman false
