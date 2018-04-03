@@ -1,0 +1,9 @@
+#!/bin/sh
+uci del_list libremap.settings.api_url='http://libremap.berlin.freifunk.net/api'
+# uci del_list libremap.settings.api_url='http://libremap.net/api/'
+# uci add_list libremap.settings.api_url='http://sbmesh.net/map/api'
+uci set libremap.settings.community='Santa Barbara Mesh Network'
+uci set libremap.location.latitude='34.419275'
+uci set libremap.location.longitude='-119.699334'
+uci commit
+# /etc/init.d/libremap-agent disable
