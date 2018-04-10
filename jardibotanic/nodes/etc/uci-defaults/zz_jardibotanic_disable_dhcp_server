@@ -1,4 +1,5 @@
 #!/bin/sh
 
+rm -f /etc/smonit/dnsmasq
 /etc/init.d/dnsmasq disable
 /etc/init.d/odhcpd disable
