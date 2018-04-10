@@ -11,7 +11,7 @@ config lime network
     list protocols adhoc
     list protocols lan
     list protocols batadv:%N1
-    list protocols bmx6:12:8021q
+    list protocols bmx6:12:8021q:_qmp
     list protocols bmx6:13
     list resolvers '10.1.104.2'
     option use_odhcpd true
