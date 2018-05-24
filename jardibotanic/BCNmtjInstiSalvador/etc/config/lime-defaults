@@ -1,12 +1,12 @@
 config lime system
-    option hostname 'BCNmtjPlPolivalentCaix'
+    option hostname 'BCNmtjInstiSalvador'
     option domain 'lan'
     option keep_on_upgrade 'libremesh base-files-essential /etc/sysupgrade.conf'
 
 config lime network
     option primary_interface eth0
-    option main_ipv4_address '10.1.105.249/21'
-    option main_ipv6_address '2a00:1508:1:fe4c::105:249/64'
+    option main_ipv4_address '10.1.105.247/21'
+    option main_ipv6_address '2a00:1508:1:fe4c::105:247/64'
     list protocols ieee80211s
     list protocols adhoc
     list protocols lan
