@@ -1,0 +1,6 @@
+#!/bin/sh
+
+# lime-config doesn't yet support a list of channels
+# workaround assigning an arbitrary channel to second 5ghz radio
+uci set lime.radio2.channel_5ghz=104
+uci commit lime

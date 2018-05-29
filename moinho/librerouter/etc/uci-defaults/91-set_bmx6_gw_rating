@@ -1,0 +1,16 @@
+#!/bin/sh
+uci set bmx6.inet6torreunc=tunOut
+uci set bmx6.inet6torreunc.tunOut='inet6torreunc'
+uci set bmx6.inet6torreunc.network='::/0'
+uci set bmx6.inet6torreunc.maxPrefixLen='0'
+uci set bmx6.inet6torreunc.gwName='torreunc'
+uci set bmx6.inet6torreunc.rating='1000'
+
+uci set bmx6.inet4torreunc=tunOut
+uci set bmx6.inet4torreunc.tunOut='inet4torreunc'
+uci set bmx6.inet4torreunc.network='0.0.0.0/0'
+uci set bmx6.inet4torreunc.maxPrefixLen='0'
+uci set bmx6.inet4torreunc.gwName='torreunc'
+uci set bmx6.inet4torreunc.rating='1000'
+
+uci commit bmx6
