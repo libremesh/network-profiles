@@ -1,0 +1,38 @@
+#!/bin/sh
+
+hook_name="ping_watchdog"
+
+function hook_is_installed()
+{
+	installed=yes
+}
+
+function hook_check()
+{
+	local testAddresses="10.180.0.$(seq -s ' 10.180.0.' 1 10) sf.net 8.8.8.8"
+	local hostAddresses="$(ip address show)"
+
+	status=error
+	
+	for addr in ${testAddresses} ; do
+		(echo "${hostAddresses}" | grep -q -w -F ${addr}) && continue
+
+		ping -w 3 -c 2 ${addr} &> /dev/null &&
+		{
+			status=ok
+			break
+		}
+	done
+}
+
+function hook_quickfix()
+{
+	true
+}
+
+function hook_longfix()
+{
+	log="Ping whatch-dog failed maybe the device got dumb: rebooting"
+	reboot
+}
+

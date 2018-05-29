@@ -1,0 +1,14 @@
+-6relayd
+-dnsmasq
+lime-debug
+lime-docs
+lime-proto-anygw
+lime-proto-babeld
+lime-proto-batadv
+lime-system
+-odhcp6c
+-odhcpd
+-ppp
+-ppp-mod-pppoe
+smonit
+sprunge

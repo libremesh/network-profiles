@@ -1,0 +1,17 @@
+-6relayd
+batctl
+-dnsmasq-dhcpv6
+-dnsmasq-full
+-dnsmasq
+ethtool
+-firewall
+-iptables
+-ip6tables
+lime-proto-batadv
+lime-system
+-odhcp6c
+-odhcpd
+-ppp
+-ppp-mod-pppoe
+smonit
+sprunge
