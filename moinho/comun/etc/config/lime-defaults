@@ -15,7 +15,7 @@
 ###
 
 config lime 'system'
-	option hostname 'QL-%M4%M5%M6'
+	option hostname 'moinho-%M4%M5%M6'
 	option domain 'rede.moinho'
 	option keep_on_upgrade 'libremesh base-files-essential /etc/sysupgrade.conf'
 
