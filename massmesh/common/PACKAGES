@@ -1,3 +1,5 @@
 nano
 cjdns
 luci-app-cjdns
+luci-app-attendedsysupgrade
+luci-app-firewall
