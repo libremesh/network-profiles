@@ -1,0 +1,12 @@
+bmx7-auto-gw-mode
+lime-proto-bmx7
+luci-app-bmx7
+lime-proto-wan
+lime-system
+lime-hwd-openwrt-wan
+lime-debug
+kmod-ath9k
+wpa-supplicant
+hostapd
+smonit
+luci-app-qos
