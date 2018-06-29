@@ -53,10 +53,8 @@ config lime 'wifi'
 	list modes 'apname'
 	list modes 'adhoc'
 	option ap_ssid 'rede.moinho'
-	# Beta
 	option ap_encryption 'psk2'
 	option ap_key '123moinho2018'
-	#
 	option apname_ssid 'rede.moinho/%H'
 	option adhoc_ssid 'LiMe.%H'
 	option adhoc_bssid 'ca:fe:00:c0:ff:ee'
