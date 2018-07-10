@@ -1,0 +1,38 @@
+#!/bin/sh
+uci show firewall | grep "Block RFC1918" > /dev/null 2>&1
+if [ $? -ne 0 ]; then
+  uci -q batch <<-EOF >/dev/null
+    add firewall rule
+    set firewall.@rule[-1].name='Block RFC1918'
+    set firewall.@rule[-1].src='*'
+    set firewall.@rule[-1].proto='all'
+    set firewall.@rule[-1].enabled='1'
+    set firewall.@rule[-1].dest='wan'
+    set firewall.@rule[-1].dest_ip='192.168.0.0/16'
+    set firewall.@rule[-1].target='DROP'
+EOF
+
+  uci -q batch <<-EOF >/dev/null
+    add firewall rule
+    set firewall.@rule[-1].name='Block RFC1918'
+    set firewall.@rule[-1].src='*'
+    set firewall.@rule[-1].proto='all'
+    set firewall.@rule[-1].enabled='1'
+    set firewall.@rule[-1].dest='wan'
+    set firewall.@rule[-1].dest_ip='10.0.0.0/8'
+    set firewall.@rule[-1].target='DROP'
+EOF
+
+  uci -q batch <<-EOF >/dev/null
+    add firewall rule
+    set firewall.@rule[-1].name='Block RFC1918'
+    set firewall.@rule[-1].src='*'
+    set firewall.@rule[-1].proto='all'
+    set firewall.@rule[-1].enabled='1'
+    set firewall.@rule[-1].dest='wan'
+    set firewall.@rule[-1].dest_ip='172.16.0.0/12'
+    set firewall.@rule[-1].target='DROP'
+EOF
+fi
+
+exit 0
