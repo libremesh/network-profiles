@@ -35,4 +35,7 @@ EOF
 EOF
 fi
 
+uci commit firewall
+/etc/init.d/firewall restart
+
 exit 0
