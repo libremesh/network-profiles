@@ -1,1 +1,1 @@
-collectd collectd-mod-network collectd-mod-interface collectd-mod-syslog collectd-mod-tcpconns collectd-mod-iwinfo collectd-mod-load collectd-mod-memory collectd-mod-ping collectd-mod-processes ip6tables-mod-nat
+collectd collectd-mod-network collectd-mod-interface collectd-mod-syslog collectd-mod-tcpconns collectd-mod-iwinfo collectd-mod-load collectd-mod-memory collectd-mod-ping collectd-mod-processes
