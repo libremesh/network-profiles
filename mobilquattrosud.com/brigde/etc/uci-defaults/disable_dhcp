@@ -1,0 +1,10 @@
+#!/bin/sh
+[ -x /etc/init.d/dnsmasq ] &&
+{
+	/etc/init.d/dnsmasq stop
+	sleep 1
+	/etc/init.d/dnsmasq disable
+}
+
+[ -x /etc/smonit/dnsmasq ] &&
+	chmod 000 /etc/smonit/dnsmasq
