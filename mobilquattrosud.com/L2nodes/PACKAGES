@@ -1,7 +1,9 @@
 -6relayd
+batctl
 -dnsmasq-dhcpv6
 -dnsmasq-full
 -dnsmasq
+ethtool
 -firewall
 -iptables
 -ip6tables
@@ -12,3 +14,4 @@ lime-system
 -ppp
 -ppp-mod-pppoe
 smonit
+sprunge

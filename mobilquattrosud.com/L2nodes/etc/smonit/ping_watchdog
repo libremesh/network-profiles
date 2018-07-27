@@ -9,15 +9,15 @@ function hook_is_installed()
 
 function hook_check()
 {
-	local testAddresses="10.180.10.$(seq -s " 10.1.180.10." 1 10) sf.net 8.8.8.8"
+	local testAddresses="10.180.10.$(seq -s ' 10.180.10.' 1 10) sf.net 8.8.8.8"
 	local hostAddresses="$(ip address show)"
 
 	status=error
 	
 	for addr in ${testAddresses} ; do
-		echo "${hostAddresses}" | grep -q -F ${addr} && continue
+		(echo "${hostAddresses}" | grep -q -w -F ${addr}) && continue
 
-		ping -c 3 ${addr} &> /dev/null &&
+		ping -w 3 -c 2 ${addr} &> /dev/null &&
 		{
 			status=ok
 			break
