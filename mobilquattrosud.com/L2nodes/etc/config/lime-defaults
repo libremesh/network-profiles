@@ -15,6 +15,8 @@ config lime network
 	option main_ipv4_address '10.180.10.0/24'
 	option main_ipv6_address '2a00:1508:1:f003::%M5%M6/64'
 	option bmx6_mtu '1500'
+	list protocols batadv:%N1
+	list protocols ieee80211s
 	list protocols lan
 	list resolvers 4.2.2.2   # b.resolvers.Level3.net
 	list resolvers 141.1.1.1 # cns1.cw.net
@@ -26,4 +28,9 @@ config lime wifi
 	option htmode_5ghz 'HT40'
 	option distance '200'
 	list modes 'ap'
+	list modes 'apname'
+	list modes 'ieee80211s'
 	option ap_ssid 'MobilQuattroSud.com'
+	option apname_ssid 'LibreMesh.org/%H'
+	option ieee80211s_mesh_fwding '0'
+	option ieee80211s_mesh_id 'LiMe'
