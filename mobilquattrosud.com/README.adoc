@@ -1,4 +1,8 @@
 README
 ======
 
+.Generating the firmware images
+----------------------------------------
+./cooker -c ar71xx/generic --profile=tl-wr741nd-v2 --flavor=lede_vanilla --community=mobilquattrosud.com/L2nodes
+----------------------------------------
 
