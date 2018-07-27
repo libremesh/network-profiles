@@ -15,9 +15,9 @@ config lime network
 	option main_ipv4_address '10.180.10.0/24'
 	option main_ipv6_address '2a00:1508:1:f003::%M5%M6/64'
 	option bmx6_mtu '1500'
-	list protocols batadv:%N1
 	list protocols ieee80211s
 	list protocols lan
+	list protocols batadv:%N1
 	list resolvers 4.2.2.2   # b.resolvers.Level3.net
 	list resolvers 141.1.1.1 # cns1.cw.net
 	list resolvers 2001:470:20::2 # ordns.he.net
