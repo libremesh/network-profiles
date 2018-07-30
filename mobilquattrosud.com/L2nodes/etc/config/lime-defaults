@@ -12,9 +12,8 @@ config lime system
 
 config lime network
 	option primary_interface eth0
-	option main_ipv4_address '10.180.10.0/24'
+	option main_ipv4_address '10.180.0.128/24/25'
 	option main_ipv6_address '2a00:1508:1:f003::%M5%M6/64'
-	option bmx6_mtu '1500'
 	list protocols ieee80211s
 	list protocols lan
 	list protocols batadv:%N1
@@ -31,6 +30,10 @@ config lime wifi
 	list modes 'apname'
 	list modes 'ieee80211s'
 	option ap_ssid 'MobilQuattroSud.com'
+	option ap_encryption 'psk2'
+	option ap_key 'attrantaacafittera'
 	option apname_ssid 'LibreMesh.org/%H'
+	option apname_encryption 'psk2'
+	option apname_key 'attrantaacafittera'
 	option ieee80211s_mesh_fwding '0'
 	option ieee80211s_mesh_id 'LiMe'
