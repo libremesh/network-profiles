@@ -9,7 +9,7 @@ function hook_is_installed()
 
 function hook_check()
 {
-	local testAddresses="10.180.10.$(seq -s ' 10.180.10.' 1 10) sf.net 8.8.8.8"
+	local testAddresses="10.180.0.$(seq -s ' 10.180.0.' 1 10) sf.net 8.8.8.8"
 	local hostAddresses="$(ip address show)"
 
 	status=error
