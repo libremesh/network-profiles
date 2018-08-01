@@ -1,2 +1,1 @@
-echo "ip route add 0.0.0.0/0 via 10.180.0.254" > /etc/rc.local
-echo "ip route add 0::0/0 via 2a00:1508:1:f003::2" >> /etc/rc.local
+echo "((sleep 120 ; ip route add 0.0.0.0/0 via 10.180.0.254 ; ip route add 0::0/0 via 2a00:1508:1:f003::2)&)" > /etc/rc.local
