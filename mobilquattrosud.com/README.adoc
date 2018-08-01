@@ -6,5 +6,6 @@ README
 ./cooker -c ar71xx/generic --profile=tl-wr741nd-v1 --flavor=lede_vanilla --community=mobilquattrosud.com/L2nodes
 ./cooker -c ar71xx/generic --profile=tl-wr741nd-v2 --flavor=lede_vanilla --community=mobilquattrosud.com/L2nodes
 ./cooker -c ar71xx/generic --profile=ubnt-bullet-m --flavor=lede_vanilla --community=mobilquattrosud.com/L2nodes
+./cooker -c ar71xx/generic --profile=ubnt-nano-m --flavor=lede_vanilla --community=mobilquattrosud.com/L23nodes
 ----------------------------------------
 
