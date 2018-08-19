@@ -1,5 +1,0 @@
-#!/bin/sh
-uci set libremap.settings.community='rede.moinho'
-uci set libremap.settings.community_lat='-14.065046'
-uci set libremap.settings.community_lon='-47.464895'
-uci commit libremap
