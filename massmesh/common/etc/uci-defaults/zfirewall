@@ -1,0 +1,12 @@
+#!/bin/sh
+cjdns_fw_idx=$(uci show firewall \
+             | grep -Eo "firewall.@rule.+Allow-.+cjdns" \
+             | grep -E "[0-9]{1,}" -o)
+for x in ${cjdns_fw_idx}; do
+  uci set firewall.@rule[${x}].enabled=1
+done
+uci commit firewall
+
+# echo "#block access to private address space" >> /etc/firewall.user
+# echo "iptables -I FORWARD -d 192.168.0.0/16 -j DROP" >> /etc/firewall.user
+# echo "iptables -I FORWARD -d 172.16.0.0/12 -j DROP" >> /etc/firewall.user

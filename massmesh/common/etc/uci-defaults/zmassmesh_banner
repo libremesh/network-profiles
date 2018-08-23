@@ -1,0 +1,3 @@
+#!/bin/sh
+cat /etc/massmesh/mamesh.banner >> /etc/banner
+exit 0
