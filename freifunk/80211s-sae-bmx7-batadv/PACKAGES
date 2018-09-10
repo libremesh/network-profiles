@@ -13,4 +13,4 @@ bmx7-tun
 bmx7-uci-config
 bmx7-auto-gw-mode
 lime-proto-bmx7
-havegd
+haveged
