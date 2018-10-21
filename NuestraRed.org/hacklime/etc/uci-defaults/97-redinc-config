@@ -1,0 +1,11 @@
+#!/bin/sh
+##Lo primero que hacemos es agregar el gateway de la lan de forma manual
+##Este gateway es el PfSense que tenemos en la red
+uci set network.lan.gateway='10.40.0.1'
+###Lo segundo es modificar un par de opciones en el servidor DHCP (DNSmasq) de cada uno de los nodos
+##Para que los clientes seban que maquina es la salida a internet 
+###Tambien agregamos reglas al dns para definir nuestro  dominio local
+uci add_list dhcp.@dnsmasq[0].option='3,10.17.95.1'
+uci add_list dhcp.@dnsmasq[0].address='/.nuestrared.org/10.40.2.254'
+uci add_list dhcp.@dnsmasq[0].address='/firewall.redinc.org/10.40.0.1'
+
