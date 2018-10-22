@@ -1,16 +1,16 @@
 config lime system
     option hostname 'RedINC-%M4%M5%M6'
-    option domain 'redinc.org'
+    option domain 'lan'
     option keep_on_upgrade 'libremesh base-files-essential /etc/sysupgrade.conf'
 
 config lime network
     option primary_interface eth0
-    option main_ipv4_address '10.40.%M5.1/24'
+    option main_ipv4_address '10.%N1.%M5.%M6/16'
     option main_ipv6_address '2012:0:0:%M6::/48'
     list protocols ieee80211s
     list protocols lan
     list protocols bmx7
-    list resolvers 10.0.0.1   # b.resolvers.Level3.net
+    list resolvers 10.17.95.1 # dns por defecto de la redinc.org
     option bmx7_over_batman false
     option bmx7_pref_gw none
     option bmx7_mtu '1500'

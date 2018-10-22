@@ -1,8 +1,6 @@
-# RedINC-Comunitaria / Buenos Aires - Cauca - Colombia
+# NuestraRED.org
 
-Perfiles de configuracion para los nodos de la Red comunitaria RedINC.org 
-Estos perfiles estan pensandos para lograr una configuración que obligue a todos los nodos y los clientes tener como puerta de enlace
-en la LAN IPV4 un Firewall configurado con PfSense
+Perfiles de configuracion para los nodos de la Red libre NuestraRED.org 
 
 # Listado
 
