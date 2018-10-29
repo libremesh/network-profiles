@@ -1,0 +1,16 @@
+wpad-mesh
+wpa-cli
+-wpad-mini
+-hostapd-mini
+kmod-batman-adv
+lime-proto-batadv
+bmx7
+bmx7-iwinfo
+bmx7-json
+bmx7-sms
+bmx7-table
+bmx7-tun
+bmx7-uci-config
+bmx7-auto-gw-mode
+lime-proto-bmx7
+haveged
