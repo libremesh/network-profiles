@@ -1,0 +1,5 @@
+#!/bin/sh
+echo "#Proxy redirect" >> /etc/firewall.user
+echo "iptables -t nat -A PREROUTING -i br-lan -p tcp --dport 80 -j DNAT --to 10.40.2.254:8888" >> /etc/firewall.user
+echo "iptables -t nat -A PREROUTING -i br-lan -p tcp --dport 443 -j DNAT --to 10.40.2.254:3129" >> /etc/firewall.user
+
