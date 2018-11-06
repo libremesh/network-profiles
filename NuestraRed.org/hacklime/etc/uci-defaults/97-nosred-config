@@ -1,0 +1,26 @@
+#!/bin/sh
+##Lo primero que hacemos es agregar el gateway de la lan de forma manual
+##Este gateway es el PfSense que tenemos en la red
+uci set network.lan.gateway='10.132.1.1'
+###Lo segundo es modificar un par de opciones en el servidor DHCP (DNSmasq) de cada uno de los nodos
+##Para que los clientes seban que maquina es la salida a internet
+###Tambien agregamos reglas al dns para definir nuestro  dominio local
+uci add_list dhcp.@dnsmasq[0].option='3,10.132.1.1'
+uci add_list dhcp.@dnsmasq[0].option='121,10.132.0.0/16,10.132.0.1'
+uci add_list dhcp.@dnsmasq[0].option='249,10.132.0.0/16,10.132.0.1'
+uci add_list dhcp.@dnsmasq[0].address='/.nuestrared.org/10.132.1.2'
+uci add_list dhcp.@dnsmasq[0].address='/fw.nuestrared.org/10.132.1.1'
+###Agregamos configuraciones para evitar que se pueda ingresar a los nodos usando password
+## Se agregan las reglas de dropbear para que tenga las llaves publicas de los administradores de la red.
+uci set dropbear.@dropbear[0].PasswordAuth=off
+##Ahora agregamos las opciones para LibreMAP
+uci set libremap.settings.community='NuestraRED.org'
+uci set libremap.settings.community_lat='4.70349'
+uci set libremap.settings.community_lon='-75.73799'
+uci set libremap.contact.name='Kleper'
+uci set libremap.contact.email='correo@nuestrared.org'
+uci set libremap.location.latitude='4.70349'
+uci set libremap.location.longitude='-75.73799'
+
+##Aplicamos los cambios
+uci commit

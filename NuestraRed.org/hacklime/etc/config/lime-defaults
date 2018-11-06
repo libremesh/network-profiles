@@ -26,15 +26,15 @@ config lime network
 	list protocols olsr6:15
 	list protocols olsr2:16
 	list protocols babeld:17
-	list resolvers 10.40.2.254
+	list resolvers 10.132.1.1
 	option bmx6_over_batman false
 	option bmx6_pref_gw none
 	option bmx7_over_batman false
 	option anygw_mac "aa:aa:aa:%N1:%N2:aa"
 
 config lime wifi
-	option channel_2ghz '6+'
-	option channel_5ghz '48'
+	option channel_2ghz '6'
+	option channel_5ghz '157'
 	option htmode_5ghz 'HT40'
 	option distance '1000'
 	list modes 'ap'
