@@ -12,7 +12,7 @@ config lime system
 
 config lime network
 	option primary_interface eth0
-	option main_ipv4_address '10.40.%N1.1/16'
+	option main_ipv4_address '10.%N1.0.0/16'
 	option anygw_dhcp_start '10'
 	option anygw_dhcp_limit '50'
 	option main_ipv6_address '2a00:1508:0a%N1:%N200::/64'
@@ -26,15 +26,15 @@ config lime network
 	list protocols olsr6:15
 	list protocols olsr2:16
 	list protocols babeld:17
-	list resolvers 10.40.2.254
+	list resolvers 10.132.1.1
 	option bmx6_over_batman false
 	option bmx6_pref_gw none
 	option bmx7_over_batman false
 	option anygw_mac "aa:aa:aa:%N1:%N2:aa"
 
 config lime wifi
-	option channel_2ghz '11'
-	option channel_5ghz '48'
+	option channel_2ghz '6'
+	option channel_5ghz '157'
 	option htmode_5ghz 'HT40'
 	option distance '1000'
 	list modes 'ap'
@@ -43,7 +43,7 @@ config lime wifi
 	option ap_ssid 'NuestraRED.org'
 	option apname_ssid 'NuestraRED.org'
 	option adhoc_ssid 'NuestraRED'
-	option adhoc_bssid 'ca:fe:00:c0:ff:ee'
+	option adhoc_bssid '02:CA:FF:EE:BA:BE'
 	option adhoc_mcast_rate_2ghz '24000'
 	option adhoc_mcast_rate_5ghz '6000'
 	option ieee80211s_mesh_fwding '0'
