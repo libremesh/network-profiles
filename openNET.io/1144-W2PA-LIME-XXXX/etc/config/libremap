@@ -13,8 +13,8 @@ config plugin 'altermap'
 
 config plugin 'contact'
     option enabled '0'
-    option name 'Nk'
-    option email 'on@nksn.os.vu'
+    option name 'Nz'
+    option email '01152671@ndhv.os.vu'
 
 config plugin 'freifunk'
     option enabled '0'
