@@ -1,4 +1,3 @@
 #!/bin/sh
 
-echo "@reboot echo 1 > /sys/class/gpio/poe-passthrough/value" >> /etc/crontabs/root
-
+/etc/init.d/poe-passthrough enable

@@ -1,0 +1,20 @@
+#!/bin/sh /etc/rc.common
+
+START=88
+
+start()
+{
+	sleep 1
+	echo 1 > /sys/class/gpio/poe-passthrough/value
+}
+
+stop()
+{
+	echo 0 > /sys/class/gpio/poe-passthrough/value
+}
+
+reload()
+{
+	stop
+	start
+}
