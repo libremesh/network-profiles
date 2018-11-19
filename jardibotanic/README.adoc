@@ -6,6 +6,13 @@ Each node has it's own profile named after the node name, plus there is one
 copying it and changing some details (as less as possible) such as hostname, ip
 address and in some cases wan interface assingation.
 
+The profile +mArcFlex+ is based on +nodes+ with few modifications to work well
+on +flex mArch+ devices, this profile should be used as base for node specific
+profiles in case the node uses +flex mArch+ devices.
+
+CAUTION: +mArcFlex+ profile and derivatice have PoE pass-through enabled by default
+
+
 .Compiling
 [source,bash]
 --------------------------------------------------------------------------------

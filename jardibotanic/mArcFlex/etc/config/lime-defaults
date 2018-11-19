@@ -8,7 +8,6 @@ config lime network
     option main_ipv4_address '10.1.105.%M6/21'
     option main_ipv6_address '2a00:1508:1:fe4c::105:%M6/64'
     list protocols ieee80211s
-    list protocols adhoc
     list protocols lan
     list protocols batadv:%N1
     list protocols bmx6:12:8021q:_qmp
@@ -31,7 +30,6 @@ config lime wifi
     list modes 'ap'
     list modes 'apname'
     list modes 'ieee80211s'
-    list modes 'adhoc'
     option ap_ssid 'jardibotanic-test'
     option apname_ssid '%H'
     option adhoc_ssid 'libre-mesh'
