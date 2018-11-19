@@ -1,0 +1,16 @@
+Jardi Botanic Network profiles
+==============================
+
+Each node has it's own profile named after the node name, plus there is one
++nodes+ which is the base out of which all the others have been created just by
+copying it and changing some details (as less as possible) such as hostname, ip
+address and in some cases wan interface assingation.
+
+.Compiling
+[source,bash]
+--------------------------------------------------------------------------------
+
+./cooker -c ramips/rt305x --flavor=lime_default --profile=freestation5 \
+	--community=jardibotanic/mArcFlex
+
+--------------------------------------------------------------------------------
