@@ -28,6 +28,5 @@ config lime wifi
     option htmode_5ghz 'HT40'
     option distance '1000'
     list modes 'ieee80211s'
-    option ap_ssid 'jardibotanic-test'
     option ieee80211s_mesh_fwding '0'
     option ieee80211s_mesh_id 'LiMe'
