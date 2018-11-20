@@ -7,9 +7,13 @@ config lime 'network'
 	option primary_interface eth0
 	option main_ipv4_address '100.64.0.0/10/26'
 	option main_ipv6_address '2801:01e8:2::/64'
+	option anygw_mac "aa:aa:aa:%N1:%N2:aa"
+	option anygw_dhcp_start '7'
+	option anygw_dhcp_limit '55'
 	list protocols adhoc
 	list protocols lan
 	list protocols babeld
+	list protocols anygw
 	list resolvers 4.2.2.2   # b.resolvers.Level3.net
 	list resolvers 141.1.1.1 # cns1.cw.net
 	list resolvers 2001:470:20::2 # ordns.he.net
@@ -23,6 +27,7 @@ config lime 'wifi'
 	list modes 'apname'
 	list modes 'adhoc'
 	option apname_ssid 'peoplesopen.net %H'
+	option ap_ssid 'peoplesopen.net'
 	option adhoc_ssid 'pplsopen.net-node2node'
 	option adhoc_bssid 'ca:fe:c0:de:f0:0d'
 	option adhoc_mcast_rate_2ghz '36000'
