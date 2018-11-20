@@ -1,0 +1,29 @@
+config lime 'system'
+	option hostname 'PO-%M4%M5%M6'
+	option domain 'mesh.peoplesopen.net'
+	option keep_on_upgrade 'libremesh base-files-essential /etc/sysupgrade.conf'
+
+config lime 'network'
+	option primary_interface eth0
+	option main_ipv4_address '100.64.0.0/10/26'
+	option main_ipv6_address '2801:01e8:2::/64'
+	list protocols adhoc
+	list protocols lan
+	list protocols babeld
+	list resolvers 4.2.2.2   # b.resolvers.Level3.net
+	list resolvers 141.1.1.1 # cns1.cw.net
+	list resolvers 2001:470:20::2 # ordns.he.net
+
+config lime 'wifi'
+	option channel_2ghz '6'
+	option channel_5ghz '157'
+	option country 'TZ'
+	option htmode_5ghz 'HT40'
+ 	option distance '2000'
+	list modes 'apname'
+	list modes 'adhoc'
+	option apname_ssid 'peoplesopen.net %H'
+	option adhoc_ssid 'pplsopen.net-node2node'
+	option adhoc_bssid 'ca:fe:c0:de:f0:0d'
+	option adhoc_mcast_rate_2ghz '36000'
+	option adhoc_mcast_rate_5ghz '18000'
