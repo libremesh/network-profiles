@@ -1,12 +1,12 @@
 config lime system
-    option hostname 'BCNmtjInstiSalvador'
+    option hostname 'jardi-%M4%M5%M6'
     option domain 'lan'
     option keep_on_upgrade 'libremesh base-files-essential /etc/sysupgrade.conf'
 
 config lime network
     option primary_interface eth0
-    option main_ipv4_address '10.1.105.247/21'
-    option main_ipv6_address '2a00:1508:1:fe4c::105:247/64'
+    option main_ipv4_address '10.1.105.%M6/21'
+    option main_ipv6_address '2a00:1508:1:fe4c::105:%M6/64'
     list protocols ieee80211s
     list protocols adhoc
     list protocols lan
@@ -14,14 +14,12 @@ config lime network
     list protocols bmx6:12:8021q:_qmp
     list protocols bmx6:13
     list resolvers '10.1.104.2'
-    option use_odhcpd true
     option bmx7_over_batman false
     option bmx7_pref_gw none
     option bmx7_mtu '1500'
     option bmx6_over_batman false
     option bmx6_pref_gw none
     option bmx6_mtu '1500'
-    option anygw_mac "aa:aa:aa:%N1:%N2:aa"
 
 config lime wifi
     option channel_2ghz '11'
@@ -32,9 +30,9 @@ config lime wifi
     list modes 'apname'
     list modes 'ieee80211s'
     list modes 'adhoc'
-    option ap_ssid 'jardibotanic-test'
-    option apname_ssid '%H'
-    option adhoc_ssid 'libre-mesh'
+    option ap_ssid 'jardibotanic.guifi.net'
+    option apname_ssid 'guifi.net/%H'
+    option adhoc_ssid 'guifi.net/%H'
     option adhoc_bssid '02:ca:ff:ee:ba:be'
     option adhoc_mcast_rate_2ghz '24000'
     option adhoc_mcast_rate_5ghz '6000'

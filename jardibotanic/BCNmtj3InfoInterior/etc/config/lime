@@ -1,0 +1,2 @@
+config lime system
+    option hostname 'BCNmtj3InfoInterior'
