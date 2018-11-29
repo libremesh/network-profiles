@@ -1,0 +1,16 @@
+lime-system
+lime-proto-wan
+lime-hwd-openwrt-wan
+lime-proto-bmx7
+bmx7-auto-gw-mode
+smonit
+luci
+luci-mod-admin-full 
+luci-app-bmx7
+lime-debug 
+dnsmasq 
+odhcpd
+wpad 
+hostapd-common
+kmod-ath9k
+luci-app-qos
