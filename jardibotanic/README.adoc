@@ -17,6 +17,12 @@ CAUTION: +mArcFlex+ profile and derivatice have PoE pass-through enabled by defa
 [source,bash]
 --------------------------------------------------------------------------------
 
+./cooker -c ar71xx/generic --flavor=lime_default --profile=ubnt-nano-m-xw \
+        --community=jardibotanic/BCNmtj3InfoParet
+
+./cooker -c ramips/rt305x --flavor=lime_default --profile=freestation5 \
+        --community=jardibotanic/BCNmtj3DracaenaCanaria
+
 ./cooker -c ar71xx/generic --flavor=lime_default --profile=mynet-n600 \
         --community=jardibotanic/nodes
 
