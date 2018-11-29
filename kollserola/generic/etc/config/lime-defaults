@@ -34,10 +34,9 @@ config lime network
 
 config lime wifi
 	option channel_2ghz '1'
-	option channel_5ghz '48'
+	option channel_5ghz '149'
 	option htmode_5ghz 'HT40'
 	option distance '1000'
-	list modes 'apname'
 	list modes 'ieee80211s'
 	option ap_ssid 'KollserolaLliure'
 	option apname_ssid 'KolsserolaLliure/%H'
