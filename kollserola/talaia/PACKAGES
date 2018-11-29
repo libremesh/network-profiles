@@ -6,7 +6,5 @@ lime-system
 lime-hwd-openwrt-wan
 lime-debug
 kmod-ath9k
-wpa-supplicant
-hostapd
 smonit
 luci-app-qos
