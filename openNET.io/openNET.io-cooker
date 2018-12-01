@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 set -e
 set -u
@@ -8,8 +8,8 @@ set -u
 ### All routers we use should be in this file for one touch cooking
 ### For Debian / Ubuntu [tested on Ubuntu 16/18]
 
-### Started on 20170519 | Nk
-### Last updated on 20180114 | Nk
+### Started on 2017-05-19 | Nz
+### Last updated on 2018-12-01 | Nz
 
 ### Install packages on Debian / Ubuntu
 
@@ -22,7 +22,7 @@ echo
 
 repo=lime-sdk
 
-git clone https://github.com/libremesh/$repo.git temp
+git clone https://github.com/libremesh/$repo.git -b develop temp
 rsync -a temp/ $repo/
 
 rm -rf temp
