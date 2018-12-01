@@ -132,8 +132,8 @@ PKG="wpad -wpad-mini" \
 
 # MI R3G
 
-./cooker --flavor=lime_default --flavor=lime_babel --remote \
---community=openNET.io/MI-R3G -c ramips/mt7621 --profile=mir3g
+./cooker --flavor=lime_default --remote \
+--community=openNET.io/Mi-R3G -c ramips/mt7621 --profile=mir3g
 
 echo "cook finished"
 echo
