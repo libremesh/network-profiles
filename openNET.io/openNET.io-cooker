@@ -6,7 +6,7 @@ set -u
 ### This file is a cooking script for openNET.io
 ### Execute from one level above [just outside] lime-sdk extracted folder
 ### All routers we use should be in this file for one touch cooking
-### For Debian / Ubuntu [tested on Ubuntu 16]
+### For Debian / Ubuntu [tested on Ubuntu 16/18]
 
 ### Started on 20170519 | Nk
 ### Last updated on 20180114 | Nk
@@ -129,6 +129,11 @@ PKG="wpad -wpad-mini" \
 
 ./cooker --flavor=lime_default --remote \
 --community=openNET.io/1144-W2PA-LIME-XXXX -c ramips/mt7620 --profile=wt3020-8M
+
+# MI R3G
+
+./cooker --flavor=lime_default --flavor=lime_babel --remote \
+--community=openNET.io/MI-R3G -c ramips/mt7621 --profile=mir3g
 
 echo "cook finished"
 echo
