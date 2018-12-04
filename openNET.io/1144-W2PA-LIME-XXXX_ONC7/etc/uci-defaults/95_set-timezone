@@ -1,8 +1,0 @@
-#!/bin/sh
-
-### Uncomment to set the correct timezone of all nodes
-### You can check out all the possible values at:
-### http://wiki.openwrt.org/doc/uci/system#time_zones
-uci set system.@system[0].timezone="CET-1CEST"
-uci set system.@system[0].zonename="Europe/Amsterdam"
-uci commit system

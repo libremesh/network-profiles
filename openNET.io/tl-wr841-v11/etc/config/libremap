@@ -1,0 +1,44 @@
+
+config libremap 'settings'
+    list api_url 'http://libremap.net/api/'
+    list api_url 'http://libremap.berlin.freifunk.net/api'
+    option public_url 'http://libremap.net/'
+    option fetch_by_name '0'
+    option community 'openNET.io'
+    option community_lat '45.464161'
+    option community_lon '9.190336'
+
+config plugin 'altermap'
+    option enabled '0'
+
+config plugin 'contact'
+    option enabled '0'
+    option name 'Nz'
+    option email '01152671@ndhv.os.vu'
+
+config plugin 'freifunk'
+    option enabled '0'
+
+config plugin 'location'
+    option enabled '1'
+    option latitude '45.464161'
+    option longitude '9.190336'
+    option elev '124'
+
+config plugin 'olsr'
+    option enabled '0'
+
+config plugin 'system'
+    option enabled '1'
+
+config plugin 'wireless'
+    option enabled '1'
+
+config plugin 'babel'
+	option enabled '0'
+
+config plugin 'bmx6'
+	option enabled '1'
+
+config plugin 'qmp'
+	option enabled '0'

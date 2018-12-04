@@ -1,3 +1,0 @@
-# Restart network after 64 seconds + random [0;9] amount of seconds from boot as temporary workaround to gateway-changed-while-node-offline issue [20170514 | Nk]
-
-# sleep 64 && sleep `head /dev/urandom | tr -dc "0123456789" | head -c1` && /etc/init.d/network restart

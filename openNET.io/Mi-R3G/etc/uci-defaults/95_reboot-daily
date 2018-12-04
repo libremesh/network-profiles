@@ -1,6 +1,0 @@
-#!/bin/sh
-
-### Schedule a sunday reboot at 04:08 + random amount of seconds for time scattering between 0 and 108 minutes # 20170514 | Nk
-mkdir -p /etc/crontabs ; touch /etc/crontabs/root
-sed "\| \* \* \* .*reboot$|d" -i /etc/crontabs/root
-echo '8 4 * * 0 sleep `head /dev/urandom | tr -dc "0123456789" | head -c2` &&  touch /etc/banner && reboot >/dev/null 2>&1' >> /etc/crontabs/root
