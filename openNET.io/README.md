@@ -5,6 +5,6 @@ mkdir -p LiMe
 cd LiMe
 ```
 ```bash
-wget https://raw.githubusercontent.com/libremesh/network-profiles/master/openNET.io/on-cooker.sh
+wget https://raw.githubusercontent.com/libremesh/network-profiles/master/openNET.io/openNET.io-cooker
 bash on-cooker
 ```
