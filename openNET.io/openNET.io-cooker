@@ -62,6 +62,8 @@ cd "${repo}"
 
 ### default
 
+#### ar71xx
+
 # Archer C7 v2
 
 ./cooker --flavor=lime_default --remote \
@@ -117,6 +119,13 @@ cd "${repo}"
 ./cooker --flavor=lime_default --remote \
 --community=openNET.io/default -c ar71xx/generic --profile=gl-ar300m
 
+#### ramips
+
+# 3020 8M
+
+./cooker --flavor=lime_default --remote \
+--community=openNET.io/default -c ramips/mt7620 --profile=wt3020-8M
+
 ################################################################################
 
 ### custom ar71xx
@@ -129,11 +138,6 @@ cd "${repo}"
 ################################################################################
 
 ### custom ramips
-
-# 3020 8M
-
-./cooker --flavor=lime_default --remote \
---community=openNET.io/default -c ramips/mt7620 --profile=wt3020-8M
 
 # MI R3G
 
