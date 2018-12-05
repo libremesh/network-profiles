@@ -1,6 +1,8 @@
 bmx7-auto-gw-mode
 lime-proto-bmx7
 luci-app-bmx7
+bmx7-topology
+bmx7-json
 lime-proto-wan
 lime-system
 lime-hwd-openwrt-wan

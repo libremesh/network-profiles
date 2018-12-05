@@ -1,5 +1,0 @@
-#!/bin/sh
-uci set dhcp.odhcpd.maindhcp='1'
-uci set dhcp.lan.dhcpv4='server'
-uci set dhcp.lan.ignore='0'
-uci commit dhcp
