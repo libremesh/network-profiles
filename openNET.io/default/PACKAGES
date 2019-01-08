@@ -6,3 +6,8 @@ iperf3
 ath10k-firmware-qca988x
 kmod-ath10k
 -wpad-mini
+
+### Remove these for openwrt-18.06
+wpad
+authsae
+hostapd
