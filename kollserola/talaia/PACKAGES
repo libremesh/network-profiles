@@ -1,7 +1,10 @@
 bmx7-auto-gw-mode
+bmx7-auto-gw-bw-mode
 lime-proto-bmx7
 luci-app-bmx7
+bmx7-mdns
 bmx7-topology
+bmx7-sms
 bmx7-json
 lime-proto-wan
 lime-system
