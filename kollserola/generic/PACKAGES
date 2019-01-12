@@ -6,6 +6,7 @@ bmx7-mdns
 bmx7-topology
 bmx7-sms
 bmx7-json
+lime-webui
 lime-proto-wan
 lime-system
 lime-hwd-openwrt-wan
