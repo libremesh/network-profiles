@@ -1,0 +1,42 @@
+# Beware this file is NOT supposed to be edited by the end user, modify /etc/config/lime instead
+# If the same option or list is defined both in /etc/config/lime and lime-defaults file, the former will prevail
+# Beware this file is not supposed to store interface specific configuration, like "config net eth0"
+
+# Read the documentation in /etc/config/lime.example file
+# and on https://libremesh.org
+
+config lime system
+        option hostname 'LiMe-%M4%M5%M6'
+        option domain 'rede.fumacaonline.org.br'
+
+config lime network
+        option primary_interface eth0
+        option main_ipv4_address '10.7.0.0/16/17'
+        option main_ipv6_address '2a00:1508:0a%N1:%N200::/64'
+        list protocols adhoc
+        list protocols lan
+        list protocols anygw
+        list protocols batadv:%N1
+        list protocols bmx6:13
+        list protocols olsr:14
+        list protocols olsr6:15
+        list protocols olsr2:16
+        list resolvers 4.2.2.2   # b.resolvers.Level3.net
+        list resolvers 141.1.1.1 # cns1.cw.net
+        list resolvers 2001:470:20::2 # ordns.he.net
+
+config lime wifi
+        option channel_2ghz '11'
+        option channel_5ghz '48'
+        option htmode_5ghz 'HT40'
+        list modes 'ap'
+        list modes 'apname'
+        list modes 'adhoc'
+        option ap_ssid 'fumacaonline'
+        option apname_ssid 'fumacaonline/%H'
+        option adhoc_ssid 'LiMe'
+        option adhoc_bssid 'ca:fe:00:c0:ff:ee'
+        option adhoc_mcast_rate_2ghz '24000'
+        option adhoc_mcast_rate_5ghz '6000'
+        option ieee80211s_mesh_fwding '0'
+        option ieee80211s_mesh_id 'LiMe'
