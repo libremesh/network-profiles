@@ -34,7 +34,7 @@ config lime network
 
 config lime wifi
 	option channel_2ghz '11'
-	option channel_5ghz '165'
+	option channel_5ghz '48'
 	option htmode_5ghz 'HT40'
 	option distance '1000'
 	option txpower '22'
