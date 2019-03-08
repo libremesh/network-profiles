@@ -1,7 +1,9 @@
-wpad-mesh
+wpad-mesh-openssl
 wpa-cli
 -wpad-mini
+-wpad-basic
 -hostapd-mini
+-hostapd-basic
 kmod-batman-adv
 lime-proto-batadv
 bmx7
