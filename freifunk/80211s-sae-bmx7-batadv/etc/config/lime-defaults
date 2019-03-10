@@ -39,5 +39,5 @@ config lime wifi
 	option ap_ssid 'LibreMesh-testbed'
 	option ieee80211s_mesh_fwding '0'
 	option ieee80211s_mesh_id 'LiMe'
-	option ieee80211s_encryption 'psk2'
+	option ieee80211s_encryption 'sae'
 	option ieee80211s_key 'freifunk'
