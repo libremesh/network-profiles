@@ -1,0 +1,5 @@
+#!/bin/sh
+uci set libremap.settings.community='anisacate.libre.org.ar'
+uci set libremap.settings.community_lat='-31.6950359'
+uci set libremap.settings.community_lon='-64.4127960'
+uci commit libremap
