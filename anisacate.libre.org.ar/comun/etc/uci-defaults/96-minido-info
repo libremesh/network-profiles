@@ -1,0 +1,3 @@
+#!/bin/sh
+### Workaround dnsmasq procd init.d bug
+sed -i '\|/thisnode.info/|{p;s|/thisnode.info/|/minodo.info/|}' /etc/config/dhcp
