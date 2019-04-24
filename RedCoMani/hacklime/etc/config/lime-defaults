@@ -4,17 +4,17 @@
 
 # Read the documentation in /docs directory
 # and on http://libremesh.org
-
+#Esta es una configuración personalizada para la red que estamos creando en la Vereda la esperanza, Buenos Aires, Cauca, Colombia
 config lime system
-	option hostname 'NuestraRED-%M4%M5%M6'
-	option domain 'nuestrared.org'
+	option hostname 'RedCoMani-%M4%M5%M6'
+	option domain 'redcomani.org'
 	option keep_on_upgrade 'libremesh base-files-essential /etc/sysupgrade.conf'
 
 config lime network
 	option primary_interface eth0
-	option main_ipv4_address '10.%N1.0.0/16'
+	option main_ipv4_address '10.17.0.0/16'
 	option anygw_dhcp_start '10'
-	option anygw_dhcp_limit '50'
+	option anygw_dhcp_limit '0'
 	option main_ipv6_address '2a00:1508:0a%N1:%N200::/64'
 	option bmx6_mtu '1500'
 	list protocols ieee80211s
@@ -26,28 +26,25 @@ config lime network
 	list protocols olsr6:15
 	list protocols olsr2:16
 	list protocols babeld:17
-	list resolvers 10.132.1.1
+	list resolvers 10.17.95.1
 	option bmx6_over_batman false
 	option bmx6_pref_gw none
 	option bmx7_over_batman false
 	option anygw_mac "aa:aa:aa:%N1:%N2:aa"
 
 config lime wifi
-	option channel_2ghz '6'
-	option htmode 'HT40'
-	option txpower '16'
-	option country '00'
-	option distance '2000'
-	option channel_5ghz '157'
+	option channel_2ghz '11'
+	option channel_5ghz '48'
 	option htmode_5ghz 'HT40'
+	option distance '1000'
 	list modes 'ap'
 	list modes 'apname'
 	list modes 'ieee80211s'
-	option ap_ssid 'NuestraRED.org'
-	option apname_ssid 'NuestraRED.org'
-	option adhoc_ssid 'NuestraRED'
-	option adhoc_bssid '02:CA:FF:EE:BA:BE'
+	option ap_ssid 'RedCoMani.org'
+	option apname_ssid 'RedCoMani.org'
+	option adhoc_ssid 'RedMani'
+	option adhoc_bssid 'ca:fe:00:c0:ff:ee'
 	option adhoc_mcast_rate_2ghz '24000'
 	option adhoc_mcast_rate_5ghz '6000'
 	option ieee80211s_mesh_fwding '0'
-	option ieee80211s_mesh_id 'NuestraRED'
+	option ieee80211s_mesh_id 'RedMani'
