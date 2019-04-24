@@ -1,16 +1,16 @@
 config lime system
-    option hostname 'RedINC-%M4%M5%M6'
-    option domain 'lan'
+    option hostname 'NosRedORG-%M4%M5%M6'
+    option domain 'nuestrared.org'
     option keep_on_upgrade 'libremesh base-files-essential /etc/sysupgrade.conf'
 
 config lime network
     option primary_interface eth0
-    option main_ipv4_address '10.%N1.%M5.%M6/16'
+    option main_ipv4_address '10.%N1.0.0/16'
     option main_ipv6_address '2012:0:0:%M6::/48'
     list protocols ieee80211s
     list protocols lan
     list protocols bmx7
-    list resolvers 10.17.95.1 # dns por defecto de la redinc.org
+    list resolvers 10.132.1.1   # b.resolvers.Level3.net
     option bmx7_over_batman false
     option bmx7_pref_gw none
     option bmx7_mtu '1500'
@@ -23,7 +23,7 @@ config lime wifi
     list modes 'ap'
     list modes 'apname'
     list modes 'ieee80211s'
-    option ap_ssid 'RedINC-Comunitaria'
-    option apname_ssid 'RedINC-Comunitaria'
+    option ap_ssid 'NuestraRED.org'
+    option apname_ssid 'NuestraRED.org'
     option ieee80211s_mesh_fwding '0'
-    option ieee80211s_mesh_id 'RedINC'
+    option ieee80211s_mesh_id 'NuestraRED'
