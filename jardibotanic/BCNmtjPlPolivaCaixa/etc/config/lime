@@ -1,2 +1,6 @@
 config lime system
-    option hostname BCNmtjPlPolivaCaixa
+	option hostname BCNmtjPlPolivaCaixa
+
+config lime network
+	option main_ipv4_address '10.1.104.93/21'
+	option main_ipv6_address '2a00:1508:1:fe4c::104:93/64'

@@ -1,0 +1,9 @@
+config lime system
+	option hostname 'BCNVerdi78interior'
+
+config lime network
+	option main_ipv4_address '10.90.235.35/27'
+	option main_ipv6_address '2a00:1508:0a90:2353::35/64'
+
+config lime wifi
+	option ap_ssid 'casa_peris'

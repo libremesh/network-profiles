@@ -1,0 +1,37 @@
+config lime system
+    option hostname BCNmtj1InstitutBabel
+
+config lime network
+    option main_ipv4_address '10.1.104.113/21'
+    option main_ipv6_address '2a00:1508:1:fe4c::104:113/64'
+    list protocols ieee80211s
+    list protocols lan
+    list protocols batadv:%N1
+    list protocols babeld:17
+    list resolvers '10.1.104.2'
+
+config hwd_gr grlan
+	option net_dev 'eth0'
+	option vlan '1'
+	option switch_dev 'switch0'
+	option switch_cpu_port '0'
+	list switch_ports '3 4 5'
+
+config hwd_gr grwan
+	option net_dev 'eth0'
+	option vlan '2'
+	option switch_dev 'switch0'
+	option switch_cpu_port '0'
+	list switch_ports '1'
+
+config hwd_gr linkverdi
+	option net_dev 'eth0'
+	option vlan '3'
+	option switch_dev 'switch0'
+	option switch_cpu_port '0'
+	list switch_ports '2'
+
+config net netverdi
+	option linux_name 'eth0.3'
+	list protocols babeld:17
+	list protocols batadv:%N1

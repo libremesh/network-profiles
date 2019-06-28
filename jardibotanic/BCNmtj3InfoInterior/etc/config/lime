@@ -1,2 +1,6 @@
 config lime system
-    option hostname 'BCNmtj3InfoInterior'
+	option hostname 'BCNmtj3InfoInterior'
+
+config lime network
+	option main_ipv4_address '10.1.104.130/21'
+	option main_ipv6_address '2a00:1508:1:fe4c::104:130/64'
