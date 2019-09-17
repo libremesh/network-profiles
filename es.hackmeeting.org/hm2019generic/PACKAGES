@@ -1,10 +1,6 @@
 prometheus-node-exporter-lua
 prometheus-node-exporter-lua-wifi
 prometheus-node-exporter-lua-wifi_stations
-prometheus-node-exporter-lua-cpu
-prometheus-node-exporter-lua-loadavg
-prometheus-node-exporter-lua-meminfo
-prometheus-node-exporter-lua-netdev
 prometheus-node-exporter-lua-openwrt
 lime-system
 lime-proto-babeld
