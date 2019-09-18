@@ -1,0 +1,37 @@
+config lime system
+	option hostname 'LiMeHM-%M4%M5%M6'
+	option domain 'es.hackmeeting.org'
+	option keep_on_upgrade 'libremesh base-files-essential /etc/sysupgrade.conf'
+
+config lime network
+	option primary_interface 'eth0'
+	option main_ipv4_address '10.%N1.128.0/16/17'
+	option anygw_dhcp_start '5120'
+	option anygw_dhcp_limit '27648'
+	option main_ipv6_address '2a00:1508:0a%N1:%N200::/64'
+	list protocols ieee80211s
+	list protocols lan
+	list protocols anygw
+	list protocols batadv:%N1
+	list protocols babeld:0
+	list resolvers 4.2.2.2   # b.resolvers.Level3.net
+	list resolvers 141.1.1.1 # cns1.cw.net
+	list resolvers 2001:470:20::2 # ordns.he.net
+	option anygw_mac "aa:aa:aa:%N1:%N2:aa"
+	option use_odhcpd false
+
+config lime wifi
+	option country 'ES'
+	option channel_2ghz '11'
+	option channel_5ghz '48'
+	option htmode_5ghz 'HT40'
+	option distance_2ghz '100'
+	option distance_5ghz '200'
+	list modes 'ap'
+	list modes 'apname'
+	list modes 'ieee80211s'
+	option ap_ssid 'es.hackmeeting.org'
+	option apname_ssid 'LibreMesh.org/%H'
+	option ieee80211s_mesh_fwding '0'
+	option ieee80211s_mesh_id 'LiMe'
+

@@ -18,6 +18,9 @@ Notable differences from defaults:
 * added also prometheus packages
 * added a uci-defaults script for enabling prometheus service
 
+hm2019generic for full nodes
+hm2019minimal for nodes with not much RAM or flash memory
+
 .Generating the firmware images
 ----------------------------------------
 ----------------------------------------
