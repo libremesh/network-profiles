@@ -1,6 +1,8 @@
 Outdoor network Valsamoggia
 ======
 
+### 5700m distances
+
 Notable differences from defaults:
 
 * domain changed from `lan` to `valsamoggia.ninux.org`
@@ -10,7 +12,7 @@ Notable differences from defaults:
 * removed unused lines (bmx*, olsr*, adhoc)
 * removed VLAN from Babeld, so that I can avoid the ehternet + VLAN 802.1ad + Mediatek problem (unconfirmed)
 * 5 GHz channels removed list's second entry, set to 48
-* 5 GHz distance reduced from 1000 m to 200 m
+* 5 GHz distance variable
 * ap_ssid main ESSID changed to `valsamoggia.ninux.org`
 * added country code to IT
 * added a list with all the suggested LibreMesh packages
