@@ -1,0 +1,22 @@
+Outdoor network Valsamoggia
+======
+
+Notable differences from defaults:
+
+* domain changed from `lan` to `valsamoggia.ninux.org`
+* IPv4 `10.%N1.128.0/16/17` autogenerates just in the second half of the /16 broadcast domain
+* DHCP range starts from 10.%N1.20.0 (start = 20*256 = 5120)
+* DHCP range ends at 10.%N1.127.255 (limit = (127-20)*256 +255+1 = 27648)
+* removed unused lines (bmx*, olsr*, adhoc)
+* removed VLAN from Babeld, so that I can avoid the ehternet + VLAN 802.1ad + Mediatek problem (unconfirmed)
+* 5 GHz channels removed list's second entry, set to 48
+* 5 GHz distance reduced from 1000 m to 200 m
+* ap_ssid main ESSID changed to `valsamoggia.ninux.org`
+* added country code to IT
+* added a list with all the suggested LibreMesh packages
+* added also prometheus packages
+* added a uci-defaults script for enabling prometheus service
+
+.Generating the firmware images
+----------------------------------------
+----------------------------------------

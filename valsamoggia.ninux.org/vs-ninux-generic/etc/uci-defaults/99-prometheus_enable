@@ -1,0 +1,4 @@
+#!/bin/sh
+[ -x /etc/init.d/prometheus-node-exporter-lua ] &&
+	/etc/init.d/prometheus-node-exporter-lua enable
+exit 0
