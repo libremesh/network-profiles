@@ -23,6 +23,7 @@ lime-map-agent
 lime-docs
 lime-hwd-ground-routing
 lime-debug
+luci
 luci-lib-libremap-babeld
 ubus-lime-batman-adv
 ubus-lime-fbw
