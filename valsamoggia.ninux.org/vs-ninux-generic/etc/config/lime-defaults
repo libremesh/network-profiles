@@ -13,7 +13,7 @@ config lime network
 	list protocols lan
 	list protocols anygw
 	list protocols batadv:%N1
-	list protocols babeld:18
+	list protocols babeld:17
 	list resolvers 4.2.2.2   # b.resolvers.Level3.net
 	list resolvers 141.1.1.1 # cns1.cw.net
 	list resolvers 2001:470:20::2 # ordns.he.net
@@ -31,7 +31,7 @@ config lime wifi
 	list modes 'apname'
 	list modes 'ieee80211s'
 	option ap_ssid 'valsamoggia.ninux.org'
-	option apname_ssid 'LibreMesh.org/%H'
+	option apname_ssid 'valsamoggia.ninux.org/%H'
 	option ieee80211s_mesh_fwding '0'
 	option ieee80211s_mesh_id 'LiMe'
 
