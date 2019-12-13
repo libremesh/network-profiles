@@ -21,4 +21,9 @@ Notable differences from defaults:
 
 .Generating the firmware images
 ----------------------------------------
+* Avere una distro linux
+* aggiornare
+* sudo apt install --no-install-recommends git ca-certificates subversion wget make gcc g++ libncurses5-dev gawk unzip file       patch python3-distutils python3-minimal python-minimal
+da Compiling LibreMesh from source code https://libremesh.org/development.html
+* git clone https://github.com/LibreRouterOrg/openwrt
 ----------------------------------------
