@@ -1,0 +1,7 @@
+
+config lime 'system'
+	option hostname hackordie
+
+config lime 'network'
+
+config lime 'wifi'
