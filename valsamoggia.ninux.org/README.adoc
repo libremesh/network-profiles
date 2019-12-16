@@ -20,8 +20,27 @@ Notable differences from defaults:
 .Generating the firmware images
 ----------------------------------------
 * Avere una distro linux
-* aggiornare
+* aggiornare sudo apt update
 * sudo apt install --no-install-recommends git ca-certificates subversion wget make gcc g++ libncurses5-dev gawk unzip file       patch python3-distutils python3-minimal python-minimal
 da Compiling LibreMesh from source code https://libremesh.org/development.html
-* git clone https://github.com/LibreRouterOrg/openwrt
+* git clone https://github.com/LibreRouterOrg/openwrt    
+  testato al commit : 863d464a4741a52494b197e6ca50abb2ac60f198 
+* git clone https://github.com/libremesh/network-profiles.git
+* Update the packages from the feeds +scripts/feeds update -a+
++scripts/feeds install -a+
+*Run the configuration menu +make menuconfig+
+*metti target multitarget
+*seleziona i target: cpe510v1-ubnt nano/loco m/ m xw
+*controlla che ci siano tutti i pacchetti che sono nel network profile
+* salva
+* guarda .confi
+* la buildroot ha una cartella file dove se ci mettiamo cose, ce le troviamo dentro al router.
+* quindi, usiamo un comando di rsync per eliminare i file dentro a files in openwrt ed aggiornare quelli che abbiamo nel profile
+* da profile$ rsync -aPh --delete ~/network-profiles/valsamoggia.ninux.org/vs-ninux-generic/files/ ~/openwrt/files/
+* editare da openwrt files/etc/config/lime-node 
+* make
+ 
+
+
+
 ----------------------------------------

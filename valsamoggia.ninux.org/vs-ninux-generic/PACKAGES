@@ -26,7 +26,6 @@ lime-debug
 luci
 luci-lib-libremap-babeld
 ubus-lime-batman-adv
-ubus-lime-fbw
 pirania
 pirania-app
 shared-state-pirania
