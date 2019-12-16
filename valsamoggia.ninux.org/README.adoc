@@ -1,5 +1,5 @@
 Outdoor network Valsamoggia
-======
+===========================
 
 ### 5700m distances
 
@@ -17,8 +17,8 @@ Notable differences from defaults:
 * added also prometheus packages
 * added a uci-defaults script for enabling prometheus service
 
-.Generating the firmware images
-----------------------------------------
+Generating the firmware images
+
 * Avere una distro linux
 * aggiornare sudo apt update
 * sudo apt install --no-install-recommends git ca-certificates subversion wget make gcc g++ libncurses5-dev gawk unzip file       patch python3-distutils python3-minimal python-minimal
