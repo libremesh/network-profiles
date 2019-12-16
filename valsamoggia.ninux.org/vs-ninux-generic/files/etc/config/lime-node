@@ -1,6 +1,6 @@
 
 config lime 'system'
-	option hostname hackordie
+	option hostname cavalletta
 
 config lime 'network'
 
