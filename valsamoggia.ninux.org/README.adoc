@@ -17,6 +17,7 @@ Outdoor network Valsamoggia
 * added also prometheus packages
 * added a uci-defaults script for enabling prometheus service
 
+
 == Generating the firmware images
 
 * Avere una distro linux
@@ -41,8 +42,4 @@ da Compiling LibreMesh from source code https://libremesh.org/development.html
 * `make -j$(nproc)`
 
 
- 
 
-
-
-----------------------------------------
