@@ -1,0 +1,7 @@
+
+config lime 'system'
+	option hostname 'M4S-SenzaNome'
+
+config lime 'network'
+
+config lime 'wifi'

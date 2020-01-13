@@ -1,13 +1,51 @@
 README
 ======
 
-.Generating the firmware images
-----------------------------------------
+== Generating the firmware images
+
+.Get LibreRouter OpenWrt version
+--------------------------------------------------------------------------------
+git clone https://github.com/LibreRouterOrg/openwrt lr-openwrt
+cd lr-openwrt/
+git checkout v1.1
+scripts/feeds update -a
+scripts/feeds install -a
+--------------------------------------------------------------------------------
+
+.Run Configuration
+------------------
+make menuconfig
+------------------
+
+* Select `Target Profile` -> `Multiple Devices`
+* Select `Target Devices` -> `Ubiquiti Bullet-M`
+* Select and unselect packages according to `L23nodes/PACKAGES`
+
+.Copy community configurations
+------------------------------
+rm -rf files/
+git checkout files/
+rsync -aPh ~/Development/lime-network-profiles/mobilquattrosud.com/L23nodes/files/ files/
+------------------------------
+
+.Eventually customize node specific configurations
+------------------------------
+vim files/etc/config/lime-node
+------------------------------
+
+.Compile the firmware images
+----------------------------
+make -j $(nproc)
+----------------------------
+
+////////////
+.Old deprecated istructions
+--------------------------------------------------------------------------------
 ./cooker -c ar71xx/generic --profile=tl-wr741nd-v1 --flavor=lede_vanilla --community=mobilquattrosud.com/L2nodes
 ./cooker -c ar71xx/generic --profile=tl-wr741nd-v2 --flavor=lede_vanilla --community=mobilquattrosud.com/L2nodes
 ./cooker -c ar71xx/generic --profile=ubnt-bullet-m --flavor=lede_vanilla --community=mobilquattrosud.com/L2nodes
 ./cooker -c ar71xx/generic --profile=ubnt-nano-m --flavor=lede_vanilla --community=mobilquattrosud.com/L23nodes
 ./cooker -c ar71xx/generic --profile=tl-wdr3600-v1 --flavor=lede_vanilla --community=mobilquattrosud.com/L23nodes
 ./cooker -c ar71xx/generic --profile=tl-wdr4300-v1 --flavor=lede_vanilla --community=mobilquattrosud.com/L23nodes
-----------------------------------------
-
+--------------------------------------------------------------------------------
+////////////
