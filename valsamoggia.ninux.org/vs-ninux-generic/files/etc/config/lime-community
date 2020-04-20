@@ -1,6 +1,6 @@
 config lime system
-	option hostname 'LiMe-%M4%M5%M6'
-	option domain 'valsamoggia.ninux.org'
+	option hostname '%M4%M5%M6'
+	option domain 'valsamoggia.ninux'
 	option keep_on_upgrade 'libremesh base-files-essential /etc/sysupgrade.conf'
 
 config lime network
@@ -24,13 +24,13 @@ config lime wifi
 	option channel_2ghz '11'
 	option channel_5ghz '48'
 	option htmode_5ghz 'HT40'
-	option distance_2ghz '100'
-	option distance_5ghz '5700'
+	option distance_2ghz '1000'
+	option distance_5ghz '10000'
 	list modes 'ap'
 	list modes 'apname'
 	list modes 'ieee80211s'
-	option ap_ssid 'valsamoggia.ninux.org'
-	option apname_ssid 'valsamoggia.ninux.org/%H'
+	option ap_ssid 'ninux'
+	option apname_ssid 'ninux/%H'
 	option ieee80211s_mesh_fwding '0'
 	option ieee80211s_mesh_id 'LiMe'
 
