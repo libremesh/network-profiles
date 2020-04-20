@@ -1,6 +1,6 @@
 
 config lime 'system'
-	option hostname cavalletta
+	option hostname '%M4%M5%M6'
 
 config lime 'network'
 
