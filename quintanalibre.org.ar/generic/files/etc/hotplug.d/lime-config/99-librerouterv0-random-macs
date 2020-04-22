@@ -1,25 +1,38 @@
 #!/bin/sh
 
-# LibreRouter V1 Prototypes come with a fake MAC on all network interfaces
+# LibreRouter V0 Prototypes come with a fake MAC on all network interfaces
 # Generate 4 random bytes on first boot, and assign arbitrary macaddr
 # to all eth interfaces, prepending 02:, and appending a unique index
+
+cat /etc/board.json  | grep librerouter
+if [ $? -ne 0 ]
+then
+  echo "This is not a LibreRouter"
+  exit 0
+fi
+
+dmesg | grep AR8327 > /dev/null
+if [ $? -eq 0 ]
+then
+  echo "LibreRouter V0, lets randomize macs!"
+else
+  echo "LibreRouter V1"
+  exit 0
+fi
 
 rand4bytes=$(head -c 256 /dev/urandom | md5sum | sed 's/\(..\)/\1:/g' | head -c 11)
 
 uci set network.lan.macaddr="02:$rand4bytes":10
 for index in 0 1; do
-#    uci set network.lm_net_eth$index=lm_net_eth$index
     uci set network.lm_net_eth$index=interface
     uci set network.lm_net_eth$index.proto=none
     uci set network.lm_net_eth$index.ifname=eth$index
     uci set network.lm_net_eth$index.macaddr="02:$rand4bytes":3$index
-
 done
+
 uci commit network
 
 for index in 0 1 2; do
-#    uci set lime.radio$index=radio$index
     uci set wireless."lm_wlan$index"_adhoc_radio$index.macaddr="02:$rand4bytes":5$index
 done
 uci commit wireless
-
