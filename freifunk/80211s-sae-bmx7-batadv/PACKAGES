@@ -1,4 +1,4 @@
-wpad-mesh-openssl
+wpad-mesh-wolfssl
 wpa-cli
 -wpad-mini
 -wpad-basic
@@ -15,4 +15,3 @@ bmx7-tun
 bmx7-uci-config
 bmx7-auto-gw-mode
 lime-proto-bmx7
-haveged
