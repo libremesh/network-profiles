@@ -5,7 +5,6 @@ wpa-cli
 -hostapd-mini
 -hostapd-basic
 kmod-batman-adv
-lime-proto-batadv
 bmx7
 bmx7-iwinfo
 bmx7-json
@@ -14,4 +13,12 @@ bmx7-table
 bmx7-tun
 bmx7-uci-config
 bmx7-auto-gw-mode
+lime-proto-batadv
 lime-proto-bmx7
+lime-proto-anygw
+uhttpd-mod-lua
+shared-state
+shared-state-bat_hosts
+shared-state-dnsmasq_hosts
+shared-state-dnsmasq_leases
+wifi-unstuck-wa

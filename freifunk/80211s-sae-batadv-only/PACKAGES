@@ -1,5 +1,12 @@
 wpad-mesh-wolfssl
+-wpad-basic
 -wpad-mini
 -hostapd-mini
 kmod-batman-adv
 lime-proto-batadv
+lime-proto-anyway
+uhttpd-mod-lua
+shared-state
+shared-state-bat_hosts
+shared-state-dnsmasq_hosts
+shared-state-dnsmasq_leases
