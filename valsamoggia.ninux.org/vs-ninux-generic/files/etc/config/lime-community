@@ -1,6 +1,6 @@
 config lime system
 	option hostname '%M4%M5%M6'
-	option domain 'valsamoggia.ninux'
+	option domain 'valsamoggia.ninux.org'
 	option keep_on_upgrade 'libremesh base-files-essential /etc/sysupgrade.conf'
 
 config lime network
