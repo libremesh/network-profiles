@@ -11,6 +11,8 @@ jobs:
 
       - name: Build
         uses: aparcar/action-openwrt-sdk@master
+        env:
+          EXTRA_FEEDS: "src-git|libremesh|https://github.com/libremesh/lime-packages.git"
 
       - name: Upload
         uses: jakejarvis/s3-sync-action@master
