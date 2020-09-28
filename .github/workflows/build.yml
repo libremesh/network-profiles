@@ -1,6 +1,8 @@
 name: Build network profiles
 
-on: [push]
+on:
+  push:
+    branches: [master]
 
 jobs:
   build:
@@ -9,10 +11,22 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Build
-        uses: aparcar/action-openwrt-sdk@master
+      - name: Build packages
+        uses: openwrt/gh-action-sdk@v1
         env:
+          ARCH: "x86_64"
           EXTRA_FEEDS: "src-git|libremesh|https://github.com/libremesh/lime-packages.git"
+          FEEDNAME: "profiles"
+          IGNORE_ERRORS: "n m y"
+          KEY_BUILD: "${{ secrets.KEY_BUILD }}"
+
+      - name: Upload packages to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3.7.0-8
+        with:
+          deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+          external_repository: libremesh/lime-feed
+          publish_dir: bin/packages/x86_64/profiles/
+          destination_dir: profiles
 
       - name: Upload
         uses: jakejarvis/s3-sync-action@master
@@ -25,4 +39,3 @@ jobs:
           AWS_S3_ENDPOINT: https://images.aparcar.org
           SOURCE_DIR: bin/packages/x86_64/action/
           DEST_DIR: profiles/
-
