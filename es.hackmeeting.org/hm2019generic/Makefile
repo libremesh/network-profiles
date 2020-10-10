@@ -26,18 +26,12 @@ PROFILE_DEPENDS:=+prometheus-node-exporter-lua \
 +lime-docs                                     \
 +lime-hwd-ground-routing                       \
 +lime-debug                                    \
-+luci-lib-libremap-babeld                      \
 +ubus-lime-batman-adv                          \
 +ubus-lime-fbw                                 \
 +pirania                                       \
 +pirania-app                                   \
 +shared-state-pirania                          \
-+shared-state-persist                          \
--dnsmasq                                       \
--firewall                                      \
--odhcpd-ipv6only                               \
--odhcpd                                        \
--ppp
++shared-state-persist
 
 include ../../profile.mk
 
