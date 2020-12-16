@@ -22,7 +22,6 @@ PROFILE_DEPENDS:=+prometheus-node-exporter-lua \
 +lime-app                                      \
 +lime-docs-minimal                             \
 +first-boot-wizard                             \
-+lime-map-agent                                \
 +lime-docs                                     \
 +lime-hwd-ground-routing                       \
 +lime-debug                                    \
