@@ -1,0 +1,20 @@
+config lime system
+	option hostname 'torre-campus-utn'
+	option firstbootwizard_configured 'true'
+
+config lime network
+	option main_ipv4_address '172.16.0.7/28'
+
+config lime wifi
+	list modes 'apname_2ghz'
+	option apname_ssid 'AM/%H'
+	option apname_encryption 'psk2'
+	option apname_key 'dochangethispassword'
+
+config generic_uci_config dropbear
+	list uci_set "dropbear.@dropbear[0].PasswordAuth='0'"
+	list uci_set "dropbear.@dropbear[0].RootPasswordAuth='0'"
+
+config copy_asset auth_keys
+	option asset 'node/authorized_keys'
+	option dist '/etc/dropbear/authorized_keys'
