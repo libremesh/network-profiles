@@ -1,11 +1,19 @@
 #!/bin/sh
 
-internet_gw=torreunc
-internet_gw_ip=10.5.24.12
+# Si anda llegar "a internet" extendemos el plazo de "deferable reboot".
+# Es el último recurso para no quedar desconectados del nodo si queda en un estado inaccesible.
 
-# cada 3hs, si falla ping a la salida a internet, rebooteamos. Es el último recurso para no quedar desconectados del nodo si queda en un estado inaccesible.
-mkdir -p /etc/crontabs ; touch /etc/crontabs/root
-sed "\| \* \* \* .*Iniciando reboot.*|d" -i /etc/crontabs/root
-echo "7 */3 * * * sleep 300s; if ping -c 10 -W 10 $internet_gw_ip &> /dev/null; then logger -t workarounds 'ping c/3hs a $internet_gw OK'; else logger -t workarounds '*ping c/3hs* a torreunc FAIL. Iniciando reboot'; logread > /root/debug && /sbin/reboot; fi" >> /etc/crontabs/root
+internet_gw_ip=8.8.8.8 #FIXME
+
+unique_append()
+{
+	grep -qF "$1" "$2" || echo "$1" >> "$2"
+}
+
+unique_append \
+	"*/10 * * * * ((if ping -c 10 -W 10 $internet_gw_ip &> /dev/null; then awk '{print \$1 + 800}' /proc/uptime > /tmp/deferable-reboot.defer ; fi )&) "\
+	/etc/crontabs/root
+
+
 
 
