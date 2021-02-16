@@ -38,3 +38,18 @@ config lime wifi
 
 	option adhoc_mcast_rate_2ghz '36000'
 	option adhoc_mcast_rate_5ghz '24000'
+
+config generic_uci_config system_opts
+	list uci_set "system.@system[0].timezone=ART3"
+	list uci_set "system.@system[0].log_ip=10.5.1.4"
+
+config generic_uci_config location
+	list uci_set "location.settings=location"
+	list uci_set "location.settings.community_latitude=-31.80461"
+	list uci_set "location.settings.community_longitude=-64.41609"
+
+config generic_uci_config deferable_reboot
+	list uci_set "deferable-reboot.options.deferable_reboot_uptime=10800"
+
+config generic_uci_config dropbear
+	list uci_set "dropbear.@dropbear[0].RootPasswordAuth=off"
