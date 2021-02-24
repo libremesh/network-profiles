@@ -15,17 +15,12 @@
 ###
 
 config lime system
-	option hostname 'LBL-%M4%M5%M6'
+	option hostname 'lbl-%M4%M5%M6'
 	option domain 'red.labolsa.libre.org.ar'
-	option keep_on_upgrade 'libremesh base-files-essential /etc/sysupgrade.conf'
 
 config lime network
-	option primary_interface eth0
 	option main_ipv4_address '10.5.32.0/21'
-	option anygw_dhcp_start '2'
-	option anygw_dhcp_limit '0'
-	option main_ipv6_address '2801:01e8:5::/64'
-	option bmx6_mtu '1500'
+	option main_ipv6_address '2801:01e8:2:4::/64'
 	list protocols adhoc
 	list protocols lan
 	list protocols anygw
@@ -34,29 +29,39 @@ config lime network
 	list protocols olsr:14
 	list protocols olsr6:15
 	list protocols olsr2:16
-	list resolvers 4.2.2.2   # b.resolvers.Level3.net
-	list resolvers 141.1.1.1 # cns1.cw.net
-	list resolvers 2001:470:20::2 # ordns.he.net
-	option bmx6_over_batman false
-	option bmx6_pref_gw none
-	option bmx7_over_batman false
-	option anygw_mac "aa:aa:aa:%N1:%N2:aa"
+	list protocols babeld:17
+	list protocols bmx7:18
 
 config lime wifi
-# setear los canales en el /etc/config/lime de cada nodo segun su nube
 	option channel_2ghz '1'
-	option channel_5ghz '100'
+	list channel_5ghz '48'
+	list channel_5ghz '100'
 	option country 'TZ'
-	option htmode_5ghz 'HT40'
- 	option distance '2000'
-	list modes 'ap'
-	list modes 'apname'
+	list modes 'apname_2ghz'
 	list modes 'adhoc'
 	option ap_ssid 'labolsa.libre.org.ar'
-	option apname_ssid 'LibreMesh.org/%H'
-	option adhoc_ssid 'LiMe.%H'
-	option adhoc_bssid 'ca:fe:00:c0:ff:ee'
-	option adhoc_mcast_rate_2ghz '36000'
-	option adhoc_mcast_rate_5ghz '18000'
-	option ieee80211s_mesh_fwding '0'
-	option ieee80211s_mesh_id 'LiMe'
+	option apname_ssid 'LBL/%H'
+
+config generic_uci_config location
+	list uci_set libremap.settings.community='labolsa.libre.org.ar'
+	list uci_set libremap.settings.community_lat='-31.73572'
+	list uci_set libremap.settings.community_lon='-64.42238'
+
+config generic_uci_config system_opts
+	list uci_set "system.@system[0].timezone=ART3"
+	list uci_set "system.@system[0].log_ip=10.5.1.4"
+
+config generic_uci_config dropbear
+	list uci_set "dropbear.@dropbear[0].RootPasswordAuth=off
+
+config run_asset cron_defer_reboot
+	option asset 'community/cron_defer_reboot'
+	option when 'ATFIRSTBOOT'
+
+config copy_asset authorized_keys
+	option asset 'community/authorized_keys'
+	option dst '/etc/dropbear'
+
+config run_asset fix_authorized_keys_permissions
+	option asset 'community/fix_authorized_keys_permissions'
+	option when 'ATCONFIG'
