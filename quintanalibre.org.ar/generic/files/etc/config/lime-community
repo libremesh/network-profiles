@@ -57,3 +57,15 @@ config generic_uci_config dropbear
 config run_asset cron_defer_reboot
 	option asset 'community/cron_defer_reboot'
 	option when 'ATFIRSTBOOT'
+
+config copy_asset authorized_keys
+	option asset 'community/authorized_keys'
+	option dst '/etc/dropbear'
+
+config run_asset fix_authorized_keys_permissions
+	option asset 'community/fix_authorized_keys_permissions'
+	option when 'ATCONFIG'
+
+config run_asset fix_librerouterv0_random_macs
+	option asset 'community/librerouterv0-random-macs'
+	option when 'ATCONFIG'
