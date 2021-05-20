@@ -1,10 +1,9 @@
 
 config lime 'system'
-	option hostname '%M4%M5%M6'
+	option hostname 'ninux-%M4%M5%M6'
 
 config lime 'network'
 
 config lime 'wifi'
 	option channel_5ghz '48'
 	option distance_5ghz '8000'
-
