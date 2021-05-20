@@ -33,4 +33,3 @@ config lime wifi
 	option apname_ssid 'ninux/%H'
 	option ieee80211s_mesh_fwding '0'
 	option ieee80211s_mesh_id 'LiMe'
-
