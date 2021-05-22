@@ -1,12 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PROFILE_DESCRIPTION:=Generic valsamoggia configuration
-PROFILE_DEPENDS:=+prometheus-node-exporter-lua \
-	+prometheus-node-exporter-lua-wifi \
-	+prometheus-node-exporter-lua-wifi_stations \
-	+prometheus-node-exporter-lua-openwrt \
-	+lime-system \
-	+lime-proto-babeld \
+PROFILE_DEPENDS:= +lime-proto-babeld \
 	+lime-proto-batadv \
 	+lime-proto-anygw \
 	+lime-proto-wan \
@@ -20,11 +15,9 @@ PROFILE_DEPENDS:=+prometheus-node-exporter-lua \
 	+shared-state-nodes_and_links \
 	+check-date-http \
 	+lime-app \
-	+lime-map-agent \
 	+lime-hwd-ground-routing \
 	+lime-debug \
-	+luci \
-	+luci-lib-libremap-babeld
+	+luci 
 
 include ../../profile.mk
 
