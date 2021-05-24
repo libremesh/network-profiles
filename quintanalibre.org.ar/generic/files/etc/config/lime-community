@@ -54,7 +54,7 @@ config generic_uci_config dropbear
 
 config run_asset cron_defer_reboot
 	option asset 'community/cron_defer_reboot'
-	option when 'ATFIRSTBOOT'
+	option when 'ATCONFIG'
 
 config copy_asset authorized_keys
 	option asset 'community/authorized_keys'
