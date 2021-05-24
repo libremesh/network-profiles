@@ -33,3 +33,7 @@ config lime wifi
 	option apname_ssid 'ninux/%H'
 	option ieee80211s_mesh_fwding '0'
 	option ieee80211s_mesh_id 'LiMe'
+
+config generic_uci_config prometheus
+	list uci_set "prometheus-node-exporter-lua.main.listen_ipv6=0"
+	list uci_set "prometheus-node-exporter-lua.main.listen_port=9100"
