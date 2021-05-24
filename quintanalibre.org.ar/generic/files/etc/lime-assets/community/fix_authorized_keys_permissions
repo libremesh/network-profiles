@@ -1,4 +1,3 @@
-
 #!/bin/sh
 # Fix dropbear authorized keys permissions
 chmod 0600 /etc/dropbear/authorized_keys
