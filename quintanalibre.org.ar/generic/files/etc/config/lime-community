@@ -1,6 +1,7 @@
 config lime system
 	option hostname 'ql-%M4%M5%M6'
 	option domain 'red.quintana.libre.org.ar'
+	option deferable_reboot_uptime_s '10800'
 
 config lime network
 	option main_ipv4_address '10.5.0.0/21'
@@ -47,9 +48,6 @@ config generic_uci_config location
 	list uci_set "location.settings=location"
 	list uci_set "location.settings.community_latitude=-31.80461"
 	list uci_set "location.settings.community_longitude=-64.41609"
-
-config generic_uci_config deferable_reboot
-	list uci_set "deferable-reboot.options.deferable_reboot_uptime=10800"
 
 config generic_uci_config dropbear
 	list uci_set "dropbear.@dropbear[0].RootPasswordAuth=off"
