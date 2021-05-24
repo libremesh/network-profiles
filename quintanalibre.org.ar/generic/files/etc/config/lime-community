@@ -1,6 +1,7 @@
 config lime system
 	option hostname 'ql-%M4%M5%M6'
 	option domain 'red.quintana.libre.org.ar'
+	option deferable_reboot_uptime_s '10800'
 
 config lime network
 	option main_ipv4_address '10.5.0.0/21'
@@ -38,3 +39,31 @@ config lime wifi
 
 	option adhoc_mcast_rate_2ghz '36000'
 	option adhoc_mcast_rate_5ghz '24000'
+
+config generic_uci_config system_opts
+	list uci_set "system.@system[0].timezone=ART3"
+	list uci_set "system.@system[0].log_ip=10.5.1.4"
+
+config generic_uci_config location
+	list uci_set "location.settings=location"
+	list uci_set "location.settings.community_latitude=-31.80461"
+	list uci_set "location.settings.community_longitude=-64.41609"
+
+config generic_uci_config dropbear
+	list uci_set "dropbear.@dropbear[0].RootPasswordAuth=off"
+
+config run_asset cron_defer_reboot
+	option asset 'community/cron_defer_reboot'
+	option when 'ATFIRSTBOOT'
+
+config copy_asset authorized_keys
+	option asset 'community/authorized_keys'
+	option dst '/etc/dropbear'
+
+config run_asset fix_authorized_keys_permissions
+	option asset 'community/fix_authorized_keys_permissions'
+	option when 'ATCONFIG'
+
+config run_asset fix_librerouterv0_random_macs
+	option asset 'community/librerouterv0-random-macs'
+	option when 'ATCONFIG'
