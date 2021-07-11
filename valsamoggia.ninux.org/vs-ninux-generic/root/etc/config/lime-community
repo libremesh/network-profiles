@@ -47,6 +47,9 @@ config run_asset cron_reboot
 	option asset 'community/cron_reboot'
 	option when 'ATFIRSTBOOT'
 
+config generic_uci_config dropbear
+	list uci_set "dropbear.@dropbear[0].RootPasswordAuth=off"
+
 config copy_asset authorized_keys
 	option asset 'community/authorized_keys'
 	option dst '/etc/dropbear'
