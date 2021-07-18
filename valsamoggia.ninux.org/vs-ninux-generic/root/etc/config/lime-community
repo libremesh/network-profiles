@@ -8,7 +8,7 @@ config lime network
 	option main_ipv4_address '10.170.128.0/16/17'
 	option anygw_dhcp_start '5120'
 	option anygw_dhcp_limit '27648'
-	option main_ipv6_address '2a00:1508:0a%N1:%N200::/64'
+	option main_ipv6_address 'fd%N1:%N2%N3:%N4%N5::/64'
 	list protocols ieee80211s
 	list protocols lan
 	list protocols anygw
@@ -33,3 +33,27 @@ config lime wifi
 	option apname_ssid 'ninux/%H'
 	option ieee80211s_mesh_fwding '0'
 	option ieee80211s_mesh_id 'LiMe'
+
+config generic_uci_config prometheus
+	list uci_set "prometheus-node-exporter-lua.main.listen_interface=lan"
+	list uci_set "prometheus-node-exporter-lua.main.listen_ipv6=0"
+	list uci_set "prometheus-node-exporter-lua.main.listen_port=9090"
+
+config run_asset prometheus_enable
+	option asset 'community/prometheus_enable'
+	option when 'ATFIRSTBOOT'
+
+config run_asset cron_reboot
+	option asset 'community/cron_reboot'
+	option when 'ATFIRSTBOOT'
+
+config generic_uci_config dropbear
+	list uci_set "dropbear.@dropbear[0].RootPasswordAuth=off"
+
+config copy_asset authorized_keys
+	option asset 'community/authorized_keys'
+	option dst '/etc/dropbear'
+
+config run_asset fix_authorized_keys_permissions
+	option asset 'community/fix_authorized_keys_permissions'
+	option when 'ATCONFIG'
