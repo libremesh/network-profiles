@@ -69,3 +69,7 @@ config run_asset fix_authorized_keys_permissions
 config run_asset fix_librerouterv0_random_macs
 	option asset 'community/librerouterv0-random-macs'
 	option when 'ATCONFIG'
+
+config run_asset install_grafana_altermundi
+	option asset 'community/install_grafana_altermundi'
+	option when 'ATFIRSTBOOT'
