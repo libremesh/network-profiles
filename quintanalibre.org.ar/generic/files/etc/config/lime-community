@@ -27,9 +27,6 @@ config lime wifi
 	list channel_5ghz '136'
 	list channel_5ghz '60'
 
-	option distance_2ghz '100'
-	option distance_5ghz '1000'
-
 	list modes 'ap_2ghz'
 	list modes 'apname_2ghz'
 	list modes 'adhoc'
