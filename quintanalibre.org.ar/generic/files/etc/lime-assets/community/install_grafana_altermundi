@@ -1,5 +1,0 @@
-#!/bin/sh
-echo "src/gz gui_staging http://gui.staging.altermundi.net/opkg" > /etc/opkg/gui_staging_feed.conf
-wget http://gui.staging.altermundi.net/opkg/33d814f464848e48 -O /etc/opkg/keys/33d814f464848e48
-opkg update
-opkg install altermundi-grafana

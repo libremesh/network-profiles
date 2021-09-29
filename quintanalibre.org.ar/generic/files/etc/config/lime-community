@@ -7,7 +7,6 @@ config lime network
 	option main_ipv4_address '10.5.0.0/21'
 	option main_ipv6_address '2801:01e8:2::/64'
 
-	list protocols adhoc
 	list protocols 'ieee80211s'
 	list protocols lan
 	list protocols anygw
@@ -29,15 +28,14 @@ config lime wifi
 
 	list modes 'ap_2ghz'
 	list modes 'apname_2ghz'
-	list modes 'adhoc'
 	list modes 'ieee80211s'
 
 	option ap_ssid 'quintana.libre.org.ar'
 	option apname_ssid 'quintana.libre.org.ar/%H'
-	option adhoc_ssid 'LiMe.%H'
-
-	option adhoc_mcast_rate_2ghz '36000'
-	option adhoc_mcast_rate_5ghz '24000'
+	option ap_encryption 'psk2'
+	option ap_key 'QuintanaLibre2021'
+	option apname_encryption 'psk2'
+	option apname_key 'QuintanaLibre2021'
 
 config generic_uci_config system_opts
 	list uci_set "system.@system[0].timezone=ART3"
@@ -66,7 +64,3 @@ config run_asset fix_authorized_keys_permissions
 config run_asset fix_librerouterv0_random_macs
 	option asset 'community/librerouterv0-random-macs'
 	option when 'ATCONFIG'
-
-config run_asset install_grafana_altermundi
-	option asset 'community/install_grafana_altermundi'
-	option when 'ATFIRSTBOOT'
