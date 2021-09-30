@@ -2,6 +2,8 @@ config lime system
 	option hostname 'ql-%M4%M5%M6'
 	option domain 'red.quintana.libre.org.ar'
 	option deferable_reboot_uptime_s '10800'
+	option root_password_policy 'SET_SECRET'
+	option root_password_secret '$1$63DcDgyl$gQLypgcVCl05qLhKUMRvc0'
 
 config lime network
 	option main_ipv4_address '10.5.0.0/21'
@@ -33,9 +35,9 @@ config lime wifi
 	option ap_ssid 'quintana.libre.org.ar'
 	option apname_ssid 'quintana.libre.org.ar/%H'
 	option ap_encryption 'psk2'
-	option ap_key 'QuintanaLibre2021'
+	option ap_key 'quintanalibre2021'
 	option apname_encryption 'psk2'
-	option apname_key 'QuintanaLibre2021'
+	option apname_key 'quintanalibre2021'
 
 config generic_uci_config system_opts
 	list uci_set "system.@system[0].timezone=ART3"
@@ -45,9 +47,6 @@ config generic_uci_config location
 	list uci_set "location.settings=location"
 	list uci_set "location.settings.community_latitude=-31.80461"
 	list uci_set "location.settings.community_longitude=-64.41609"
-
-config generic_uci_config dropbear
-	list uci_set "dropbear.@dropbear[0].RootPasswordAuth=off"
 
 config run_asset cron_defer_reboot
 	option asset 'community/cron_defer_reboot'
