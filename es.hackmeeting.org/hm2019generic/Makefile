@@ -26,9 +26,7 @@ PROFILE_DEPENDS:=+prometheus-node-exporter-lua \
 +lime-hwd-ground-routing                       \
 +lime-debug                                    \
 +ubus-lime-batman-adv                          \
-+ubus-lime-fbw                                 \
 +pirania                                       \
-+pirania-app                                   \
 +shared-state-pirania                          \
 +shared-state-persist
 
