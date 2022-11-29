@@ -48,7 +48,8 @@ endif
 
 define Package/$(PKG_NAME)/install
 	$(INSTALL_DIR) $(1)/
-	$(CP) -r ./root/* $(1)/
+	# check if root/ directory exists before copying
+	if [ -e ./root/* ]; then $(CP) -r ./root/* $(1)/; fi
 endef
 
 define Build/Compile
