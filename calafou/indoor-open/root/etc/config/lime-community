@@ -8,8 +8,8 @@ config lime network
 
 config lime wifi		
 	option country 'ES'	
-	option ap_ssid 'Calafou'
-	option apname_ssid 'Calafou/%H'
+	option ap_ssid 'Calafou-to-be-configured'
+	option apname_ssid 'Calafou/%H-to-be-configured'
 	option ieee80211s_mesh_id 'libremesh'
 
 config lime-wifi-band '2ghz' 
