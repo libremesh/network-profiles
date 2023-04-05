@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PROFILE_DESCRIPTION:=Encryptable mesh and AP for Calafou outdoor nodes
-PROFILE_DEPENDS:=+deferable-reboot +safe-reboot +wpad-full-openssl \
+PROFILE_DEPENDS:=+deferable-reboot +safe-reboot +wpad-openssl \
 	+lime-docs \
 	+lime-proto-babeld \
 	+lime-proto-batadv \
