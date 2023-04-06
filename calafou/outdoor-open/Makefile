@@ -6,7 +6,6 @@ PROFILE_DEPENDS:=+deferable-reboot +safe-reboot +shared-state-network_nodes +sha
 	+lime-proto-babeld \
 	+lime-proto-batadv \
 	+lime-proto-anygw \
-	+lime-hwd-openwrt-wan \
 	+shared-state \
 	+hotplug-initd-services \
 	+shared-state-babeld_hosts \
@@ -18,7 +17,6 @@ PROFILE_DEPENDS:=+deferable-reboot +safe-reboot +shared-state-network_nodes +sha
 	+lime-app \
 	+lime-hwd-ground-routing \
 	+lime-debug \
-	+babeld-auto-gw-mode \
 	+prometheus-node-exporter-lua \
 	+prometheus-node-exporter-lua-openwrt \
 	+prometheus-node-exporter-lua-wifi_stations \
