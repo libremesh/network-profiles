@@ -1,0 +1,15 @@
+CONFIG_TARGET_ipq40xx=y
+CONFIG_TARGET_ipq40xx_generic=y
+CONFIG_TARGET_ipq40xx_generic_DEVICE_plasmacloud_pa1200=y
+# CONFIG_PACKAGE_dnsmasq is not set
+# CONFIG_FEED_libremesh is not set
+# CONFIG_FEED_profiles is not set
+CONFIG_PACKAGE_ipq-wifi-plasmacloud_pa1200=y
+CONFIG_PACKAGE_ath10k-board-qca4019=y
+CONFIG_PACKAGE_ath10k-firmware-qca4019=y
+CONFIG_PACKAGE_kmod-ath10k=y
+# CONFIG_PACKAGE_kmod-ath10k-ct is not set
+CONFIG_PACKAGE_profile-calafou-gateway-crypt=y
+# CONFIG_PACKAGE_wpad-basic-wolfssl is not set
+# CONFIG_PACKAGE_wpad-mesh-openssl is not set
+CONFIG_PACKAGE_wpad-openssl=y
