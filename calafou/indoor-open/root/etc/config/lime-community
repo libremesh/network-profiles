@@ -17,10 +17,12 @@ config lime-wifi-band '2ghz'
 	list modes 'ap'	
 	list modes 'apname'
 	list modes 'ieee80211s'
+	option distance '100'
 
 config lime-wifi-band '5ghz'
 	option channel '40'
 	list modes 'ap'	
 	list modes 'apname'
 	list modes 'ieee80211s'
+	option distance '100'
 
