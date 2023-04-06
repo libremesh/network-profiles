@@ -1,4 +1,7 @@
 # network-profiles
+
+**Check out the full documentation on https://libremesh.org/development-network_profiles.html**
+
 Set of profiles for the networks using LibreMesh used by the [firmware builder](https://libremesh.org/development.html).
 
 * Each community profile goes into a directory named as the community.
