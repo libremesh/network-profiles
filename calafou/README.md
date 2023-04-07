@@ -200,6 +200,34 @@ Stop before launching `make menuconfig`. Instead, copy the needed `DOTconfig` fi
 
 After copying the `.config`, run `make defconfig` and then `make`. The first compilation will take a 1-4 hours, require internet connection, and occupy up to 10 GB. The following times you compile the same target, will take less time.
 
+# Connecting to the web interface of a router
+
+Just connect to the wifi Access Point (AP) of a router and open http://thisnode.info
+
+If it does not work, open http://10.1.0.1
+
+In both cases, the closest router will answer.
+
+If you want to make sure you are connecting to a specific router, connect to the AP with the MAC address in it, for example `Calafou/LiMe-000e40` and open the addresses above.
+
+# Connecting via SSH the router
+
+As for connecting to the web interface, you can use the thisnode.info or the 10.1.0.1 addresses:
+
+```
+ssh root@thisnode.info
+```
+
+or
+
+```
+ssh root@10.1.0.1
+```
+
+Again, the closest node will answer. If you want to connect to a specific node, connect to its specific AP interface which looks similar to `Calafou/LiMe-000e40`.
+
+Check out https://libremesh.org/docs/en_connecting_nodes.html
+
 # Flashing
 
 Follow the instructions on the OpenWrt wiki, specific for each router.
@@ -212,6 +240,7 @@ PC$ scp -O openwrt-BLABLA-sysupgrade.bin root@thisnode.info:/tmp
 PC$ ssh root@thisnode.info
 router# sysupgrade -n /tmp/openwrt-BLABLA-sysupgrade.bin
 ```
+
 
 # Post flashing
 
@@ -248,3 +277,8 @@ config rule
 
 In this case, you could disallow the password authentication (setting to `off` the `PasswordAuth` option in `/etc/config/dropbear` and rebooting), for making sure that nobody on the internet tries to bruteforce the root password. In this case, if you lose the private SSH key you will have to reset the router, that usually requires pressing a physical button on it.
 
+# Troubleshooting
+
+Check out this page: https://libremesh.org/docs/en_troubleshooting.html
+
+Contact the LibreMesh or Battlemesh people.
