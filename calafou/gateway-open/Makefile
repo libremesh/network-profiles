@@ -1,6 +1,6 @@
 include $(TOPDIR)/rules.mk
 
-PROFILE_DESCRIPTION:=Open mesh and AP for Calafou outdoor nodes
+PROFILE_DESCRIPTION:=Open mesh and AP for Calafou outdoor node used as a gateway
 PROFILE_DEPENDS:=+deferable-reboot +safe-reboot +shared-state-network_nodes +shared-state-dnsmasq_servers \
 	+lime-docs \
 	+lime-proto-babeld \

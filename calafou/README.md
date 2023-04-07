@@ -36,7 +36,7 @@ Wifi ports:
 
 ## -crypt vs -open
 
-The *-crypt* version includes wpad-openssl, which allows us to encrypt the mesh connections with a password shared by all the nodes. Also, it would allow us to use Opportunistic Wireless Encryption (OWE), but this is not yet easy using LibreMesh.
+The *-crypt* version includes wpad-openssl, which allows us to encrypt the mesh connections with a password shared by all the nodes. Also, it would allow us to use Opportunistic Wireless Encryption (OWE), but this is not yet easy using LibreMesh. The only advantage to use the *-open* version, is that it fits in devices with smaller flash memory.
 
 # Compiling
 
