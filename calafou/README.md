@@ -70,8 +70,6 @@ Setting a new `ap_ssid` in `/etc/config/lime-node` (see below "Post flashing") a
 
 The name of the mesh interface. Two routers will not mesh if this name is different.
 
-```
-
 ### Packages
 
 Packages suggested on the [LibreMesh website](https://libremesh.org/development.html) (except the WAN-related ones):
