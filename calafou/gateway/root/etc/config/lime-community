@@ -20,7 +20,7 @@ config lime-wifi-band '2ghz'
 	option distance '300'
 
 config lime-wifi-band '5ghz'
-	option channel '64'
+	option channel '40'
 	list modes 'ieee80211s'
 	option distance '300'
 
