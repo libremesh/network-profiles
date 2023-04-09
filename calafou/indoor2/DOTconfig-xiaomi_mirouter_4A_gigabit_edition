@@ -1,0 +1,10 @@
+CONFIG_TARGET_ramips=y
+CONFIG_TARGET_ramips_mt7621=y
+CONFIG_TARGET_ramips_mt7621_DEVICE_xiaomi_mi-router-4a-gigabit=y
+# CONFIG_PACKAGE_dnsmasq is not set
+# CONFIG_FEED_libremesh is not set
+# CONFIG_FEED_profiles is not set
+CONFIG_PACKAGE_profile-calafou-indoor2=y
+# CONFIG_PACKAGE_wpad-basic-wolfssl is not set
+# CONFIG_PACKAGE_wpad-mesh-openssl is not set
+CONFIG_PACKAGE_wpad-openssl=y
