@@ -25,8 +25,8 @@ PROFILE_DEPENDS:=+deferable-reboot +safe-reboot +wpad-openssl +shared-state-netw
 	+prometheus-node-exporter-lua-wifi-stations-extra \
 	+prometheus-node-exporter-lua-wifi-survey \
 	+prometheus-node-exporter-lua-wifi-params \
-	+prometheus-node-exporter-lua-location-latlon
-
+	+prometheus-node-exporter-lua-location-latlon \
+	+iperf3
 
 include ../../profile.mk
 
