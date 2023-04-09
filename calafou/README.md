@@ -104,6 +104,7 @@ Additional (maybe) useful packages:
 * prometheus-node-exporter-lua-wifi-survey
 * prometheus-node-exporter-lua-wifi-params
 * prometheus-node-exporter-lua-location-latlon
+* iperf3
 
 ## Gateway
 
@@ -112,7 +113,7 @@ Has the PoE port configured as a WAN, to be connected to the fiber modem.
 Wifi ports:
 
 * 2.4 GHz: channel 6, used for AP and mesh
-* 5 GHz: channel 64, used only for mesh
+* 5 GHz: channel 40, used only for mesh
 
 ### lime-community configuration
 
@@ -127,7 +128,7 @@ config lime-wifi-band '2ghz'
 	option distance '300'
 
 config lime-wifi-band '5ghz'
-	option channel '64'
+	option channel '40'
 	list modes 'ieee80211s'
 	option distance '300'
 ```
@@ -158,7 +159,7 @@ The same as the gateway profile (in this case, to have a port configured as WAN 
 Wifi ports:
 
 * 2.4 GHz: channel 1, used for AP and mesh
-* 5 GHz: channel 40, used for AP and mesh
+* 5 GHz: channel 48, used for AP and mesh
 
 ### lime-community configuration
 
@@ -169,14 +170,12 @@ config lime-wifi-band '2ghz'
 	option channel '1'
 	list modes 'ap'	
 	list modes 'apname'
-	list modes 'ieee80211s'
 	option distance '100'
 
 config lime-wifi-band '5ghz'
-	option channel '40'
+	option channel '48'
 	list modes 'ap'	
 	list modes 'apname'
-	list modes 'ieee80211s'
 	option distance '100'
 ```
 
