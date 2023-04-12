@@ -160,8 +160,8 @@ The same as the gateway profile (in this case, to have a port configured as WAN 
 
 Wifi ports:
 
-* 2.4 GHz: channel 13 (HT20), used for AP and mesh
-* 5 GHz: channel 48, used for AP and mesh
+* 2.4 GHz: channel 13 (HT20), used for AP
+* 5 GHz: channel 48, used for AP
 
 ### lime-community configuration
 
@@ -170,6 +170,39 @@ As the "Common to all profiles" one but also with:
 ```
 config lime-wifi-band '2ghz' 
 	option channel '13'
+	list modes 'ap'	
+	list modes 'apname'
+	option distance '100'
+
+config lime-wifi-band '5ghz'
+	option channel '48'
+	list modes 'ap'	
+	list modes 'apname'
+	option distance '100'
+```
+
+### Packages
+
+Identical to the list for the gateway profile.
+
+## Indoor2
+
+This is for rooms in which two router are placed, for not having both routers on the same channel.
+
+The same as the first "indoor" profile.
+
+Wifi channels:
+
+* 2.4 GHz: channel 9 (HT20), used for AP
+* 5 GHz: channel 48, used for AP
+
+### lime-community configuration
+
+As the "Common to all profiles" one but also with:
+
+```
+config lime-wifi-band '2ghz' 
+	option channel '9'
 	list modes 'ap'	
 	list modes 'apname'
 	option distance '100'
