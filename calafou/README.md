@@ -160,7 +160,7 @@ The same as the gateway profile (in this case, to have a port configured as WAN 
 
 Wifi ports:
 
-* 2.4 GHz: channel 1, used for AP and mesh
+* 2.4 GHz: channel 13 (HT20), used for AP and mesh
 * 5 GHz: channel 48, used for AP and mesh
 
 ### lime-community configuration
@@ -169,7 +169,7 @@ As the "Common to all profiles" one but also with:
 
 ```
 config lime-wifi-band '2ghz' 
-	option channel '1'
+	option channel '13'
 	list modes 'ap'	
 	list modes 'apname'
 	option distance '100'
