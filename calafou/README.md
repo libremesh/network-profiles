@@ -112,8 +112,8 @@ Has the PoE port configured as a WAN, to be connected to the fiber modem.
 
 Wifi ports:
 
-* 2.4 GHz: channel 6, used for AP and mesh
-* 5 GHz: channel 40, used only for mesh
+* 2.4 GHz: channel 3 (HT40), used for AP and mesh
+* 5 GHz: channel 36 (VHT80), used only for mesh
 
 ### lime-community configuration
 
@@ -121,14 +121,16 @@ As the "Common to all profiles" one but also with:
 
 ```
 config lime-wifi-band '2ghz' 
-	option channel '6'
+	option channel '3'
+    option htmode 'HT40'
 	list modes 'ap'	
 	list modes 'apname'
 	list modes 'ieee80211s'
 	option distance '300'
 
 config lime-wifi-band '5ghz'
-	option channel '40'
+	option channel '36'
+    option htmode 'VHT80'
 	list modes 'ieee80211s'
 	option distance '300'
 ```

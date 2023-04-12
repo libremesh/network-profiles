@@ -13,14 +13,16 @@ config lime wifi
 	option ieee80211s_mesh_id 'libremesh'
 
 config lime-wifi-band '2ghz' 
-	option channel '6'
+	option channel '3'
+	option htmode 'HT40'
 	list modes 'ap'	
 	list modes 'apname'
 	list modes 'ieee80211s'
 	option distance '300'
 
 config lime-wifi-band '5ghz'
-	option channel '40'
+	option channel '36'
+	option htmode 'VHT80'
 	list modes 'ieee80211s'
 	option distance '300'
 
