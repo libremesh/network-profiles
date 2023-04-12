@@ -13,7 +13,7 @@ config lime wifi
 	option ieee80211s_mesh_id 'libremesh'
 
 config lime-wifi-band '2ghz' 
-	option channel '9'
+	option channel '7'
 	list modes 'ap'	
 	list modes 'apname'
 	option distance '100'

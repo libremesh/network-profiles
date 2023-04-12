@@ -112,7 +112,7 @@ Has the PoE port configured as a WAN, to be connected to the fiber modem.
 
 Wifi ports:
 
-* 2.4 GHz: channel 3 (HT40), used for AP and mesh
+* 2.4 GHz: channel 1 (HT40, this will result in a wide channel centered around channel 3), used for AP and mesh
 * 5 GHz: channel 36 (VHT80), used only for mesh
 
 ### lime-community configuration
@@ -121,7 +121,7 @@ As the "Common to all profiles" one but also with:
 
 ```
 config lime-wifi-band '2ghz' 
-	option channel '3'
+	option channel '1'
     option htmode 'HT40'
 	list modes 'ap'	
 	list modes 'apname'
@@ -160,7 +160,7 @@ The same as the gateway profile (in this case, to have a port configured as WAN 
 
 Wifi ports:
 
-* 2.4 GHz: channel 13 (HT20), used for AP
+* 2.4 GHz: channel 13 (HT40, this will result as a wide channel centered around channel 11), used for AP
 * 5 GHz: channel 100 (VHT80), used for AP
 
 ### lime-community configuration
@@ -170,6 +170,7 @@ As the "Common to all profiles" one but also with:
 ```
 config lime-wifi-band '2ghz' 
 	option channel '13'
+    option htmode 'HT40'
 	list modes 'ap'	
 	list modes 'apname'
 	option distance '100'
@@ -190,11 +191,15 @@ Identical to the list for the gateway profile.
 
 This is for rooms in which two router are placed, for not having both routers on the same channel.
 
-The same as the first "indoor" profile.
+The channel for 5 GHz is not overlapping with "indoor" or outdoor and gateway profiles.
+
+But channel 7 for 2.4 GHz, even is non-wide (only HT20), is partially overlapping with the wide (HT40) channels used in the other profiles. It is right in the middle of the other two extra wide channels, but due to some overlap, this could still create noise to the other routers. To be tested.
+
+Except for the channels, this is the same as the first "indoor" profile.
 
 Wifi channels:
 
-* 2.4 GHz: channel 9 (HT20), used for AP
+* 2.4 GHz: channel 7 (HT20), used for AP
 * 5 GHz: channel 52 (VHT80), used for AP
 
 ### lime-community configuration
@@ -203,7 +208,7 @@ As the "Common to all profiles" one but also with:
 
 ```
 config lime-wifi-band '2ghz' 
-	option channel '9'
+	option channel '7'
 	list modes 'ap'	
 	list modes 'apname'
 	option distance '100'
