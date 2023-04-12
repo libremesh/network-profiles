@@ -161,7 +161,7 @@ The same as the gateway profile (in this case, to have a port configured as WAN 
 Wifi ports:
 
 * 2.4 GHz: channel 13 (HT20), used for AP
-* 5 GHz: channel 48, used for AP
+* 5 GHz: channel 100 (VHT80), used for AP
 
 ### lime-community configuration
 
@@ -175,7 +175,8 @@ config lime-wifi-band '2ghz'
 	option distance '100'
 
 config lime-wifi-band '5ghz'
-	option channel '48'
+	option channel '100'
+    option htmode 'VHT80'
 	list modes 'ap'	
 	list modes 'apname'
 	option distance '100'
@@ -194,7 +195,7 @@ The same as the first "indoor" profile.
 Wifi channels:
 
 * 2.4 GHz: channel 9 (HT20), used for AP
-* 5 GHz: channel 48, used for AP
+* 5 GHz: channel 52 (VHT80), used for AP
 
 ### lime-community configuration
 
@@ -208,7 +209,8 @@ config lime-wifi-band '2ghz'
 	option distance '100'
 
 config lime-wifi-band '5ghz'
-	option channel '48'
+	option channel '52'
+    option htmode 'VHT80'
 	list modes 'ap'	
 	list modes 'apname'
 	option distance '100'
