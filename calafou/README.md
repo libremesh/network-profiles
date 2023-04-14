@@ -235,11 +235,25 @@ So a possible future profile is a lightweight one for fitting in routers with sm
 
 Follow the instructions on https://libremesh.org/development.html for installing the compilation dependencies and downloading the sources of OpenWrt. Make sure you take a modern version of OpenWrt: at least the 22.03 version.
 
-In the `feeds.conf` file, do not specify any branch or tag for the `libremesh` (`lime-packages`) feed, so that the latest code is used.
+In the `feeds.conf` file, **do not specify any branch or tag** for the `libremesh` (`lime-packages`) feed, so that the latest code is used.
 
-Stop before launching `make menuconfig`. Instead, copy the needed `DOTconfig` file you find in this repository as `.config` file. This file already contains the minimum (maybe not strictly minimum...) configuration for getting the desired firmware. The same can also be done manually via `make menuconfig`.
+Stop following the guide **before** launching `make menuconfig`.
 
-After copying the `.config`, run `make defconfig` and then `make`. The first compilation will take a 1-4 hours, require internet connection, and occupy up to 10 GB. The following times you compile the same target, will take less time.
+Instead, copy one of the `DOTconfig-blahblah` files you find in this repository as `.config` file. This file already contains the minimum (maybe not strictly minimum...) configuration for getting the desired firmware for a specific router model. For getting the minimum configuration for compiling the "indoor" profile for a Xiaomi MiRouter 4A gigabit edition router, you can copy the compilation configuration file like this:
+
+```
+cp network-profiles/calafou/indoor/DOTconfig-xiaomi_mirouter_4A_gigabit_edition openwrt/.config
+```
+
+If you don't want to use the provided `.config` file, you can manually run `make menuconfig` and select the needed options setting them as `<*>` (e.g. the target, subtarget, model of router, network-profile in the LibreMesh menu...) one by one. Clearly, save when exiting.
+
+After copying the `.config`, run `make defconfig`.
+
+The `make defconfig` will complete your `.config` file with all the other default options.
+
+If you then want to select something more (e.g. adding the `tc` package), simply run `make menuconfig` and add the desired software setting it as `<*>`. Save when exiting.
+
+When you are happy with the selected software, run `make` or `make -j $(nproc)` for a bit faster compilation. The first compilation will take a 1-4 hours, requires internet connection, and needs up to 10 GB. The following times you compile the same target, will take less time.
 
 # Connecting to the web interface of a router
 
