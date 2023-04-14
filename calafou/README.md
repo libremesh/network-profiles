@@ -106,7 +106,7 @@ Additional (maybe) useful packages:
 * prometheus-node-exporter-lua-location-latlon
 * iperf3
 
-## Gateway
+## outdoor_gateway
 
 Has the PoE port configured as a WAN, to be connected to the fiber modem.
 
@@ -142,13 +142,13 @@ As the "Common to all profiles" list but also with:
 * lime-hwd-openwrt-wan (which pulls also lime-proto-wan as a dependency)
 * babeld-auto-gw-mode
 
-## Outdoor
+## outdoor_nongateway
 
-Identical to the gateway profile, but the WAN is not configured as a WAN (it is used as a LAN). This is so because we want to use that port for connecting to other LibreMesh nodes, instead of having to run a second cable from the outdoor router to the indoor one.
+Identical to the outdoor_gateway profile, but the WAN is not configured as a WAN (it is used as a LAN). This is so because we want to use that port for connecting to other LibreMesh nodes, instead of having to run a second cable from the outdoor router to the indoor one.
 
 ### lime-community configuration
 
-Identical to the gateway profile.
+Identical to the outdoor_gateway profile.
 
 ### Packages
 
@@ -156,7 +156,7 @@ Identical to the list in "Common to all profiles".
 
 ## Indoor
 
-The same as the gateway profile (in this case, to have a port configured as WAN can be useful in case there is some problem with the internet access and someone decides to plug in a cellular data gateway).
+The same as the outdoor_gateway profile (in this case, to have a port configured as WAN can be useful in case there is some problem with the internet access and someone decides to plug in a cellular data gateway).
 
 Wifi ports:
 
@@ -185,13 +185,13 @@ config lime-wifi-band '5ghz'
 
 ### Packages
 
-Identical to the list for the gateway profile.
+Identical to the list for the outdoor_gateway profile.
 
 ## Indoor2
 
 This is for rooms in which two router are placed, for not having both routers on the same channel.
 
-The channel for 5 GHz is not overlapping with "indoor" or outdoor and gateway profiles.
+The channel for 5 GHz is not overlapping with "indoor" or outdoor_nongateway and outdoor_gateway profiles.
 
 But channel 7 for 2.4 GHz, even is non-wide (only HT20), is partially overlapping with the wide (HT40) channels used in the other profiles. It is right in the middle of the other two extra wide channels, but due to some overlap, this could still create noise to the other routers. To be tested.
 
@@ -223,7 +223,7 @@ config lime-wifi-band '5ghz'
 
 ### Packages
 
-Identical to the list for the gateway profile.
+Identical to the list for the outdoor_gateway profile.
 
 ## Future profiles
 
