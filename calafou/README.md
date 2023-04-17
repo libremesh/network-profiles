@@ -160,7 +160,7 @@ The same as the outdoor_gateway profile (in this case, to have a port configured
 
 Wifi ports:
 
-* 2.4 GHz: channel 13 (HT40, this will result as a wide channel centered around channel 11), used for AP
+* 2.4 GHz: channel 13 (HT20), used for AP
 * 5 GHz: channel 100 (VHT80), used for AP
 
 ### lime-community configuration
@@ -170,7 +170,7 @@ As the "Common to all profiles" one but also with:
 ```
 config lime-wifi-band '2ghz' 
 	option channel '13'
-    option htmode 'HT40'
+    option htmode 'HT20'
 	list modes 'ap'	
 	list modes 'apname'
 	option distance '100'
@@ -193,13 +193,15 @@ This is for rooms in which two router are placed, for not having both routers on
 
 The channel for 5 GHz is not overlapping with "indoor" or outdoor_nongateway and outdoor_gateway profiles.
 
-But channel 7 for 2.4 GHz, even is non-wide (only HT20), is partially overlapping with the wide (HT40) channels used in the other profiles. It is right in the middle of the other two extra wide channels, but due to some overlap, this could still create noise to the other routers. To be tested.
+Channel 10 for 2.4 GHz is going to collide a bit with the wide (HT40) channel used in the outdoor profiles and with the narrow (HT20) one used in the indoor profile. We will see if this is a problem.
 
 Except for the channels, this is the same as the first "indoor" profile.
 
+The channels used in this profile, will be the same employed for the OpenWISP-powered testbed that will be used during the BattleMesh v15 event.
+
 Wifi channels:
 
-* 2.4 GHz: channel 7 (HT20), used for AP
+* 2.4 GHz: channel 10 (HT20), used for AP
 * 5 GHz: channel 52 (VHT80), used for AP
 
 ### lime-community configuration
@@ -208,7 +210,7 @@ As the "Common to all profiles" one but also with:
 
 ```
 config lime-wifi-band '2ghz' 
-	option channel '7'
+	option channel '10'
 	list modes 'ap'	
 	list modes 'apname'
 	option distance '100'
