@@ -16,7 +16,6 @@ config lime wifi
 
 config lime-wifi-band '2ghz' 
 	option channel '13'
-	option htmode 'HT40'
 	list modes 'ap'	
 	list modes 'apname'
 	option distance '100'
