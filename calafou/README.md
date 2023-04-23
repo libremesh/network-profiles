@@ -44,7 +44,7 @@ The IPs dynamically assigned by the DHCP of the nodes to the clients connecting 
 Range that starts at 10.1.10.2, ends at 10.1.127.254 ( (127 - 10) * 256 + (254 - 2) + 1 = 30205 ).
 
 So, the IPv4 network is divided in 3 spaces:
-10.1.0.1--10.1.10.1 - available for static IPs, for example servers
+10.1.0.2--10.1.10.1 - available for static IPs, for example servers
 10.1.10.2--10.1.127.254 - clients connecting to the network
 10.1.128.1--10.1.255.254 - LibreMesh nodes
 
@@ -261,7 +261,7 @@ When you are happy with the selected software, run `make` or `make -j $(nproc)` 
 
 Just connect to the wifi Access Point (AP) of a router and open http://thisnode.info
 
-If it does not work, open http://10.1.0.1
+If it does not work, check if you are using the network's DNS server or a custom one: thisnode.info is managed by the nodes themselves, so you need to use them as DNS resolver.
 
 In both cases, the closest router will answer.
 
@@ -269,16 +269,10 @@ If you want to make sure you are connecting to a specific router, connect to the
 
 # Connecting via SSH the router
 
-As for connecting to the web interface, you can use the thisnode.info or the 10.1.0.1 addresses:
+As for connecting to the web interface, you can use the thisnode.info:
 
 ```
 ssh root@thisnode.info
-```
-
-or
-
-```
-ssh root@10.1.0.1
 ```
 
 Again, the closest node will answer. If you want to connect to a specific node, connect to its specific AP interface which looks similar to `Calafou/LiMe-000e40`.
