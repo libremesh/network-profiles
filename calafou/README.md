@@ -1,3 +1,12 @@
+# Environment
+
+Calafou has many areas to be covered, we focused on the zones needed by the Wireless Battlemesh v15.
+
+Here you can see a map of the routers' positions (the underlying drawing can be found on https://agentliquide.com/):
+
+![Calafou map of network](CALAFOU-B-network_map.jpg)
+
+
 # Hardware
 
 ## Outdoor
