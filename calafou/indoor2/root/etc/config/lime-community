@@ -27,3 +27,16 @@ config lime-wifi-band '5ghz'
 	list modes 'apname'
 	option distance '100'
 
+config net lan1onlymesh
+	option linux_name 'lan1'
+	#list protocols lan # we want all the protocols but LAN, as this ethernet port will be used for meshing, not for clients access
+	list protocols anygw
+	list protocols batadv:%N1
+	list protocols babeld:17
+
+config net lan2onlymesh
+	option linux_name 'lan2'
+	#list protocols lan # we want all the protocols but LAN, as this ethernet port will be used for meshing, not for clients access
+	list protocols anygw
+	list protocols batadv:%N1
+	list protocols babeld:17
