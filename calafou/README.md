@@ -157,11 +157,11 @@ Identical to the outdoor_gateway profile, but the WAN is not configured as a WAN
 
 ### lime-community configuration
 
-Identical to the outdoor_gateway profile.
+Identical to the outdoor_gateway profile, but both ethernet interfaces are specifically configured for not being included in the br-lan bridge, as when an ethernet port is used for meshing with Batman-adv seems that would cause loops.
 
 ### Packages
 
-Identical to the list in "Common to all profiles".
+Identical to the list in "Common to all profiles" (so it does have the WAN port configured as a normal LAN port, missing the lime-hwd-openwrt-wan package).
 
 ## Indoor
 
@@ -174,7 +174,9 @@ Wifi ports:
 
 ### lime-community configuration
 
-As the "Common to all profiles" one but also with:
+As the "Common to all profiles", but the first ethernet interface labelled as LAN or internally as "lan1" is specifically configured for not being included in the br-lan bridge, as when an ethernet port is used for meshing with Batman-adv seems that would cause loops (the WAN is left as WAN and the second LAN is left as LAN).
+
+And also with:
 
 ```
 config lime-wifi-band '2ghz' 
@@ -215,7 +217,9 @@ Wifi channels:
 
 ### lime-community configuration
 
-As the "Common to all profiles" one but also with:
+As the "Common to all profiles", but both ethernet interfaces labelled as LAN are specifically configured for not being included in the br-lan bridge, as when an ethernet port is used for meshing with Batman-adv seems that would cause loops (the WAN is left as WAN).
+
+And also with:
 
 ```
 config lime-wifi-band '2ghz' 
