@@ -192,7 +192,13 @@ config lime-wifi-band '5ghz'
 	list modes 'ap'	
 	list modes 'apname'
 	option distance '100'
+
+config generic_uci_config 
+	list uci_set 'wireless.radio0.beacon_int=50'
+	list uci_set 'wireless.radio1.beacon_int=50'
 ```
+
+The `beacon_int` parameter has been edited according to the observation by Pedro with the Xiaomi Mi Router 4A Gigabit Edition reported here: https://forum.openwrt.org/t/proposal-to-change-the-default-wifi-beacon-interval-from-100-ms-to-50-ms/158508
 
 ### Packages
 
@@ -234,7 +240,13 @@ config lime-wifi-band '5ghz'
 	list modes 'ap'	
 	list modes 'apname'
 	option distance '100'
+
+config generic_uci_config 
+	list uci_set 'wireless.radio0.beacon_int=50'
+	list uci_set 'wireless.radio1.beacon_int=50'
 ```
+
+The `beacon_int` parameter has been edited according to the observation by Pedro with the Xiaomi Mi Router 4A Gigabit Edition reported here: https://forum.openwrt.org/t/proposal-to-change-the-default-wifi-beacon-interval-from-100-ms-to-50-ms/158508
 
 ### Packages
 
