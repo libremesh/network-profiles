@@ -41,7 +41,7 @@ config net lan2onlymesh
 	list protocols batadv:%N1
 	list protocols babeld:17
 
-config generic_uci_config 
+config generic_uci_config beacon_int
 	list uci_set 'wireless.radio0.beacon_int=50'
 	list uci_set 'wireless.radio1.beacon_int=50'
 
