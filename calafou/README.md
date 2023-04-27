@@ -231,10 +231,19 @@ config lime-wifi-band '5ghz'
 	list modes 'apname'
 	option distance '100'
 
+config net lan1onlymesh
+	option linux_name 'lan1'
+	#list protocols lan # we want all the protocols but LAN, as this ethernet port will be used for meshing, not for clients access
+	list protocols anygw
+	list protocols batadv:%N1
+	list protocols babeld:17
+
 config generic_uci_config 
 	list uci_set 'wireless.radio0.beacon_int=50'
 	list uci_set 'wireless.radio1.beacon_int=50'
 ```
+
+The `lan1onlymesh` configuration is needed for avoiding loops (somehow, everything works anyway, but better to avoid the possibility of having loops), as when an interface is used for meshing with BATMAN-adv is better that that interface is not included in the `br-lan` LAN ports bridge. This means that a client connecting directly to that port will not receive an IP, and this port should be used only for connecting to other LibreMesh nodes.
 
 The `beacon_int` parameter has been edited according to the observation by Pedro with the Xiaomi Mi Router 4A Gigabit Edition reported here: https://forum.openwrt.org/t/proposal-to-change-the-default-wifi-beacon-interval-from-100-ms-to-50-ms/158508
 
@@ -279,10 +288,26 @@ config lime-wifi-band '5ghz'
 	list modes 'apname'
 	option distance '100'
 
+config net lan1onlymesh
+	option linux_name 'lan1'
+	#list protocols lan # we want all the protocols but LAN, as this ethernet port will be used for meshing, not for clients access
+	list protocols anygw
+	list protocols batadv:%N1
+	list protocols babeld:17
+
+config net lan2onlymesh
+	option linux_name 'lan2'
+	#list protocols lan # we want all the protocols but LAN, as this ethernet port will be used for meshing, not for clients access
+	list protocols anygw
+	list protocols batadv:%N1
+	list protocols babeld:17
+
 config generic_uci_config 
 	list uci_set 'wireless.radio0.beacon_int=50'
 	list uci_set 'wireless.radio1.beacon_int=50'
 ```
+
+The `lan1onlymesh` configuration is needed for avoiding loops (somehow, everything works anyway, but better to avoid the possibility of having loops), as when an interface is used for meshing with BATMAN-adv is better that that interface is not included in the `br-lan` LAN ports bridge. This means that a client connecting directly to that port will not receive an IP, and this port should be used only for connecting to other LibreMesh nodes.
 
 The `beacon_int` parameter has been edited according to the observation by Pedro with the Xiaomi Mi Router 4A Gigabit Edition reported here: https://forum.openwrt.org/t/proposal-to-change-the-default-wifi-beacon-interval-from-100-ms-to-50-ms/158508
 
