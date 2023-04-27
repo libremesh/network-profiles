@@ -1,4 +1,4 @@
-# Environment
+# Environment and physical connections
 
 Calafou has many areas to be covered, we focused on the zones needed by the Wireless Battlemesh v15.
 
@@ -6,6 +6,44 @@ Here you can see a map of the routers' positions (the underlying drawing can be 
 
 ![Calafou map of network](CALAFOU-B-network_map.jpg)
 
+## Router A
+
+Hardware: Plasma Cloud PA1200
+Profile: outdoor_gateway
+First ethernet: WAN connected to fiber modem (wan)
+Second ethernet: unused, configured as LAN for cabled clients connections (lan1)
+
+## Router B
+
+Hardware: Plasma Cloud PA1200
+Profile: outdoor_nongateway
+First ethernet: mesh, connected to PoE and to Router C (lan1, name to be confirmed)
+Second ethernet: mesh, connected to Router D (lan2, name to be confirmed)
+
+
+## Router C
+
+Hardware: Xiaomi Mi Router 4A Gigabit Edition
+Profile: indoor
+First ethernet: unused, configured as WAN (wan)
+Second ethernet: mesh, connected to Router B (lan1)
+Third ethernet: unused, configured as LAN for cabled clients connections (lan2)
+
+## Router D
+
+Hardware: Xiaomi Mi Router 4A Gigabit Edition
+Profile: indoor2
+First ethernet: unused, configured as WAN (wan)
+Second ethernet: mesh, connected to Router B (lan1)
+Third ethernet: mesh, connected to Router E (lan2)
+
+## Router E
+
+Hardware: Xiaomi Mi Router 4A Gigabit Edition
+Profile: indoor
+First ethernet: unused, configured as WAN (wan)
+Second ethernet: mesh, connected to Router D (lan1)
+Third ethernet: unused, configured as LAN for cabled clients connections (lan2)
 
 # Hardware
 
