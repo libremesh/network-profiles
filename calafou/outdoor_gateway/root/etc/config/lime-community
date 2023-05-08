@@ -15,7 +15,7 @@ config lime wifi
 	option ieee80211s_mesh_id 'libremesh'
 
 config lime-wifi-band '2ghz' 
-	option channel '3'
+	option channel '1'
 	option htmode 'HT40'
 	list modes 'ap'	
 	list modes 'apname'
