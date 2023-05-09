@@ -42,6 +42,9 @@ config net lan2onlymesh
 	list protocols batadv:%N1
 	list protocols babeld:17
 
+config generic_uci_config prometheus
+	list uci_set "prometheus-node-exporter-lua.main.listen_interface=lan"
+
 config run_asset prometheus_enable
 	option asset 'community/prometheus_enable'
 	option when 'ATFIRSTBOOT'
