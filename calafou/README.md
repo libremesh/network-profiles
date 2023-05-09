@@ -9,49 +9,77 @@ Here you can see a map of the routers' positions (the underlying drawing can be 
 ## Router A
 
 Hardware: Plasma Cloud PA1200
+
 Profile: outdoor_gateway
+
 First ethernet: WAN connected to fiber modem (wan)
+
 Second ethernet: unused, configured as LAN for cabled clients connections (lan1)
+
 IP: 10.1.142.64
+
 MAC: 4c:13:65:00:0e:40
 
 ## Router B
 
 Hardware: Plasma Cloud PA1200
+
 Profile: outdoor_nongateway
+
 First ethernet: mesh, connected to PoE and to Router C (lan1, name to be confirmed)
+
 Second ethernet: mesh, connected to Router D (lan2, name to be confirmed)
+
 IP: 10.1.141.240
+
 MAC: 4c:13:65:00:0d:f0
 
 ## Router C
 
 Hardware: Xiaomi Mi Router 4A Gigabit Edition
+
 Profile: indoor
+
 First ethernet: unused, configured as WAN (wan)
+
 Second ethernet: mesh, connected to Router B (lan1)
+
 Third ethernet: unused, configured as LAN for cabled clients connections (lan2)
+
 IP: 10.1.203.237
+
 MAC: 64:64:4a:db:cb:ed
 
 ## Router D
 
 Hardware: Xiaomi Mi Router 4A Gigabit Edition
+
 Profile: indoor2
+
 First ethernet: unused, configured as WAN (wan)
+
 Second ethernet: mesh, connected to Router B (lan1)
+
 Third ethernet: mesh, connected to Router E (lan2)
+
 IPv4: 10.1.206.105
+
 MAC: 64:64:4a:db:ce:69
 
 ## Router E
 
 Hardware: Xiaomi Mi Router 4A Gigabit Edition
+
 Profile: indoor
+
 First ethernet: unused, configured as WAN (wan)
+
 Second ethernet: mesh, connected to Router D (lan1)
+
 Third ethernet: unused, configured as LAN for cabled clients connections (lan2)
+
 IP: 10.1.208.101
+
 MAC: 64:64:4a:db:d0:65
 
 # Hardware
