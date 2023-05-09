@@ -6,7 +6,7 @@ PROFILE_DEPENDS:=+deferable-reboot +safe-reboot +wpad-openssl +shared-state-netw
 	+lime-proto-babeld \
 	+lime-proto-batadv \
 	+lime-proto-anygw \
-	+lime-hwd-openwrt-wan \
+	+lime-proto-wan \
 	+shared-state \
 	+hotplug-initd-services \
 	+shared-state-babeld_hosts \
