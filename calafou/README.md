@@ -12,7 +12,7 @@ Hardware: Plasma Cloud PA1200
 
 Profile: outdoor_gateway
 
-First ethernet: WAN connected to fiber modem (wan)
+First ethernet: WAN connected to fiber modem (wan) due to a malfunctioning in the upstream fiber router, this port is statically set to 100 Mbps speed instead of 1000 Mbps
 
 Second ethernet: unused, configured as LAN for cabled clients connections (lan1)
 
@@ -193,6 +193,8 @@ Additional (maybe) useful packages:
 ## outdoor_gateway
 
 Has the PoE port configured as a WAN, to be connected to the fiber modem.
+
+Due to a malfunctioning in the upstream fiber gateway, the WAN port has been set to a limited speed of 100 Mbps, as the 1000 Mbps speed leads to a no-carrier ethernet port status, and the auto-negotiation lead to a very unstable situation, with latencies ranging from 1 to 2000 ms or the cable was going in a no-carrier state.
 
 Wifi ports:
 
