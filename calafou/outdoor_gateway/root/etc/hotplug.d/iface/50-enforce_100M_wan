@@ -1,0 +1,6 @@
+[ ifup = "$ACTION" ] && {
+	[ wan = "$INTERFACE" -a -n "$DEVICE"] && {
+		ethtool -s "$DEVICE" autoneg off speed 100 duplex full
+	}
+}
+
