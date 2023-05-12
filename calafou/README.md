@@ -56,7 +56,7 @@ Hardware: Xiaomi Mi Router 4A Gigabit Edition
 
 Profile: indoor2
 
-First ethernet: unused, configured as LAN (lan??), during Wireless BattleMesh v15 it has been used for connecting the OpenWisp-based testbed
+First ethernet: unused, configured as LAN (internally it is named wan anyway), during Wireless BattleMesh v15 it has been used for connecting the OpenWisp-based testbed
 
 Second ethernet: mesh, connected to Router B (lan1)
 
