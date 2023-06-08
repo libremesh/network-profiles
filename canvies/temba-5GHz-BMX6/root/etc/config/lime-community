@@ -1,0 +1,19 @@
+config lime system
+	option hostname 'BCNCanViesRd1'
+
+config lime network
+	option main_ipv4_address '10.1.10.33/27'
+	list protocols bmx6:0
+
+config lime wifi		
+	option country 'TZ'	
+	option ap_ssid 'guifi.net/BCNCanViesRd1'
+	option ieee80211s_mesh_id 'qMp'
+
+config lime-wifi-band '5ghz'
+	option txpower '22'
+	option channel '112'
+	option htmode 'HT40'
+	list modes 'ieee80211s'
+	option distance '5000'
+
