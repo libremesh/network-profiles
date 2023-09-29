@@ -9,20 +9,16 @@ config lime network
 
 config lime wifi		
 	option country 'ES'	
-	option ap_ssid 'HM23-to-be-configured'
-	option apname_ssid 'HM23/%H-to-be-configured'
+	option ap_ssid 'HM23'
+	option apname_ssid 'HM23/%H'
 	option ieee80211s_mesh_id 'libremesh'
 
 config lime-wifi-band '2ghz' 
 	option channel '13'
-	list modes 'ap'	
-	list modes 'apname'
 	option distance '100'
 
 config lime-wifi-band '5ghz'
 	option channel '100'
-	list modes 'ap'	
-	list modes 'apname'
 	option distance '100'
 
 config net lan1onlymesh
