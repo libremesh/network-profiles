@@ -1,0 +1,37 @@
+config lime system
+	option deferable_reboot_uptime_s '654321' # reboot every 7.5 days 
+
+config lime network
+	option main_ipv4_address '10.1.128.0/16/17'
+	option anygw_dhcp_start '2562'
+	option anygw_dhcp_limit '30205'
+	option batadv_orig_interval '5000'
+
+config lime wifi		
+	option country 'ES'	
+	option ap_ssid 'HM23-to-be-configured'
+	option apname_ssid 'HM23/%H-to-be-configured'
+	option ieee80211s_mesh_id 'libremesh'
+
+config lime-wifi-band '2ghz' 
+	option channel '13'
+	list modes 'ap'	
+	list modes 'apname'
+	option distance '100'
+
+config lime-wifi-band '5ghz'
+	option channel '100'
+	list modes 'ap'	
+	list modes 'apname'
+	option distance '100'
+
+config net lan1onlymesh
+	option linux_name 'lan1'
+	#list protocols lan # we want all the protocols but LAN, as this ethernet port will be used for meshing, not for clients access
+	list protocols anygw
+	list protocols batadv:%N1
+	list protocols babeld:17
+
+config generic_uci_config beacon_int
+	list uci_set 'wireless.radio0.beacon_int=50'
+	list uci_set 'wireless.radio1.beacon_int=50'
