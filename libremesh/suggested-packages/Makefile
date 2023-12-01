@@ -12,6 +12,7 @@ PROFILE_DEPENDS:=+lime-docs-minimal            \
 +shared-state-bat_hosts                        \
 +shared-state-nodes_and_links                  \
 +babeld-auto-gw-mode                           \
++batctl-default                                \
 +check-date-http                               \
 +lime-docs                                     \
 +lime-hwd-ground-routing                       \
