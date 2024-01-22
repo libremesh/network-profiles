@@ -1,0 +1,29 @@
+config lime system
+	option deferable_reboot_uptime_s '654321' # reboot every 7.5 days 
+
+config lime wifi		
+	option country 'KR'	
+	option ap_ssid 'PSP'
+	option apname_ssid 'PSP/%H'
+	option ieee80211s_mesh_id 'LiMe'
+
+config lime-wifi-band '2ghz' 
+	option channel '13'
+	option htmode 'HT40'
+	list modes 'ap'	
+	list modes 'apname'
+	list modes 'ieee80211s'
+	option distance '300'
+
+config lime-wifi-band '5ghz'
+	option channel '157'
+	option htmode 'VHT80'
+	list modes 'ieee80211s'
+	option distance '1000'
+
+config net lan1onlymesh
+	option linux_name 'lan1'
+	#list protocols lan # we want all the protocols but LAN, as this ethernet port will be used for meshing, not for clients access
+	list protocols anygw
+	list protocols batadv:%N1
+	list protocols babeld:17
