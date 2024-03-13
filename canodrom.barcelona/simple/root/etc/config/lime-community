@@ -1,0 +1,10 @@
+config lime system
+
+config lime network
+
+config lime wifi		
+	option country 'ES'	
+	option ap_ssid 'Canodrom_experimental-to-be-configured'
+	option apname_ssid 'Canodrom_experimental/%H-to-be-configured'
+	option ieee80211s_mesh_id 'libremesh'
+
