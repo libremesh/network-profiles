@@ -4,7 +4,7 @@ config lime network
 
 config lime wifi		
 	option country 'ES'	
-	option ap_ssid 'Canodrom_experimental-to-be-configured'
-	option apname_ssid 'Canodrom_experimental/%H-to-be-configured'
+	option ap_ssid 'Canodrom_experimental-RESET'
+	option apname_ssid 'Canodrom_exp./%H'
 	option ieee80211s_mesh_id 'libremesh'
 
