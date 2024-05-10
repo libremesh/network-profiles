@@ -2,6 +2,7 @@ config lime network
 	option main_ipv4_address '10.1.128.0/16/17'
 	option anygw_dhcp_start '2562'
 	option anygw_dhcp_limit '30205'
+	option batadv_orig_interval '5000'
 
 config lime wifi		
 	option country 'ES'	
