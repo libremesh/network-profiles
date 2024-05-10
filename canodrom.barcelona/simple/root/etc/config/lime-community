@@ -15,3 +15,14 @@ config lime-wifi-band '5ghz'
 config run_asset root_password
 	option asset 'community/root_password'
 	option when 'ATFIRSTBOOT'
+
+config generic_uci_config dropbear
+	list uci_set "dropbear.@dropbear[0].RootPasswordAuth=off"
+
+config copy_asset authorized_keys
+	option asset 'community/authorized_keys'
+	option dst '/etc/dropbear'
+
+config run_asset fix_authorized_keys_permissions
+	option asset 'community/fix_authorized_keys_permissions'
+	option when 'ATCONFIG'
