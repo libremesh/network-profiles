@@ -1,0 +1,6 @@
+config lime system
+        option hostname 'gateway_device7'
+
+config generic_uci_config location_coord
+	list uci_set 'location.settings.node_latitude=41.4274375'
+	list uci_set 'location.settings.node_longitude=2.1827042'
