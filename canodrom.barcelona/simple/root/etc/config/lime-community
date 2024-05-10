@@ -12,3 +12,6 @@ config lime-wifi-band '5ghz'
 	option channel '48'
 	option distance '500'
 
+config run_asset root_password
+	option asset 'community/root_password'
+	option when 'ATFIRSTBOOT'
