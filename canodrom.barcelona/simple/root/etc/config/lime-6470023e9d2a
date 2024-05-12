@@ -1,0 +1,9 @@
+config lime system
+        option hostname 'device26'
+
+config lime network
+	option main_ipv4_address '10.0.0.26/24'
+
+config generic_uci_config location_coord
+	list uci_set 'location.settings.node_latitude=41.4274227'
+	list uci_set 'location.settings.node_longitude=2.1831934'
