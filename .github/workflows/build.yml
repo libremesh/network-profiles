@@ -12,9 +12,9 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Build packages
-        uses: openwrt/gh-action-sdk@v5
+        uses: openwrt/gh-action-sdk@v7
         env:
-          ARCH: "x86_64"
+          ARCH: "x86_64-openwrt-23.05"
           EXTRA_FEEDS: "src-git|libremesh|https://github.com/libremesh/lime-packages.git"
           FEEDNAME: "profiles"
           IGNORE_ERRORS: "n m y"
