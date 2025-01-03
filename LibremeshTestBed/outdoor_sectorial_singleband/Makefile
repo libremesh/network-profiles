@@ -2,7 +2,7 @@ include $(TOPDIR)/rules.mk
 
 PROFILE_DESCRIPTION:=Mesh and AP for Test Bed LibreMesh 2024 indoor omnidirectional dual band nodes
 PROFILE_DEPENDS:=+lime-docs-minimal            \
-+deferable-reboot                              \
++deferrable-reboot                              \
 +lime-debug                                    \
 +lime-app                                      \
 +lime-hwd-openwrt-wan                          \

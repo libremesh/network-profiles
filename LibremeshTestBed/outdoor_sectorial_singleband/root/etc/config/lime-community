@@ -1,5 +1,5 @@
 config lime system
-	option deferable_reboot_uptime_s '654321' # reboot every 7.5 days 
+	option deferrable_reboot_uptime_s '654321' # reboot every 7.5 days 
 
 config lime wifi		
 	option country 'KR'	

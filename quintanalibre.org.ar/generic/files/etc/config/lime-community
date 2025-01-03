@@ -1,7 +1,7 @@
 config lime system
 	option hostname 'ql-%M4%M5%M6'
 	option domain 'red.quintana.libre.org.ar'
-	option deferable_reboot_uptime_s '10800'
+	option deferrable_reboot_uptime_s '10800'
 
 config lime network
 	option main_ipv4_address '10.5.0.0/21'

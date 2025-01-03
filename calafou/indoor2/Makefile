@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PROFILE_DESCRIPTION:=Encryptable mesh and AP for Calafou indoor nodes, second node in rooms with two nodes, 5 GHz channel clashing with the outdoor and gateway nodes
-PROFILE_DEPENDS:=+deferable-reboot +safe-reboot +shared-state-network_nodes +shared-state-dnsmasq_servers \
+PROFILE_DEPENDS:=+deferrable-reboot +safe-reboot +shared-state-network_nodes +shared-state-dnsmasq_servers \
 	+lime-docs \
 	+lime-proto-babeld \
 	+lime-proto-batadv \

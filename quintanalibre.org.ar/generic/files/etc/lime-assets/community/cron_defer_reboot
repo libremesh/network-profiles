@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# Si anda llegar "a internet" extendemos el plazo de "deferable reboot".
+# Si anda llegar "a internet" extendemos el plazo de "deferrable reboot".
 # Es el último recurso para no quedar desconectados del nodo si queda en un estado inaccesible.
 
 internet_gw_ip=8.8.8.8 #FIXME
@@ -11,7 +11,7 @@ unique_append()
 }
 
 unique_append \
-	"*/10 * * * * ((if ping -c 10 -W 10 $internet_gw_ip &> /dev/null; then awk '{print \$1 + 800}' /proc/uptime > /tmp/deferable-reboot.defer ; fi )&) "\
+	"*/10 * * * * ((if ping -c 10 -W 10 $internet_gw_ip &> /dev/null; then awk '{print \$1 + 800}' /proc/uptime > /tmp/deferrable-reboot.defer ; fi )&) "\
 	/etc/crontabs/root
 
 

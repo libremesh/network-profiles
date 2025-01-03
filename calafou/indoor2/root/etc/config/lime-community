@@ -1,5 +1,5 @@
 config lime system
-	option deferable_reboot_uptime_s '654321' # reboot every 7.5 days 
+	option deferrable_reboot_uptime_s '654321' # reboot every 7.5 days 
 
 config lime network
 	option main_ipv4_address '10.1.128.0/16/17'

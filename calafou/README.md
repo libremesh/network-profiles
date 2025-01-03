@@ -103,10 +103,10 @@ A large selection of packages, including wpad-openssl, is used, resulting in lar
 ### lime-community configuration
 ```
 config lime system
-	option deferable_reboot_uptime_s '654321' # reboot every 7.5 days 
+	option deferrable_reboot_uptime_s '654321' # reboot every 7.5 days 
 ```
 
-The deferable-reboot package is installed, and will reboot every node once per week. There should be no need for that, but just in case. If you don't want it to reboot you router, just set an exhaggeratedly large number here.
+The deferrable-reboot package is installed, and will reboot every node once per week. There should be no need for that, but just in case. If you don't want it to reboot you router, just set an exhaggeratedly large number here.
 
 ```
 config lime network
@@ -176,7 +176,7 @@ Packages suggested on the [LibreMesh website](https://libremesh.org/development.
 
 Additional (maybe) useful packages:
 
-* deferable-reboot 
+* deferrable-reboot 
 * safe-reboot
 * wpad-openssl
 * shared-state-network_nodes
