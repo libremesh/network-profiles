@@ -1,0 +1,3 @@
+config lime-wifi-band '2ghz'
+	list modes 'ap'
+	list modes 'apname'
