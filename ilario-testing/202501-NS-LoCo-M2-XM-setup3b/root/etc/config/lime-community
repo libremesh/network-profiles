@@ -1,0 +1,7 @@
+config lime wifi
+	list modes 'ieee80211s'
+
+config net
+	option linux_name 'eth0'
+	list protocols 'batadv:%N1'
+	list protocols 'babeld:17'

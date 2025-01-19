@@ -1,0 +1,1588 @@
+root@LiMe-3728a9:~# lime-report 
+
+### CMD echo hostname LiMe-3728a9
+
+hostname LiMe-3728a9
+
+### CMD date '+%Y-%m-%d %H:%M:%S'
+
+2025-01-17 21:56:37
+
+### CMD uptime
+
+ 21:56:37 up 10 min,  load average: 0.00, 0.08, 0.09
+
+### FILE /etc/board.json
+
+{
+	"model": {
+		"id": "ubnt,nanostation-loco-m",
+		"name": "Ubiquiti Nanostation Loco M (XM)"
+	},
+	"rssimon": {
+		"wlan0": {
+			"refresh": 200000,
+			"threshold": 1
+		}
+	},
+	"led": {
+		"rssilow": {
+			"name": "",
+			"sysfs": "red:link1",
+			"type": "rssi",
+			"iface": "wlan0",
+			"minq": "1",
+			"maxq": "100",
+			"offset": "0",
+			"factor": "1"
+		},
+		"rssimediumlow": {
+			"name": "",
+			"sysfs": "orange:link2",
+			"type": "rssi",
+			"iface": "wlan0",
+			"minq": "26",
+			"maxq": "100",
+			"offset": "0",
+			"factor": "1"
+		},
+		"rssimediumhigh": {
+			"name": "",
+			"sysfs": "green:link3",
+			"type": "rssi",
+			"iface": "wlan0",
+			"minq": "51",
+			"maxq": "100",
+			"offset": "0",
+			"factor": "1"
+		},
+		"rssihigh": {
+			"name": "",
+			"sysfs": "green:link4",
+			"type": "rssi",
+			"iface": "wlan0",
+			"minq": "76",
+			"maxq": "100",
+			"offset": "0",
+			"factor": "1"
+		}
+	},
+	"network": {
+		"lan": {
+			"device": "eth0",
+			"protocol": "static"
+		}
+	},
+	"system": {
+		"label_macaddr": "dc:9f:db:36:28:a9"
+	}
+}
+
+### FILE /proc/cpuinfo
+
+system type		: Atheros AR7241 rev 1
+machine			: Ubiquiti Nanostation Loco M (XM)
+processor		: 0
+cpu model		: MIPS 24Kc V7.4
+BogoMIPS		: 259.27
+wait instruction	: yes
+microsecond timers	: yes
+tlb_entries		: 16
+extra interrupt vector	: yes
+hardware watchpoint	: yes, count: 4, address/irw mask: [0x0ffc, 0x0ffc, 0x0ffb, 0x0ffb]
+isa			: mips1 mips2 mips32r1 mips32r2
+ASEs implemented	: mips16
+Options implemented	: tlb 4kex 4k_cache prefetch mcheck ejtag llsc dc_aliases perf_cntr_intr_bit perf mm_full
+shadow register sets	: 1
+kscratch registers	: 0
+package			: 0
+core			: 0
+VCED exceptions		: not available
+VCEI exceptions		: not available
+
+
+### FILE /etc/lime_release
+
+LIME_ID="LiMe"
+LIME_RELEASE="2024.1"
+LIME_CODENAME="2024.1 Fantastic Forwarder"
+LIME_BRANCH="ilario-staging-2024.1-boardjson"
+LIME_REVISION="9d14b01"
+LIME_DESCRIPTION="LiMe 2024.1 2024.1 Fantastic Forwarder (ilario-staging-2024.1-boardjson rev. 9d14b01 20250112_1850)"
+LIME_BUILDDATE="20250112_1850"
+
+
+### FILE /etc/openwrt_release
+
+DISTRIB_ID='LiMe'
+DISTRIB_RELEASE='2024.1'
+DISTRIB_REVISION='9d14b01'
+DISTRIB_TARGET='ath79/tiny'
+DISTRIB_ARCH='mips_24kc'
+DISTRIB_DESCRIPTION='LiMe 2024.1 2024.1 Fantastic Forwarder (ilario-staging-2024.1-boardjson rev. 9d14b01 20250112_1850)'
+DISTRIB_TAINTS='no-all'
+
+### FILE /etc/openwrt_version
+
+r24106-10cc5fcd00
+
+### FILE /etc/config/lime-node
+
+# Read the documentation in /docs directory
+# and on http://libremesh.org
+
+### System options
+
+config lime system
+
+
+### Network general option
+
+config lime network
+
+
+### WiFi general options
+
+config lime wifi
+
+### FILE /etc/config/lime-community
+
+# Read the documentation in /docs directory
+# and on http://libremesh.org
+
+### System options
+
+config lime system
+
+
+### Network general option
+
+config lime network
+
+
+### WiFi general options
+
+config lime wifi
+	list modes 'ieee80211s'
+
+config net
+	option linux_name 'eth0'
+	list protocols 'batadv:%N1'
+	list protocols 'babeld:17'
+
+### FILE /etc/config/lime-defaults
+
+# Beware this file is NOT supposed to be edited by the end user, modify /etc/config/lime-node instead
+# If the same option or list is defined both in /etc/config/lime-node and lime-community file, the former will prevail
+# Beware this file is not supposed to store interface specific configuration, like "config net eth0"
+
+# Read the documentation in /docs directory
+# and on http://libremesh.org
+
+config lime system
+	option hostname 'LiMe-%M4%M5%M6'
+	option domain 'thisnode.info'
+	option keep_on_upgrade 'libremesh dropbear minimum-essential /etc/sysupgrade.conf'
+	option deferrable_reboot_uptime_s '97200'
+	option deferrable_reboot_ping_target '4.2.2.2'
+	option firstbootwizard_configured false
+	option firstbootwizard_dismissed false
+
+config lime network
+	option primary_interface 'eth0'
+	option main_ipv4_address '10.%N1.0.0/16'
+	option anygw_dhcp_start '2'
+	option anygw_dhcp_limit '0'
+	option main_ipv6_address 'fd%N1:%N2%N3:%N4%N5::/64'
+	list protocols ieee80211s
+	list protocols lan
+	list protocols anygw
+	list protocols batadv:%N1
+	list protocols bmx6:13
+	list protocols olsr:14
+	list protocols olsr6:15
+	list protocols olsr2:16
+	list protocols babeld:17
+	list protocols bmx7:18
+	list resolvers 4.2.2.2   # b.resolvers.Level3.net
+	list resolvers 141.1.1.1 # cns1.cw.net
+	list resolvers 2001:470:20::2 # ordns.he.net
+	option bmx6_mtu '1500'
+	option bmx6_publish_ownip false
+	option bmx6_over_batman false
+	option bmx6_pref_gw none
+	option bmx6_wifi_rate_max 54000000
+	option bmx7_mtu '1500'
+	option bmx7_publish_ownip false
+	option bmx7_over_batman false
+	option bmx7_pref_gw none
+	option bmx7_wifi_rate_max 'auto'
+	option bmx7_enable_pki false
+	option batadv_orig_interval '2000'
+	option batadv_routing_algo 'BATMAN_IV'
+	option anygw_mac "aa:aa:aa:%N1:%N2:aa"
+	option use_odhcpd false
+
+config lime wifi
+	list modes 'ap'
+	list modes 'apname'
+	list modes 'ieee80211s'
+	option ap_ssid 'LibreMesh.org'
+	option apname_ssid 'LibreMesh.org/%H'
+	option adhoc_ssid 'LiMe'
+	option adhoc_bssid 'ca:fe:00:c0:ff:ee'
+	option ieee80211s_mesh_fwding '0'
+	option ieee80211s_mesh_id 'LiMe'
+	option unstuck_interval '10'
+	option unstuck_timeout '300'
+
+config lime-wifi-band '2ghz'
+	option channel '11'
+	option htmode 'HT20'
+	option distance '1000'
+	option adhoc_mcast_rate '24000'
+	option ieee80211s_mcast_rate '24000'
+
+config lime-wifi-band '5ghz'
+	list channel '48'
+	list channel '157'
+	option htmode 'HT40'
+	option distance '10000'
+	option adhoc_mcast_rate '6000'
+	option ieee80211s_mcast_rate '6000'
+
+config generic_uci_config uhttpd_https
+	list uci_set 'uhttpd.main.redirect_https=0'
+
+### FILE /etc/config/lime-autogen
+
+# DO NOT EDIT THIS FILE!. This is autogenerated by lime-config!
+# Instead please edit /etc/config/lime-node and/or /etc/config/lime-community files
+# and then regenerate this file executing lime-config
+
+
+config lime-wifi-band '5ghz'
+	option distance '10000'
+	list channel '48'
+	list channel '157'
+	option adhoc_mcast_rate '6000'
+	option htmode 'HT40'
+	option ieee80211s_mcast_rate '6000'
+
+config lime 'network'
+	option bmx6_publish_ownip 'false'
+	option bmx6_wifi_rate_max '54000000'
+	option main_ipv4_address '10.%N1.0.0/16'
+	list resolvers '4.2.2.2'
+	list resolvers '141.1.1.1'
+	list resolvers '2001:470:20::2'
+	option bmx6_mtu '1500'
+	option bmx7_pref_gw 'none'
+	option batadv_orig_interval '2000'
+	option bmx6_pref_gw 'none'
+	option main_ipv6_address 'fd%N1:%N2%N3:%N4%N5::/64'
+	option use_odhcpd 'false'
+	option bmx6_over_batman 'false'
+	option anygw_mac 'aa:aa:aa:%N1:%N2:aa'
+	option primary_interface 'eth0'
+	option bmx7_enable_pki 'false'
+	option batadv_routing_algo 'BATMAN_IV'
+	option bmx7_publish_ownip 'false'
+	option anygw_dhcp_limit '0'
+	option bmx7_mtu '1500'
+	option bmx7_wifi_rate_max 'auto'
+	list protocols 'ieee80211s'
+	list protocols 'lan'
+	list protocols 'anygw'
+	list protocols 'batadv:%N1'
+	list protocols 'bmx6:13'
+	list protocols 'olsr:14'
+	list protocols 'olsr6:15'
+	list protocols 'olsr2:16'
+	list protocols 'babeld:17'
+	list protocols 'bmx7:18'
+	option anygw_dhcp_start '2'
+	option bmx7_over_batman 'false'
+
+config generic_uci_config 'uhttpd_https'
+	list uci_set 'uhttpd.main.redirect_https=0'
+
+config lime-wifi-band '2ghz'
+	option distance '1000'
+	option channel '11'
+	option adhoc_mcast_rate '24000'
+	option htmode 'HT20'
+	option ieee80211s_mcast_rate '24000'
+
+config lime 'wifi'
+	option apname_ssid 'LibreMesh.org/%H'
+	option ap_ssid 'LibreMesh.org'
+	option ieee80211s_mesh_id 'LiMe'
+	option unstuck_timeout '300'
+	option unstuck_interval '10'
+	option ieee80211s_mesh_fwding '0'
+	option adhoc_bssid 'ca:fe:00:c0:ff:ee'
+	option adhoc_ssid 'LiMe'
+	list modes 'ieee80211s'
+
+config lime 'system'
+	option deferrable_reboot_ping_target '4.2.2.2'
+	option firstbootwizard_dismissed 'false'
+	option domain 'thisnode.info'
+	option keep_on_upgrade 'libremesh dropbear minimum-essential /etc/sysupgrade.conf'
+	option firstbootwizard_configured 'false'
+	option deferrable_reboot_uptime_s '97200'
+	option hostname 'LiMe-%M4%M5%M6'
+
+config net 'cfg04944c'
+	list protocols 'batadv:%N1'
+	list protocols 'babeld:17'
+	option linux_name 'eth0'
+
+
+### FILE /etc/config/network
+
+
+config interface 'loopback'
+	option device 'lo'
+	option proto 'static'
+	option ipaddr '127.0.0.1'
+	option netmask '255.0.0.0'
+
+config globals 'globals'
+
+config device
+	option name 'br-lan'
+	option type 'bridge'
+	list ports 'bat0'
+
+config interface 'lan'
+	option device 'br-lan'
+	option proto 'static'
+	option ipaddr '10.13.40.169'
+	option netmask '255.255.0.0'
+	option ip6assign '60'
+	option ip6addr 'fd0d:fe46:8ce8::37:28a9/64'
+	option mtu '1500'
+
+config interface 'bat0'
+	option proto 'batadv'
+	option routing_algo 'BATMAN_IV'
+	option bridge_loop_avoidance '1'
+	option multicast_mode '0'
+	option orig_interval '2000'
+	option distributed_arp_table '0'
+	option gw_mode 'client'
+
+config interface 'wan'
+	option proto 'none'
+	option device 'eth0'
+
+config device 'lm_net_eth0_batadv_dev'
+	option type '8021ad'
+	option name 'eth0_29'
+	option ifname 'eth0'
+	option vid '29'
+	option macaddr '02:95:39:37:28:a9'
+	option mtu '1496'
+
+config interface 'lm_net_eth0_batadv_if'
+	option proto 'batadv_hardif'
+	option auto '1'
+	option device 'eth0_29'
+	option master 'bat0'
+
+config device 'lm_net_eth0_babeld_dev'
+	option type '8021ad'
+	option name 'eth0_17'
+	option ifname 'eth0'
+	option vid '17'
+	option mtu '1496'
+
+config interface 'lm_net_eth0_babeld_if'
+	option proto 'static'
+	option auto '1'
+	option device 'eth0_17'
+	option ipaddr '10.13.40.169'
+	option netmask '255.255.255.255'
+
+config interface 'lm_net_wlan0_mesh'
+	option proto 'none'
+	option mtu '1536'
+	option auto '1'
+
+config device 'lm_net_wlan0_mesh_batadv_dev'
+	option type '8021ad'
+	option name 'wlan0-mesh_29'
+	option ifname '@lm_net_wlan0_mesh'
+	option vid '29'
+	option macaddr '02:58:47:37:28:a9'
+	option mtu '1532'
+
+config interface 'lm_net_wlan0_mesh_batadv_if'
+	option proto 'batadv_hardif'
+	option auto '1'
+	option device 'wlan0-mesh_29'
+	option master 'bat0'
+
+config device 'lm_net_wlan0_mesh_babeld_dev'
+	option type '8021ad'
+	option name 'wlan0-mesh_17'
+	option ifname '@lm_net_wlan0_mesh'
+	option vid '17'
+
+config interface 'lm_net_wlan0_mesh_babeld_if'
+	option proto 'static'
+	option auto '1'
+	option device 'wlan0-mesh_17'
+	option ipaddr '10.13.40.169'
+	option netmask '255.255.255.255'
+
+
+### FILE /etc/config/wireless
+
+
+config wifi-device 'radio0'
+	option type 'mac80211'
+	option path 'pci0000:00/0000:00:00.0'
+	option channel '11'
+	option band '2g'
+	option htmode 'HT20'
+	option disabled '0'
+	option distance '1000'
+	option noscan '1'
+
+config wifi-iface 'lm_wlan0_mesh_radio0'
+	option mode 'mesh'
+	option device 'radio0'
+	option ifname 'wlan0-mesh'
+	option network 'lm_net_wlan0_mesh'
+	option mcast_rate '24000'
+	option mesh_fwding '0'
+	option mesh_id 'LiMe'
+
+
+### CMD dmesg
+
+[    0.000000] Linux version 5.15.167 (user@laptop) (mips-openwrt-linux-musl-gcc (OpenWrt GCC 12.3.0 r24106-10cc5fcd00) 12.3.0, GNU ld (GNU Binutils) 2.40.0) #0 Mon Sep 23 12:34:46 2024
+[    0.000000] printk: bootconsole [early0] enabled
+[    0.000000] CPU0 revision is: 00019374 (MIPS 24Kc)
+[    0.000000] MIPS: machine is Ubiquiti Nanostation Loco M (XM)
+[    0.000000] SoC: Atheros AR7241 rev 1
+[    0.000000] Initrd not found or empty - disabling initrd
+[    0.000000] Primary instruction cache 64kB, VIPT, 4-way, linesize 32 bytes.
+[    0.000000] Primary data cache 32kB, 4-way, VIPT, cache aliases, linesize 32 bytes
+[    0.000000] Zone ranges:
+[    0.000000]   Normal   [mem 0x0000000000000000-0x0000000001ffffff]
+[    0.000000] Movable zone start for each node
+[    0.000000] Early memory node ranges
+[    0.000000]   node   0: [mem 0x0000000000000000-0x0000000001ffffff]
+[    0.000000] Initmem setup node 0 [mem 0x0000000000000000-0x0000000001ffffff]
+[    0.000000] pcpu-alloc: s0 r0 d32768 u32768 alloc=1*32768
+[    0.000000] pcpu-alloc: [0] 0 
+[    0.000000] Built 1 zonelists, mobility grouping on.  Total pages: 8128
+[    0.000000] Kernel command line: console=ttyS0,115200 rootfstype=squashfs,jffs2
+[    0.000000] Dentry cache hash table entries: 4096 (order: 2, 16384 bytes, linear)
+[    0.000000] Inode-cache hash table entries: 2048 (order: 1, 8192 bytes, linear)
+[    0.000000] Writing ErrCtl register=00000000
+[    0.000000] Readback ErrCtl register=00000000
+[    0.000000] mem auto-init: stack:off, heap alloc:off, heap free:off
+[    0.000000] Memory: 25428K/32768K available (4338K kernel code, 535K rwdata, 680K rodata, 1224K init, 196K bss, 7340K reserved, 0K cma-reserved)
+[    0.000000] SLUB: HWalign=32, Order=0-3, MinObjects=0, CPUs=1, Nodes=1
+[    0.000000] NR_IRQS: 51
+[    0.000000] CPU clock: 390.000 MHz
+[    0.000000] clocksource: MIPS: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 9801335621 ns
+[    0.000002] sched_clock: 32 bits at 195MHz, resolution 5ns, wraps every 11012737021ns
+[    0.008004] Calibrating delay loop... 259.27 BogoMIPS (lpj=1296384)
+[    0.084187] pid_max: default: 32768 minimum: 301
+[    0.090193] Mount-cache hash table entries: 1024 (order: 0, 4096 bytes, linear)
+[    0.097496] Mountpoint-cache hash table entries: 1024 (order: 0, 4096 bytes, linear)
+[    0.114804] clocksource: jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 19112604462750000 ns
+[    0.124690] futex hash table entries: 256 (order: -1, 3072 bytes, linear)
+[    0.131556] pinctrl core: initialized pinctrl subsystem
+[    0.139752] NET: Registered PF_NETLINK/PF_ROUTE protocol family
+[    0.166085] clocksource: Switched to clocksource MIPS
+[    0.173516] NET: Registered PF_INET protocol family
+[    0.178938] IP idents hash table entries: 2048 (order: 2, 16384 bytes, linear)
+[    0.187424] tcp_listen_portaddr_hash hash table entries: 1024 (order: 0, 4096 bytes, linear)
+[    0.195899] Table-perturb hash table entries: 65536 (order: 6, 262144 bytes, linear)
+[    0.203688] TCP established hash table entries: 1024 (order: 0, 4096 bytes, linear)
+[    0.211356] TCP bind hash table entries: 1024 (order: 0, 4096 bytes, linear)
+[    0.218419] TCP: Hash tables configured (established 1024 bind 1024)
+[    0.225016] UDP hash table entries: 256 (order: 0, 4096 bytes, linear)
+[    0.231636] UDP-Lite hash table entries: 256 (order: 0, 4096 bytes, linear)
+[    0.239244] NET: Registered PF_UNIX/PF_LOCAL protocol family
+[    0.244955] PCI: CLS 0 bytes, default 32
+[    0.254288] workingset: timestamp_bits=30 max_order=13 bucket_order=0
+[    0.268773] squashfs: version 4.0 (2009/01/31) Phillip Lougher
+[    0.274603] jffs2: version 2.2 (NAND) (SUMMARY) (LZMA) (RTIME) (CMODE_PRIORITY) (c) 2001-2006 Red Hat, Inc.
+[    0.288657] pinctrl-single 18040028.pinmux: 64 pins, size 8
+[    0.295985] Serial: 8250/16550 driver, 1 ports, IRQ sharing disabled
+[    0.303730] printk: console [ttyS0] disabled
+[    0.308223] 18020000.uart: ttyS0 at MMIO 0x18020000 (irq = 9, base_baud = 12187500) is a 16550A
+[    0.316975] printk: console [ttyS0] enabled
+[    0.325367] printk: bootconsole [early0] disabled
+[    0.354485] spi-nor spi0.0: mx25l6405d (8192 Kbytes)
+[    0.359708] 6 fixed-partitions partitions found on MTD device spi0.0
+[    0.366179] OF: Bad cell count for /ahb/spi@1f000000/flash@0/partitions
+[    0.372887] OF: Bad cell count for /ahb/spi@1f000000/flash@0/partitions
+[    0.380116] OF: Bad cell count for /ahb/spi@1f000000/flash@0/partitions
+[    0.386902] OF: Bad cell count for /ahb/spi@1f000000/flash@0/partitions
+[    0.394444] Creating 6 MTD partitions on "spi0.0":
+[    0.399351] 0x000000000000-0x000000040000 : "u-boot"
+[    0.412204] 0x000000040000-0x000000050000 : "u-boot-env"
+[    0.419297] 0x000000050000-0x0000007a0000 : "firmware"
+[    0.429500] 2 uimage-fw partitions found on MTD device firmware
+[    0.435494] Creating 2 MTD partitions on "firmware":
+[    0.440558] 0x000000000000-0x0000001b0000 : "kernel"
+[    0.447279] 0x0000001b0000-0x000000750000 : "rootfs"
+[    0.456186] mtd: setting mtd4 (rootfs) as root device
+[    0.461488] 1 squashfs-split partitions found on MTD device rootfs
+[    0.467779] 0x0000004b6000-0x000000750000 : "rootfs_data"
+[    0.476148] 0x0000007a0000-0x0000007b0000 : "board_config"
+[    0.483531] 0x0000007b0000-0x0000007f0000 : "cfg"
+[    0.492549] 0x0000007f0000-0x000000800000 : "art"
+[    0.853931] switch0: Atheros AR724X/AR933X built-in rev. 2 switch registered on mdio.0
+[    1.316781] ag71xx 19000000.eth: connected to PHY at mdio.0:1f:04 [uid=004dd041, driver=Qualcomm Atheros AR9331 built-in PHY]
+[    1.329476] eth0: Atheros AG71xx at 0xb9000000, irq 4, mode: mii
+[    1.340660] NET: Registered PF_INET6 protocol family
+[    1.358193] Segment Routing with IPv6
+[    1.362039] In-situ OAM (IOAM) with IPv6
+[    1.366287] NET: Registered PF_PACKET protocol family
+[    1.371997] 8021q: 802.1Q VLAN Support v1.8
+[    1.378414] PCI host bridge to bus 0000:00
+[    1.382571] pci_bus 0000:00: root bus resource [mem 0x10000000-0x13ffffff]
+[    1.389574] pci_bus 0000:00: root bus resource [io  0x0000]
+[    1.395183] pci_bus 0000:00: No busn resource found for root bus, will use [bus 00-ff]
+[    1.403247] pci 0000:00:00.0: [168c:002e] type 00 class 0x028000
+[    1.409388] pci 0000:00:00.0: reg 0x10: [mem 0x10000000-0x1000ffff 64bit]
+[    1.416423] pci 0000:00:00.0: supports D1
+[    1.420467] pci 0000:00:00.0: PME# supported from D0 D1 D3hot
+[    1.428237] pci_bus 0000:00: busn_res: [bus 00-ff] end is updated to 00
+[    1.434934] pci 0000:00:00.0: BAR 0: assigned [mem 0x10000000-0x1000ffff 64bit]
+[    1.446585] clk: Disabling unused clocks
+[    1.471365] VFS: Mounted root (squashfs filesystem) readonly on device 31:4.
+[    1.489037] Freeing unused kernel image (initmem) memory: 1224K
+[    1.495000] This architecture does not have kernel memory protection.
+[    1.501518] Run /sbin/init as init process
+[    1.505636]   with arguments:
+[    1.505645]     /sbin/init
+[    1.505656]   with environment:
+[    1.505665]     HOME=/
+[    1.505675]     TERM=linux
+[    2.780029] init: Console is alive
+[    2.784302] init: - watchdog -
+[    2.788068] init: Watchdog has previously reset the system
+[    5.179419] kmodloader: loading kernel modules from /etc/modules-boot.d/*
+[    5.270849] usbcore: registered new interface driver usbfs
+[    5.276586] usbcore: registered new interface driver hub
+[    5.282070] usbcore: registered new device driver usb
+[    5.301556] ehci_hcd: USB 2.0 'Enhanced' Host Controller (EHCI) Driver
+[    5.310850] fsl-ehci: Freescale EHCI Host controller driver
+[    5.320457] ehci-platform: EHCI generic platform driver
+[    5.334064] ohci_hcd: USB 1.1 'Open' Host Controller (OHCI) Driver
+[    5.342691] ohci-platform: OHCI generic platform driver
+[    5.350898] kmodloader: done loading kernel modules from /etc/modules-boot.d/*
+[    5.361565] init: - preinit -
+[    7.018958] random: jshn: uninitialized urandom read (4 bytes read)
+[    7.178818] random: jshn: uninitialized urandom read (4 bytes read)
+[    7.318871] random: jshn: uninitialized urandom read (4 bytes read)
+[    8.047134] random: procd: uninitialized urandom read (4 bytes read)
+[   10.107945] eth0: link up (100Mbps/Full duplex)
+[   10.112587] IPv6: ADDRCONF(NETDEV_CHANGE): eth0: link becomes ready
+[   10.755647] jffs2: notice: (290) jffs2_build_xattr_subsystem: complete building xattr subsystem, 37 of xdatum (14 unchecked, 23 orphan) and 44 of xref (23 dead, 0 orphan) found.
+[   10.777882] mount_root: switching to jffs2 overlay
+[   10.795048] overlayfs: upper fs does not support tmpfile.
+[   10.820067] urandom-seed: Seeding with /etc/urandom.seed
+[   10.964969] eth0: link down
+[   10.992046] procd: - early -
+[   10.995489] procd: - watchdog -
+[   11.000161] procd: Watchdog has previously reset the system
+[   11.693652] procd: - watchdog -
+[   11.697098] procd: Watchdog has previously reset the system
+[   11.761392] procd: - ubus -
+[   11.884396] random: ubusd: uninitialized urandom read (4 bytes read)
+[   11.926007] random: ubusd: uninitialized urandom read (4 bytes read)
+[   11.933307] random: ubusd: uninitialized urandom read (4 bytes read)
+[   11.944024] procd: - init -
+[   13.292174] random: jshn: uninitialized urandom read (4 bytes read)
+[   13.378693] random: ubusd: uninitialized urandom read (4 bytes read)
+[   13.385663] random: ubus: uninitialized urandom read (4 bytes read)
+[   13.492829] kmodloader: loading kernel modules from /etc/modules.d/*
+[   14.381725] Loading modules backported from Linux version v6.1.110-0-g5f55cad62cc9d
+[   14.389536] Backport generated by backports.git v6.1.110-1-0-g965f73fc
+[   15.526385] batman_adv: B.A.T.M.A.N. advanced 2023.1-openwrt-7 (compatibility version 15) loaded
+[   15.605788] ath: phy0: Ignoring endianness difference in EEPROM magic bytes.
+[   15.614509] ath: EEPROM regdomain: 0x0
+[   15.614527] ath: EEPROM indicates default country code should be used
+[   15.614539] ath: doing EEPROM country->regdmn map search
+[   15.614561] ath: country maps to regdmn code: 0x3a
+[   15.614577] ath: Country alpha2 being used: US
+[   15.614591] ath: Regpair used: 0x3a
+[   15.632692] ieee80211 phy0: Selected rate control algorithm 'minstrel_ht'
+[   15.637089] ieee80211 phy0: Atheros AR9287 Rev:2 mem=0x(ptrval), irq=13
+[   15.756854] kmodloader: done loading kernel modules from /etc/modules.d/*
+[   21.909352] urngd: v1.0.2 started.
+[   26.436128] random: crng init done
+[   26.439590] random: 37 urandom warning(s) missed due to ratelimiting
+[   43.045453] device eth0 entered promiscuous mode
+[   44.988082] eth0: link up (100Mbps/Full duplex)
+[   44.992728] IPv6: ADDRCONF(NETDEV_CHANGE): eth0: link becomes ready
+[   45.026217] IPv6: ADDRCONF(NETDEV_CHANGE): eth0_17: link becomes ready
+[   45.033206] IPv6: ADDRCONF(NETDEV_CHANGE): eth0_29: link becomes ready
+[   45.547373] 8021q: adding VLAN 0 to HW filter on device bat0
+[   45.587058] br-lan: port 1(bat0) entered blocking state
+[   45.592361] br-lan: port 1(bat0) entered disabled state
+[   45.598184] device bat0 entered promiscuous mode
+[   45.779266] br-lan: port 1(bat0) entered blocking state
+[   45.784568] br-lan: port 1(bat0) entered forwarding state
+[   46.006222] batman_adv: bat0: No IGMP Querier present - multicast optimizations disabled
+[   46.014387] batman_adv: bat0: No MLD Querier present - multicast optimizations disabled
+[   46.726022] batman_adv: bat0: Adding interface: eth0_29
+[   46.731387] batman_adv: bat0: The MTU of interface eth0_29 is too small (1496) to handle the transport of batman-adv packets. Packets going over this interface will be fragmented on layer2 which could impact the performance. Setting the MTU to 1532 would solve the problem.
+[   46.755701] batman_adv: bat0: Interface activated: eth0_29
+[   52.873981] IPv6: ADDRCONF(NETDEV_CHANGE): wlan0-mesh: link becomes ready
+[   52.987807] device wlan0-mesh entered promiscuous mode
+[   55.181513] batman_adv: bat0: Adding interface: wlan0-mesh_29
+[   55.187574] batman_adv: bat0: Interface activated: wlan0-mesh_29
+
+### CMD batctl if
+
+eth0_29: active
+wlan0-mesh_29: active
+
+### CMD batctl o
+
+[B.A.T.M.A.N. adv 2023.1-openwrt-7, MainIF/MAC: eth0_29/02:95:39:37:28:a9 (bat0/26:9f:38:cc:2a:d5 BATMAN_IV)]
+   Originator        last-seen (#/255) Nexthop           [outgoingIF]
+ * 02:58:47:00:0f:80    0.840s   (234) 02:58:47:00:0f:80 [wlan0-mesh_29]
+ * 02:db:38:eb:7e:ac    1.380s   (225) 02:db:d6:f9:c2:39 [   eth0_29]
+ * 02:db:d6:f9:c2:39    0.240s   (255) 02:db:d6:f9:c2:39 [   eth0_29]
+
+### CMD bmx6 -c show=status show=interfaces show=links show=originators show=tunnels
+
+/bin/lime-report: eval: line 13: bmx6: not found
+
+### CMD bmx7 -c show=status show=interfaces show=links show=originators show=tunnels
+
+/bin/lime-report: eval: line 13: bmx7: not found
+
+### CMD echo dump | nc ::1 30003
+
+BABEL 1.0
+version babeld-1.13.1-ubus-mod
+host LiMe-3728a9
+my-id de:9f:db:ff:fe:37:28:a9
+ok
+add interface eth0_17 up true ipv6 fe80::de9f:dbff:fe37:28a9 ipv4 10.13.40.169
+add interface wlan0-mesh_17 up true ipv6 fe80::de9f:dbff:fe36:28a9 ipv4 10.13.40.169
+add neighbour 77ec5a20 address fe80::4813:65ff:fe00:f82 if wlan0-mesh_17 reach f7ff ureach 0000 rxcost 273 txcost 256 cost 273
+add neighbour 77ec5870 address fe80::c6e9:84ff:fef9:c239 if eth0_17 reach ffff ureach 0000 rxcost 256 txcost 256 cost 256
+add xroute fd0d:fe46:8ce8::/64-::/0 prefix fd0d:fe46:8ce8::/64 from ::/0 metric 0
+add xroute 10.13.0.0/16-0.0.0.0/0 prefix 10.13.0.0/16 from 0.0.0.0/0 metric 0
+add route 77dc0900 prefix 0.0.0.0/0 from 0.0.0.0/0 installed yes id d6:5f:25:ff:fe:eb:7e:ac metric 520 refmetric 264 via fe80::c6e9:84ff:fef9:c239 if eth0_17
+add route 77dc0950 prefix 0.0.0.0/0 from 0.0.0.0/0 installed no id d6:5f:25:ff:fe:eb:7e:ac metric 1162 refmetric 889 via fe80::4813:65ff:fe00:f82 if wlan0-mesh_17
+add route 77dc0810 prefix 10.13.0.0/16 from 0.0.0.0/0 installed no id 4e:13:65:ff:fe:00:0f:80 metric 273 refmetric 0 via fe80::4813:65ff:fe00:f82 if wlan0-mesh_17
+add route 77dc08b0 prefix 10.13.0.0/16 from 0.0.0.0/0 installed no id c6:e9:84:ff:fe:f9:c2:39 metric 256 refmetric 0 via fe80::c6e9:84ff:fef9:c239 if eth0_17
+add route 77dc07c0 prefix fd0d:fe46:8ce8::/64 from ::/0 installed no id 4e:13:65:ff:fe:00:0f:80 metric 273 refmetric 0 via fe80::4813:65ff:fe00:f82 if wlan0-mesh_17
+add route 77dc0860 prefix fd0d:fe46:8ce8::/64 from ::/0 installed no id c6:e9:84:ff:fe:f9:c2:39 metric 256 refmetric 0 via fe80::c6e9:84ff:fef9:c239 if eth0_17
+ok
+
+### CMD ubus call babeld get_info
+
+{
+	"babeld-version": "babeld-1.13.1-ubus-mod",
+	"my-id": "de:9f:db:ff:fe:37:28:a9",
+	"host": "LiMe-3728a9"
+}
+
+### CMD ubus call babeld get_neighbours
+
+{
+	"IPv4": {
+		
+	},
+	"IPv6": {
+		"fe80::c6e9:84ff:fef9:c239": {
+			"dev": "eth0_17",
+			"hello-reach": 65535,
+			"uhello-reach": 0,
+			"rxcost": 256,
+			"txcost": 256,
+			"rtt": "0.000",
+			"if_up": true
+		},
+		"fe80::4813:65ff:fe00:f82": {
+			"dev": "wlan0-mesh_17",
+			"hello-reach": 63487,
+			"uhello-reach": 0,
+			"rxcost": 273,
+			"txcost": 256,
+			"rtt": "0.000",
+			"if_up": true
+		}
+	}
+}
+
+### CMD ubus call babeld get_xroutes
+
+{
+	"IPv4": {
+		"10.13.0.0/16": {
+			"src-prefix": "0.0.0.0/0",
+			"metric": 0
+		}
+	},
+	"IPv6": {
+		"fd0d:fe46:8ce8::/64": {
+			"src-prefix": "::/0",
+			"metric": 0
+		}
+	}
+}
+
+### CMD ubus call babeld get_routes
+
+{
+	"IPv4": {
+		"10.13.0.0/16": {
+			"src-prefix": "0.0.0.0/0",
+			"route_metric": 256,
+			"route_smoothed_metric": 256,
+			"refmetric": 0,
+			"id": "c6:e9:84:ff:fe:f9:c2:39",
+			"seqno": 26958,
+			"age": 1,
+			"via": "fe80::c6e9:84ff:fef9:c239",
+			"nexthop": "10.13.194.57",
+			"installed": false,
+			"feasible": true
+		},
+		"10.13.0.0/16": {
+			"src-prefix": "0.0.0.0/0",
+			"route_metric": 273,
+			"route_smoothed_metric": 313,
+			"refmetric": 0,
+			"id": "4e:13:65:ff:fe:00:0f:80",
+			"seqno": 28070,
+			"age": 2,
+			"via": "fe80::4813:65ff:fe00:f82",
+			"nexthop": "10.13.15.128",
+			"installed": false,
+			"feasible": true
+		},
+		"0.0.0.0/0": {
+			"src-prefix": "0.0.0.0/0",
+			"route_metric": 1162,
+			"route_smoothed_metric": 1187,
+			"refmetric": 889,
+			"id": "d6:5f:25:ff:fe:eb:7e:ac",
+			"seqno": 46073,
+			"age": 2,
+			"via": "fe80::4813:65ff:fe00:f82",
+			"nexthop": "10.13.15.128",
+			"installed": false,
+			"feasible": false
+		},
+		"0.0.0.0/0": {
+			"src-prefix": "0.0.0.0/0",
+			"route_metric": 520,
+			"route_smoothed_metric": 574,
+			"refmetric": 264,
+			"id": "d6:5f:25:ff:fe:eb:7e:ac",
+			"seqno": 46073,
+			"age": 1,
+			"via": "fe80::c6e9:84ff:fef9:c239",
+			"nexthop": "10.13.194.57",
+			"installed": true,
+			"feasible": true
+		}
+	},
+	"IPv6": {
+		"fd0d:fe46:8ce8::/64": {
+			"src-prefix": "::/0",
+			"route_metric": 256,
+			"route_smoothed_metric": 256,
+			"refmetric": 0,
+			"id": "c6:e9:84:ff:fe:f9:c2:39",
+			"seqno": 26958,
+			"age": 1,
+			"via": "fe80::c6e9:84ff:fef9:c239",
+			"installed": false,
+			"feasible": true
+		},
+		"fd0d:fe46:8ce8::/64": {
+			"src-prefix": "::/0",
+			"route_metric": 273,
+			"route_smoothed_metric": 306,
+			"refmetric": 0,
+			"id": "4e:13:65:ff:fe:00:0f:80",
+			"seqno": 28070,
+			"age": 2,
+			"via": "fe80::4813:65ff:fe00:f82",
+			"installed": false,
+			"feasible": true
+		}
+	}
+}
+
+### CMD free
+
+              total        used        free      shared  buff/cache   available
+Mem:          26652       13408        7948          44        5296        9972
+Swap:             0           0           0
+
+### CMD ps
+
+  PID USER       VSZ STAT COMMAND
+    1 root      1928 S    /sbin/procd
+    2 root         0 SW   [kthreadd]
+    3 root         0 IW<  [slub_flushwq]
+    4 root         0 IW   [kworker/0:0-eve]
+    5 root         0 IW<  [kworker/0:0H-kb]
+    7 root         0 IW<  [mm_percpu_wq]
+    8 root         0 SW   [rcu_tasks_trace]
+    9 root         0 SW   [ksoftirqd/0]
+   10 root         0 IW<  [inet_frag_wq]
+   11 root         0 SW   [oom_reaper]
+   12 root         0 IW<  [writeback]
+   13 root         0 SW   [kcompactd0]
+   20 root         0 IW<  [kblockd]
+   21 root         0 SW   [kswapd0]
+   23 root         0 IW   [kworker/u2:1-ph]
+   56 root         0 SW   [spi0]
+   96 root         0 IW   [kworker/u2:2-ev]
+  163 root         0 IW<  [mld]
+  164 root         0 IW   [kworker/0:4-eve]
+  165 root         0 IW<  [ipv6_addrconf]
+  166 root         0 IW<  [dsa_ordered]
+  291 root         0 SWN  [jffs2_gcd_mtd5]
+  342 ubus      1484 S    /sbin/ubusd
+  343 root      1056 S    /sbin/askfirst /usr/libexec/login.sh
+  378 root      1208 S    /sbin/urngd
+  460 root         0 IW<  [cfg80211]
+  492 root         0 IW<  [bat_events]
+  653 logd      1480 S    /sbin/logd -S 64
+  719 root      1220 S    /usr/sbin/dropbear -F -P /var/run/dropbear.1.pid -p 22 -K 300 -T 3 -W 262144
+  823 root      3284 S    /usr/sbin/hostapd -s -g /var/run/hostapd/global
+  824 root      3256 S    /usr/sbin/wpa_supplicant -n -s -g /var/run/wpa_supplicant/global
+  887 root      2116 S    /sbin/netifd
+ 1226 root      1608 S    /usr/sbin/babeld -I  -c /etc/babeld.conf -c /var/etc/babeld.conf
+ 1467 root      1728 S    /usr/sbin/rssileds wlan0 200000 1 red:link1 1 100 0 1 orange:link2 26 100 0 1 green:link3 51 100 0 1 green:link4 76 100 0 1
+ 1511 root         0 IW<  [kworker/0:2H-kb]
+ 1589 root      1372 S<   /usr/sbin/ntpd -n -N -S /usr/sbin/ntpd-hotplug -p 0.openwrt.pool.ntp.org -p 1.openwrt.pool.ntp.org -p 2.openwrt.pool.ntp.org -p 3.openwrt.pool.ntp.org
+ 1975 root      1240 S    /usr/sbin/dropbear -F -P /var/run/dropbear.1.pid -p 22 -K 300 -T 3 -W 262144 -2 9
+ 1976 root      1376 S    -ash
+ 1985 root         0 IW   [kworker/u2:0-ph]
+ 1987 root      1392 S    {lime-report} /bin/sh /bin/lime-report
+ 2086 root      1392 S    {lime-report} /bin/sh /bin/lime-report
+ 2089 root      1380 R    ps
+
+### CMD ip address show
+
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host 
+       valid_lft forever preferred_lft forever
+2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP qlen 1000
+    link/ether dc:9f:db:37:28:a9 brd ff:ff:ff:ff:ff:ff
+    inet6 fe80::de9f:dbff:fe37:28a9/64 scope link 
+       valid_lft forever preferred_lft forever
+4: eth0_17@eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1496 qdisc noqueue state UP qlen 1000
+    link/ether dc:9f:db:37:28:a9 brd ff:ff:ff:ff:ff:ff
+    inet 10.13.40.169/32 brd 255.255.255.255 scope global eth0_17
+       valid_lft forever preferred_lft forever
+    inet6 fe80::de9f:dbff:fe37:28a9/64 scope link 
+       valid_lft forever preferred_lft forever
+5: eth0_29@eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1496 qdisc noqueue master bat0 state UP qlen 1000
+    link/ether 02:95:39:37:28:a9 brd ff:ff:ff:ff:ff:ff
+    inet6 fe80::95:39ff:fe37:28a9/64 scope link 
+       valid_lft forever preferred_lft forever
+6: bat0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue master br-lan state UNKNOWN qlen 1000
+    link/ether 26:9f:38:cc:2a:d5 brd ff:ff:ff:ff:ff:ff
+7: br-lan: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP qlen 1000
+    link/ether 26:9f:38:cc:2a:d5 brd ff:ff:ff:ff:ff:ff
+    inet 10.13.40.169/16 brd 10.13.255.255 scope global br-lan
+       valid_lft forever preferred_lft forever
+    inet6 fd0d:fe46:8ce8::37:28a9/64 scope global 
+       valid_lft forever preferred_lft forever
+    inet6 fe80::249f:38ff:fecc:2ad5/64 scope link 
+       valid_lft forever preferred_lft forever
+8: wlan0-mesh: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1536 qdisc noqueue state UP qlen 1000
+    link/ether dc:9f:db:36:28:a9 brd ff:ff:ff:ff:ff:ff
+    inet6 fe80::de9f:dbff:fe36:28a9/64 scope link 
+       valid_lft forever preferred_lft forever
+9: wlan0-mesh_17@wlan0-mesh: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1536 qdisc noqueue state UP qlen 1000
+    link/ether dc:9f:db:36:28:a9 brd ff:ff:ff:ff:ff:ff
+    inet 10.13.40.169/32 brd 255.255.255.255 scope global wlan0-mesh_17
+       valid_lft forever preferred_lft forever
+    inet6 fe80::de9f:dbff:fe36:28a9/64 scope link 
+       valid_lft forever preferred_lft forever
+10: wlan0-mesh_29@wlan0-mesh: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1532 qdisc noqueue master bat0 state UP qlen 1000
+    link/ether 02:58:47:37:28:a9 brd ff:ff:ff:ff:ff:ff
+    inet6 fe80::58:47ff:fe37:28a9/64 scope link 
+       valid_lft forever preferred_lft forever
+
+### CMD ip route show
+
+default via 10.13.194.57 dev eth0_17 onlink 
+10.13.0.0/16 dev br-lan scope link  src 10.13.40.169 
+
+### CMD brctl show
+
+bridge name	bridge id		STP enabled	interfaces
+br-lan		7fff.269f38cc2ad5	no		bat0
+
+### CMD ip link show
+
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP qlen 1000
+    link/ether dc:9f:db:37:28:a9 brd ff:ff:ff:ff:ff:ff
+4: eth0_17@eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1496 qdisc noqueue state UP qlen 1000
+    link/ether dc:9f:db:37:28:a9 brd ff:ff:ff:ff:ff:ff
+5: eth0_29@eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1496 qdisc noqueue master bat0 state UP qlen 1000
+    link/ether 02:95:39:37:28:a9 brd ff:ff:ff:ff:ff:ff
+6: bat0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue master br-lan state UNKNOWN qlen 1000
+    link/ether 26:9f:38:cc:2a:d5 brd ff:ff:ff:ff:ff:ff
+7: br-lan: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP qlen 1000
+    link/ether 26:9f:38:cc:2a:d5 brd ff:ff:ff:ff:ff:ff
+8: wlan0-mesh: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1536 qdisc noqueue state UP qlen 1000
+    link/ether dc:9f:db:36:28:a9 brd ff:ff:ff:ff:ff:ff
+9: wlan0-mesh_17@wlan0-mesh: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1536 qdisc noqueue state UP qlen 1000
+    link/ether dc:9f:db:36:28:a9 brd ff:ff:ff:ff:ff:ff
+10: wlan0-mesh_29@wlan0-mesh: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1532 qdisc noqueue master bat0 state UP qlen 1000
+    link/ether 02:58:47:37:28:a9 brd ff:ff:ff:ff:ff:ff
+
+### CMD df
+
+Filesystem           1K-blocks      Used Available Use% Mounted on
+/dev/root                 3136      3136         0 100% /rom
+tmpfs                    13324        44     13280   0% /tmp
+/dev/mtdblock5            2664       188      2476   7% /overlay
+overlayfs:/overlay        2664       188      2476   7% /
+tmpfs                      512         0       512   0% /dev
+
+### CMD logread -l 20
+
+Fri Jan 17 21:47:03 2025 daemon.notice netifd: Network alias 'wlan0-mesh' link is up
+Fri Jan 17 21:47:03 2025 daemon.notice netifd: Interface 'lm_net_wlan0_mesh' is now up
+Fri Jan 17 21:47:03 2025 daemon.notice netifd: 8021ad 'wlan0-mesh_17' link is up
+Fri Jan 17 21:47:03 2025 daemon.notice netifd: Interface 'lm_net_wlan0_mesh_babeld_if' has link connectivity
+Fri Jan 17 21:47:03 2025 daemon.notice netifd: 8021ad 'wlan0-mesh_29' link is up
+Fri Jan 17 21:47:03 2025 daemon.notice netifd: Interface 'lm_net_wlan0_mesh_batadv_if' has link connectivity
+Fri Jan 17 21:47:03 2025 daemon.notice netifd: Interface 'lm_net_wlan0_mesh_batadv_if' is setting up now
+Fri Jan 17 21:47:04 2025 daemon.notice netifd: Wireless device 'radio0' is now up
+Fri Jan 17 21:47:04 2025 daemon.err babeld[1226]: send: Address not available
+Fri Jan 17 21:47:05 2025 kern.info kernel: [   55.181513] batman_adv: bat0: Adding interface: wlan0-mesh_29
+Fri Jan 17 21:47:05 2025 kern.info kernel: [   55.187574] batman_adv: bat0: Interface activated: wlan0-mesh_29
+Fri Jan 17 21:47:06 2025 daemon.notice netifd: Interface 'lm_net_wlan0_mesh_batadv_if' is now up
+Fri Jan 17 21:47:07 2025 daemon.info procd: - init complete -
+Fri Jan 17 21:47:11 2025 user.notice firewall: Reloading firewall due to ifup of wan (eth0)
+Fri Jan 17 21:47:14 2025 user.notice firewall: Reloading firewall due to ifup of lan (br-lan)
+Fri Jan 17 21:47:19 2025 user.notice firewall: Reloading firewall due to ifup of lm_net_eth0_batadv_if (eth0_29)
+Fri Jan 17 21:47:24 2025 user.notice firewall: Reloading firewall due to ifup of lm_net_wlan0_mesh_babeld_if (wlan0-mesh_17)
+Fri Jan 17 21:47:28 2025 user.notice firewall: Reloading firewall due to ifup of lm_net_wlan0_mesh_batadv_if (wlan0-mesh_29)
+Fri Jan 17 21:54:42 2025 authpriv.info dropbear[1975]: Child connection from 10.13.241.50:56818
+
+### CMD logread | grep err
+
+Fri Jan 17 21:46:31 2025 kern.err kernel: [    0.366179] OF: Bad cell count for /ahb/spi@1f000000/flash@0/partitions
+Fri Jan 17 21:46:31 2025 kern.err kernel: [    0.372887] OF: Bad cell count for /ahb/spi@1f000000/flash@0/partitions
+Fri Jan 17 21:46:31 2025 kern.err kernel: [    0.380116] OF: Bad cell count for /ahb/spi@1f000000/flash@0/partitions
+Fri Jan 17 21:46:31 2025 kern.err kernel: [    0.386902] OF: Bad cell count for /ahb/spi@1f000000/flash@0/partitions
+Fri Jan 17 21:47:04 2025 daemon.err babeld[1226]: send: Address not available
+
+### CMD iw phy
+
+Wiphy phy0
+	wiphy index: 0
+	max # scan SSIDs: 4
+	max scan IEs length: 2257 bytes
+	max # sched scan SSIDs: 0
+	max # match sets: 0
+	Retry short limit: 7
+	Retry long limit: 4
+	Coverage class: 3 (up to 1350m)
+	Device supports AP-side u-APSD.
+	Device supports T-DLS.
+	Available Antennas: TX 0x3 RX 0x3
+	Configured Antennas: TX 0x3 RX 0x3
+	Supported interface modes:
+		 * IBSS
+		 * managed
+		 * AP
+		 * AP/VLAN
+		 * monitor
+		 * mesh point
+		 * P2P-client
+		 * P2P-GO
+		 * outside context of a BSS
+	Band 1:
+		Capabilities: 0x11ee
+			HT20/HT40
+			SM Power Save disabled
+			RX HT20 SGI
+			RX HT40 SGI
+			TX STBC
+			RX STBC 1-stream
+			Max AMSDU length: 3839 bytes
+			DSSS/CCK HT40
+		Maximum RX AMPDU length 65535 bytes (exponent: 0x003)
+		Minimum RX AMPDU time spacing: 8 usec (0x06)
+		HT TX/RX MCS rate indexes supported: 0-15
+		Frequencies:
+			* 2412 MHz [1] (22.0 dBm)
+			* 2417 MHz [2] (22.0 dBm)
+			* 2422 MHz [3] (22.0 dBm)
+			* 2427 MHz [4] (22.0 dBm)
+			* 2432 MHz [5] (22.0 dBm)
+			* 2437 MHz [6] (22.0 dBm)
+			* 2442 MHz [7] (22.0 dBm)
+			* 2447 MHz [8] (22.0 dBm)
+			* 2452 MHz [9] (22.0 dBm)
+			* 2457 MHz [10] (22.0 dBm)
+			* 2462 MHz [11] (22.0 dBm)
+			* 2467 MHz [12] (disabled)
+			* 2472 MHz [13] (disabled)
+			* 2484 MHz [14] (disabled)
+	valid interface combinations:
+		 * #{ managed } <= 2048, #{ AP, mesh point } <= 8, #{ P2P-client, P2P-GO } <= 1, #{ IBSS } <= 1,
+		   total <= 2048, #channels <= 1, STA/AP BI must match, radar detect widths: { 20 MHz (no HT), 20 MHz, 40 MHz }
+
+	HT Capability overrides:
+		 * MCS: ff ff ff ff ff ff ff ff ff ff
+		 * maximum A-MSDU length
+		 * supported channel width
+		 * short GI for 40 MHz
+		 * max A-MPDU length exponent
+		 * min MPDU start spacing
+	max # scan plans: 1
+	max scan plan interval: -1
+	max scan plan iterations: 0
+	Supported extended features:
+		* [ RRM ]: RRM
+		* [ FILS_STA ]: STA FILS (Fast Initial Link Setup)
+		* [ CQM_RSSI_LIST ]: multiple CQM_RSSI_THOLD records
+		* [ CONTROL_PORT_OVER_NL80211 ]: control port over nl80211
+		* [ TXQS ]: FQ-CoDel-enabled intermediate TXQs
+		* [ SCAN_RANDOM_SN ]: use random sequence numbers in scans
+		* [ SCAN_MIN_PREQ_CONTENT ]: use probe request with only rate IEs in scans
+		* [ AIRTIME_FAIRNESS ]: airtime fairness scheduling
+		* [ CONTROL_PORT_NO_PREAUTH ]: disable pre-auth over nl80211 control port support
+		* [ DEL_IBSS_STA ]: deletion of IBSS station support
+		* [ MULTICAST_REGISTRATIONS ]: mgmt frame registration for multicast
+		* [ SCAN_FREQ_KHZ ]: scan on kHz frequency support
+		* [ CONTROL_PORT_OVER_NL80211_TX_STATUS ]: tx status for nl80211 control port support
+
+### CMD iw dev wlan0-mesh station dump
+
+Station 4a:13:65:00:0f:82 (on wlan0-mesh)
+	inactive time:	60 ms
+	rx bytes:	2295219
+	rx packets:	20611
+	tx bytes:	3050304
+	tx packets:	7996
+	tx retries:	184
+	tx failed:	0
+	rx drop misc:	16
+	signal:  	-25 [-27, -29] dBm
+	signal avg:	-25 [-28, -30] dBm
+	Toffset:	3568042385 us
+	tx bitrate:	130.0 MBit/s MCS 15
+	tx duration:	591745 us
+	rx bitrate:	144.4 MBit/s MCS 15 short GI
+	rx duration:	546176 us
+	airtime weight: 256
+	expected throughput:	45.226Mbps
+	mesh llid:	3640
+	mesh plid:	38610
+	mesh plink:	ESTAB
+	mesh airtime link metric: 177
+	mesh connected to gate:	no
+	mesh connected to auth server:	no
+	mesh local PS mode:	ACTIVE
+	mesh peer PS mode:	ACTIVE
+	mesh non-peer PS mode:	ACTIVE
+	authorized:	yes
+	authenticated:	yes
+	associated:	yes
+	preamble:	long
+	WMM/WME:	yes
+	MFP:		no
+	TDLS peer:	no
+	DTIM period:	2
+	beacon interval:100
+	short slot time:yes
+	connected time:	579 seconds
+	associated at [boottime]:	52.904s
+	associated at:	1737150423687 ms
+	current time:	1737151002456 ms
+
+### CMD iw dev wlan1-mesh station dump
+
+command failed: No such device (-19)
+
+### CMD iw dev wlan2-mesh station dump
+
+command failed: No such device (-19)
+
+### CMD iw dev wlan0-mesh mpath dump
+
+DEST ADDR         NEXT HOP          IFACE	SN	METRIC	QLEN	EXPTIME	DTIM	DRET	FLAGS	HOP_COUNT	PATH_CHANGE
+4a:13:65:00:0f:82 4a:13:65:00:0f:82 wlan0-mesh	1151	177	0	3800	200	1	0x5	1	1
+
+### CMD iw dev wlan1-mesh mpath dump
+
+command failed: No such device (-19)
+
+### CMD iw dev wlan2-mesh mpath dump
+
+command failed: No such device (-19)
+
+### CMD iwinfo
+
+wlan0-mesh ESSID: "LiMe"
+          Access Point: DC:9F:DB:36:28:A9
+          Mode: Mesh Point  Channel: 11 (2.462 GHz)  HT Mode: HT20
+          Center Channel 1: 11 2: unknown
+          Tx-Power: 24 dBm  Link Quality: 70/70
+          Signal: -25 dBm  Noise: -95 dBm
+          Bit Rate: 130.0 MBit/s
+          Encryption: none
+          Type: nl80211  HW Mode(s): 802.11b/g/n
+          Hardware: 168C:002E 0777:E0A2 [Ubiquiti NanoStation Loco M2]
+          TX power offset: 2 dB
+          Frequency offset: none
+          Supports VAPs: yes  PHY name: phy0
+
+
+### CMD wifi status
+
+{
+	"radio0": {
+		"up": true,
+		"pending": false,
+		"autostart": true,
+		"disabled": false,
+		"retry_setup_failed": false,
+		"config": {
+			"path": "pci0000:00/0000:00:00.0",
+			"channel": "11",
+			"band": "2g",
+			"htmode": "HT20",
+			"distance": "1000",
+			"noscan": "1",
+			"noscan": true,
+			"disabled": false
+		},
+		"interfaces": [
+			{
+				"section": "lm_wlan0_mesh_radio0",
+				"ifname": "wlan0-mesh",
+				"config": {
+					"mode": "mesh",
+					"ifname": "wlan0-mesh",
+					"mcast_rate": 24000,
+					"mesh_fwding": false,
+					"mesh_id": "LiMe",
+					"mode": "mesh",
+					"network": [
+						"lm_net_wlan0_mesh"
+					]
+				},
+				"vlans": [
+					
+				],
+				"stations": [
+					
+				]
+			}
+		]
+	}
+}
+
+### CMD swconfig dev switch0 show
+
+Global attributes:
+	enable_vlan: 0
+	ar8xxx_mib_poll_interval: 500
+	ar8xxx_mib_type: 0
+	enable_mirror_rx: 0
+	enable_mirror_tx: 0
+	mirror_monitor_port: 0
+	mirror_source_port: 0
+	arl_table: address resolution table
+
+Port 0:
+	mib: No MIB data
+	pvid: 0
+	link: port:0 link:up speed:1000baseT full-duplex txflow rxflow 
+Port 1:
+	mib: No MIB data
+	pvid: 0
+	link: port:1 link:down
+Port 2:
+	mib: No MIB data
+	pvid: 0
+	link: port:2 link:down
+Port 3:
+	mib: No MIB data
+	pvid: 0
+	link: port:3 link:down
+Port 4:
+	mib: No MIB data
+	pvid: 0
+	link: port:4 link:down
+
+### CMD fw4 print
+
+table inet fw4
+flush table inet fw4
+
+table inet fw4 {
+	#
+	# Defines
+	#
+
+	define lan_devices = { "br-lan", "eth0_29", "eth0_17", "wlan0-mesh_29", "wlan0-mesh_17" }
+	define lan_subnets = { 10.13.0.0/16, fd0d:fe46:8ce8::/64, 10.13.40.169 }
+
+	define wan_devices = { "eth0" }
+	define wan_subnets = {  }
+
+
+	#
+	# User includes
+	#
+
+	include "/etc/nftables.d/*.nft"
+
+
+	#
+	# Filter rules
+	#
+
+	chain input {
+		type filter hook input priority filter; policy accept;
+
+		iifname "lo" accept comment "!fw4: Accept traffic from loopback"
+
+		ct state established,related accept comment "!fw4: Allow inbound established and related flows"
+		tcp flags & (fin | syn | rst | ack) == syn jump syn_flood comment "!fw4: Rate limit TCP syn packets"
+		iifname { "br-lan", "eth0_29", "eth0_17", "wlan0-mesh_29", "wlan0-mesh_17" } jump input_lan comment "!fw4: Handle lan IPv4/IPv6 input traffic"
+		iifname "eth0" jump input_wan comment "!fw4: Handle wan IPv4/IPv6 input traffic"
+	}
+
+	chain forward {
+		type filter hook forward priority filter; policy accept;
+
+		ct state established,related accept comment "!fw4: Allow forwarded established and related flows"
+		iifname { "br-lan", "eth0_29", "eth0_17", "wlan0-mesh_29", "wlan0-mesh_17" } jump forward_lan comment "!fw4: Handle lan IPv4/IPv6 forward traffic"
+		iifname "eth0" jump forward_wan comment "!fw4: Handle wan IPv4/IPv6 forward traffic"
+	}
+
+	chain output {
+		type filter hook output priority filter; policy accept;
+
+		oifname "lo" accept comment "!fw4: Accept traffic towards loopback"
+
+		ct state established,related accept comment "!fw4: Allow outbound established and related flows"
+		oifname { "br-lan", "eth0_29", "eth0_17", "wlan0-mesh_29", "wlan0-mesh_17" } jump output_lan comment "!fw4: Handle lan IPv4/IPv6 output traffic"
+		oifname "eth0" jump output_wan comment "!fw4: Handle wan IPv4/IPv6 output traffic"
+	}
+
+	chain prerouting {
+		type filter hook prerouting priority filter; policy accept;
+		iifname { "br-lan", "eth0_29", "eth0_17", "wlan0-mesh_29", "wlan0-mesh_17" } jump helper_lan comment "!fw4: Handle lan IPv4/IPv6 helper assignment"
+	}
+
+	chain handle_reject {
+		meta l4proto tcp reject with tcp reset comment "!fw4: Reject TCP traffic"
+		reject with icmpx type port-unreachable comment "!fw4: Reject any other traffic"
+	}
+
+	chain syn_flood {
+		limit rate 25/second burst 50 packets return comment "!fw4: Accept SYN packets below rate-limit"
+		drop comment "!fw4: Drop excess packets"
+	}
+
+	chain input_lan {
+		jump accept_from_lan
+	}
+
+	chain output_lan {
+		jump accept_to_lan
+	}
+
+	chain forward_lan {
+		jump accept_to_wan comment "!fw4: Accept lan to wan forwarding"
+		jump accept_to_lan
+	}
+
+	chain helper_lan {
+	}
+
+	chain accept_from_lan {
+		iifname { "br-lan", "eth0_29", "eth0_17", "wlan0-mesh_29", "wlan0-mesh_17" } counter accept comment "!fw4: accept lan IPv4/IPv6 traffic"
+	}
+
+	chain accept_to_lan {
+		oifname { "br-lan", "eth0_29", "eth0_17", "wlan0-mesh_29", "wlan0-mesh_17" } counter accept comment "!fw4: accept lan IPv4/IPv6 traffic"
+	}
+
+	chain input_wan {
+		meta nfproto ipv4 udp dport 68 counter accept comment "!fw4: Allow-DHCP-Renew"
+		meta nfproto ipv4 icmp type 8 counter accept comment "!fw4: Allow-Ping"
+		meta nfproto ipv4 meta l4proto igmp counter accept comment "!fw4: Allow-IGMP"
+		meta nfproto ipv6 udp dport 546 counter accept comment "!fw4: Allow-DHCPv6"
+		ip6 saddr fe80::/10 icmpv6 type . icmpv6 code { 130 . 0, 131 . 0, 132 . 0, 143 . 0 } counter accept comment "!fw4: Allow-MLD"
+		meta nfproto ipv6 icmpv6 type { 128, 129, 1, 3, 133, 134 } limit rate 1000/second counter accept comment "!fw4: Allow-ICMPv6-Input"
+		meta nfproto ipv6 icmpv6 type . icmpv6 code { 2 . 0, 4 . 0, 4 . 1, 135 . 0, 136 . 0 } limit rate 1000/second counter accept comment "!fw4: Allow-ICMPv6-Input"
+		meta l4proto tcp ip6 saddr fe80::/10 ip6 daddr fe80::/10 counter accept comment "!fw4: lime_allow_wan_all_link_local"
+		meta l4proto udp ip6 saddr fe80::/10 ip6 daddr fe80::/10 counter accept comment "!fw4: lime_allow_wan_all_link_local"
+		jump reject_from_wan
+	}
+
+	chain output_wan {
+		jump accept_to_wan
+	}
+
+	chain forward_wan {
+		meta nfproto ipv6 icmpv6 type { 128, 129, 1, 3 } limit rate 1000/second counter accept comment "!fw4: Allow-ICMPv6-Forward"
+		meta nfproto ipv6 icmpv6 type . icmpv6 code { 2 . 0, 4 . 0, 4 . 1 } limit rate 1000/second counter accept comment "!fw4: Allow-ICMPv6-Forward"
+		meta l4proto esp counter jump accept_to_lan comment "!fw4: Allow-IPSec-ESP"
+		udp dport 500 counter jump accept_to_lan comment "!fw4: Allow-ISAKMP"
+		jump reject_to_wan
+	}
+
+	chain accept_to_wan {
+		meta nfproto ipv4 oifname "eth0" ct state invalid counter drop comment "!fw4: Prevent NAT leakage"
+		oifname "eth0" counter accept comment "!fw4: accept wan IPv4/IPv6 traffic"
+	}
+
+	chain reject_from_wan {
+		iifname "eth0" counter jump handle_reject comment "!fw4: reject wan IPv4/IPv6 traffic"
+	}
+
+	chain reject_to_wan {
+		oifname "eth0" counter jump handle_reject comment "!fw4: reject wan IPv4/IPv6 traffic"
+	}
+
+
+	#
+	# NAT rules
+	#
+
+	chain dstnat {
+		type nat hook prerouting priority dstnat; policy accept;
+	}
+
+	chain srcnat {
+		type nat hook postrouting priority srcnat; policy accept;
+		oifname "eth0" jump srcnat_wan comment "!fw4: Handle wan IPv4/IPv6 srcnat traffic"
+	}
+
+	chain srcnat_wan {
+		meta nfproto ipv4 masquerade comment "!fw4: Masquerade IPv4 wan traffic"
+	}
+
+
+	#
+	# Raw rules (notrack)
+	#
+
+	chain raw_prerouting {
+		type filter hook prerouting priority raw; policy accept;
+	}
+
+	chain raw_output {
+		type filter hook output priority raw; policy accept;
+	}
+
+
+	#
+	# Mangle rules
+	#
+
+	chain mangle_prerouting {
+		type filter hook prerouting priority mangle; policy accept;
+	}
+
+	chain mangle_postrouting {
+		type filter hook postrouting priority mangle; policy accept;
+	}
+
+	chain mangle_input {
+		type filter hook input priority mangle; policy accept;
+	}
+
+	chain mangle_output {
+		type route hook output priority mangle; policy accept;
+	}
+
+	chain mangle_forward {
+		type filter hook forward priority mangle; policy accept;
+		iifname { "br-lan", "eth0_29", "eth0_17", "wlan0-mesh_29", "wlan0-mesh_17" } tcp flags syn tcp option maxseg size set rt mtu comment "!fw4: Zone lan IPv4/IPv6 ingress MTU fixing"
+		oifname { "br-lan", "eth0_29", "eth0_17", "wlan0-mesh_29", "wlan0-mesh_17" } tcp flags syn tcp option maxseg size set rt mtu comment "!fw4: Zone lan IPv4/IPv6 egress MTU fixing"
+		iifname "eth0" tcp flags syn tcp option maxseg size set rt mtu comment "!fw4: Zone wan IPv4/IPv6 ingress MTU fixing"
+		oifname "eth0" tcp flags syn tcp option maxseg size set rt mtu comment "!fw4: Zone wan IPv4/IPv6 egress MTU fixing"
+	}
+}
+
+### CMD nft list ruleset
+
+table inet fw4 {
+	chain input {
+		type filter hook input priority filter; policy accept;
+		iifname "lo" accept comment "!fw4: Accept traffic from loopback"
+		ct state established,related accept comment "!fw4: Allow inbound established and related flows"
+		tcp flags syn / fin,syn,rst,ack jump syn_flood comment "!fw4: Rate limit TCP syn packets"
+		iifname { "br-lan", "eth0_17", "eth0_29", "wlan0-mesh_17", "wlan0-mesh_29" } jump input_lan comment "!fw4: Handle lan IPv4/IPv6 input traffic"
+		iifname "eth0" jump input_wan comment "!fw4: Handle wan IPv4/IPv6 input traffic"
+	}
+
+	chain forward {
+		type filter hook forward priority filter; policy accept;
+		ct state established,related accept comment "!fw4: Allow forwarded established and related flows"
+		iifname { "br-lan", "eth0_17", "eth0_29", "wlan0-mesh_17", "wlan0-mesh_29" } jump forward_lan comment "!fw4: Handle lan IPv4/IPv6 forward traffic"
+		iifname "eth0" jump forward_wan comment "!fw4: Handle wan IPv4/IPv6 forward traffic"
+	}
+
+	chain output {
+		type filter hook output priority filter; policy accept;
+		oifname "lo" accept comment "!fw4: Accept traffic towards loopback"
+		ct state established,related accept comment "!fw4: Allow outbound established and related flows"
+		oifname { "br-lan", "eth0_17", "eth0_29", "wlan0-mesh_17", "wlan0-mesh_29" } jump output_lan comment "!fw4: Handle lan IPv4/IPv6 output traffic"
+		oifname "eth0" jump output_wan comment "!fw4: Handle wan IPv4/IPv6 output traffic"
+	}
+
+	chain prerouting {
+		type filter hook prerouting priority filter; policy accept;
+		iifname { "br-lan", "eth0_17", "eth0_29", "wlan0-mesh_17", "wlan0-mesh_29" } jump helper_lan comment "!fw4: Handle lan IPv4/IPv6 helper assignment"
+	}
+
+	chain handle_reject {
+		meta l4proto tcp reject with tcp reset comment "!fw4: Reject TCP traffic"
+		reject comment "!fw4: Reject any other traffic"
+	}
+
+	chain syn_flood {
+		limit rate 25/second burst 50 packets return comment "!fw4: Accept SYN packets below rate-limit"
+		drop comment "!fw4: Drop excess packets"
+	}
+
+	chain input_lan {
+		jump accept_from_lan
+	}
+
+	chain output_lan {
+		jump accept_to_lan
+	}
+
+	chain forward_lan {
+		jump accept_to_wan comment "!fw4: Accept lan to wan forwarding"
+		jump accept_to_lan
+	}
+
+	chain helper_lan {
+	}
+
+	chain accept_from_lan {
+		iifname { "br-lan", "eth0_17", "eth0_29", "wlan0-mesh_17", "wlan0-mesh_29" } counter packets 749 bytes 63972 accept comment "!fw4: accept lan IPv4/IPv6 traffic"
+	}
+
+	chain accept_to_lan {
+		oifname { "br-lan", "eth0_17", "eth0_29", "wlan0-mesh_17", "wlan0-mesh_29" } counter packets 2641 bytes 296231 accept comment "!fw4: accept lan IPv4/IPv6 traffic"
+	}
+
+	chain input_wan {
+		meta nfproto ipv4 udp dport 68 counter packets 0 bytes 0 accept comment "!fw4: Allow-DHCP-Renew"
+		icmp type echo-request counter packets 0 bytes 0 accept comment "!fw4: Allow-Ping"
+		meta nfproto ipv4 meta l4proto igmp counter packets 0 bytes 0 accept comment "!fw4: Allow-IGMP"
+		meta nfproto ipv6 udp dport 546 counter packets 0 bytes 0 accept comment "!fw4: Allow-DHCPv6"
+		ip6 saddr fe80::/10 icmpv6 type . icmpv6 code { mld-listener-query . no-route, mld-listener-report . no-route, mld-listener-done . no-route, mld2-listener-report . no-route } counter packets 0 bytes 0 accept comment "!fw4: Allow-MLD"
+		icmpv6 type { destination-unreachable, time-exceeded, echo-request, echo-reply, nd-router-solicit, nd-router-advert } limit rate 1000/second counter packets 0 bytes 0 accept comment "!fw4: Allow-ICMPv6-Input"
+		icmpv6 type . icmpv6 code { packet-too-big . no-route, parameter-problem . no-route, parameter-problem . admin-prohibited, nd-neighbor-solicit . no-route, nd-neighbor-advert . no-route } limit rate 1000/second counter packets 0 bytes 0 accept comment "!fw4: Allow-ICMPv6-Input"
+		meta l4proto tcp ip6 saddr fe80::/10 ip6 daddr fe80::/10 counter packets 0 bytes 0 accept comment "!fw4: lime_allow_wan_all_link_local"
+		meta l4proto udp ip6 saddr fe80::/10 ip6 daddr fe80::/10 counter packets 0 bytes 0 accept comment "!fw4: lime_allow_wan_all_link_local"
+		jump reject_from_wan
+	}
+
+	chain output_wan {
+		jump accept_to_wan
+	}
+
+	chain forward_wan {
+		icmpv6 type { destination-unreachable, time-exceeded, echo-request, echo-reply } limit rate 1000/second counter packets 0 bytes 0 accept comment "!fw4: Allow-ICMPv6-Forward"
+		icmpv6 type . icmpv6 code { packet-too-big . no-route, parameter-problem . no-route, parameter-problem . admin-prohibited } limit rate 1000/second counter packets 0 bytes 0 accept comment "!fw4: Allow-ICMPv6-Forward"
+		meta l4proto esp counter packets 0 bytes 0 jump accept_to_lan comment "!fw4: Allow-IPSec-ESP"
+		udp dport 500 counter packets 0 bytes 0 jump accept_to_lan comment "!fw4: Allow-ISAKMP"
+		jump reject_to_wan
+	}
+
+	chain accept_to_wan {
+		meta nfproto ipv4 oifname "eth0" ct state invalid counter packets 0 bytes 0 drop comment "!fw4: Prevent NAT leakage"
+		oifname "eth0" counter packets 0 bytes 0 accept comment "!fw4: accept wan IPv4/IPv6 traffic"
+	}
+
+	chain reject_from_wan {
+		iifname "eth0" counter packets 0 bytes 0 jump handle_reject comment "!fw4: reject wan IPv4/IPv6 traffic"
+	}
+
+	chain reject_to_wan {
+		oifname "eth0" counter packets 0 bytes 0 jump handle_reject comment "!fw4: reject wan IPv4/IPv6 traffic"
+	}
+
+	chain dstnat {
+		type nat hook prerouting priority dstnat; policy accept;
+	}
+
+	chain srcnat {
+		type nat hook postrouting priority srcnat; policy accept;
+		oifname "eth0" jump srcnat_wan comment "!fw4: Handle wan IPv4/IPv6 srcnat traffic"
+	}
+
+	chain srcnat_wan {
+		meta nfproto ipv4 masquerade comment "!fw4: Masquerade IPv4 wan traffic"
+	}
+
+	chain raw_prerouting {
+		type filter hook prerouting priority raw; policy accept;
+	}
+
+	chain raw_output {
+		type filter hook output priority raw; policy accept;
+	}
+
+	chain mangle_prerouting {
+		type filter hook prerouting priority mangle; policy accept;
+	}
+
+	chain mangle_postrouting {
+		type filter hook postrouting priority mangle; policy accept;
+	}
+
+	chain mangle_input {
+		type filter hook input priority mangle; policy accept;
+	}
+
+	chain mangle_output {
+		type route hook output priority mangle; policy accept;
+	}
+
+	chain mangle_forward {
+		type filter hook forward priority mangle; policy accept;
+		iifname { "br-lan", "eth0_17", "eth0_29", "wlan0-mesh_17", "wlan0-mesh_29" } tcp flags syn tcp option maxseg size set rt mtu comment "!fw4: Zone lan IPv4/IPv6 ingress MTU fixing"
+		oifname { "br-lan", "eth0_17", "eth0_29", "wlan0-mesh_17", "wlan0-mesh_29" } tcp flags syn tcp option maxseg size set rt mtu comment "!fw4: Zone lan IPv4/IPv6 egress MTU fixing"
+		iifname "eth0" tcp flags syn tcp option maxseg size set rt mtu comment "!fw4: Zone wan IPv4/IPv6 ingress MTU fixing"
+		oifname "eth0" tcp flags syn tcp option maxseg size set rt mtu comment "!fw4: Zone wan IPv4/IPv6 egress MTU fixing"
+	}
+}
+
+### CMD opkg list-installed
+
+/bin/lime-report: eval: line 13: opkg: not found
+

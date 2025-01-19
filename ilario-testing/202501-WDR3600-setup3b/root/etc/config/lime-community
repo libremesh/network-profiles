@@ -3,6 +3,6 @@ config lime-wifi-band '2ghz'
 	list modes 'apname'
 
 config net
-	option linux_name 'lan1'
+	option linux_name 'eth0.1'
 	list protocols 'batadv:%N1'
 	list protocols 'babeld:17'

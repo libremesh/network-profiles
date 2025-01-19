@@ -1,0 +1,2 @@
+config lime wifi
+	list modes 'ieee80211s'
