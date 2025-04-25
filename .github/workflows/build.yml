@@ -3,27 +3,43 @@ name: Build network profiles
 on:
   push:
     branches: [master]
+  workflow_dispatch:
 
 jobs:
+  # Build all packages for x86_64
+  # use latest branch of openwrt with opkg to produce feed at https://feed.libremesh.org/profiles
+  # use main branch of openwrt with apk to produce feed at https://feed.libremesh.org/apk/profiles
+  # NOTE: this doesn't sign packages for apk
   build:
+    name: Build profiles ${{ matrix.version }}
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      max-parallel: 1
+      matrix:
+        include:
+          - { version: main, output_path: 'apk/'}
+          - { version: openwrt-24.10, output_path: ''}
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
 
-      - name: Build packages
+      - name: Build packages ${{ matrix.version }}
         uses: openwrt/gh-action-sdk@v7
         env:
-          ARCH: "x86_64-openwrt-23.05"
-          EXTRA_FEEDS: "src-git|libremesh|https://github.com/libremesh/lime-packages.git"
+          ARCH: "x86_64-${{ matrix.version }}"
           FEEDNAME: "profiles"
           IGNORE_ERRORS: "n m y"
-          KEY_BUILD: "${{ secrets.KEY_BUILD }}"
+          KEY_BUILD: "${{ matrix.version != 'main' && secrets.KEY_BUILD || '' }}"
+          INDEX: 1
+          NO_DEFAULT_FEEDS: 1
+          NO_REFRESH_CHECK: 1
+          NO_SHFMT_CHECK: 1
 
       - name: Upload packages to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
+        uses: peaceiris/actions-gh-pages@v4
         with:
           deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
           external_repository: libremesh/lime-feed
           publish_dir: bin/packages/x86_64/profiles/
-          destination_dir: profiles
+          destination_dir: ${{ matrix.output_path }}profiles
