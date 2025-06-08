@@ -1,0 +1,4 @@
+config lime wifi		
+	option country 'DE'	
+	option ap_ssid 'LibreMesh-WBM'
+	option apname_ssid 'LiMe-WBM/%H'
