@@ -1,0 +1,4 @@
+uci set lime-node.5ghz=lime-wifi-band
+uci set lime-node.5ghz.modes='ieee80211s'
+uci add_list lime-node.5ghz.modes='ap'
+uci commit lime-node; lime-config; wifi

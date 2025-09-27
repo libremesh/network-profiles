@@ -1,0 +1,10 @@
+config lime 'system'
+	option hostname 'tarlo'
+
+config lime-wifi-band '5ghz'
+	option distance '1900'
+	option ieee80211s_mesh_rssi_threshold '-80'
+
+config net
+	option linux_name 'eth0'
+	list protocols 'babeld:17'

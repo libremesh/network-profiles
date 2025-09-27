@@ -1,0 +1,6 @@
+config lime 'system'
+	option hostname 'neomantix'
+
+config lime-wifi-band '5ghz'
+	option distance '1800'
+	option ieee80211s_mesh_rssi_threshold '-80'
