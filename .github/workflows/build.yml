@@ -38,14 +38,11 @@ jobs:
 
             OPENWRT_BRANCH_PATH="openwrt-$version"
             echo $OPENWRT_BRANCH_PATH
-
-            PKG_MANAGER_PATH=$([ "$version" != "main" ] && [ "${version:0:2}" -lt 25 ] \
-              && echo "" || echo "apk/")
             
             [[ $FIRST_BUILD -ne 1 ]] && JSON="$JSON"','
             FIRST_BUILD=0
 
-            JSON="$JSON"'{"version": "'"$VERSION"'" , "pkg_manager_path": "'"$PKG_MANAGER_PATH"'", "openwrt_branch_path": "'"$OPENWRT_BRANCH_PATH"'" }'
+            JSON="$JSON"'{"version": "'"$VERSION"'" , "openwrt_branch_path": "'"$OPENWRT_BRANCH_PATH"'" }'
           done
 
           echo $JSON
