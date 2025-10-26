@@ -5,7 +5,7 @@ PROFILE_COMMUNITY=$(lastword $(filter-out $(PROFILE_NAME),$(subst /, ,$(CURDIR))
 PKG_NAME:=profile-$(PROFILE_COMMUNITY)-$(PROFILE_NAME)
 
 # hack to deselect openwrt's default_packages. To be used by at most by one metapackage/network-profile
-define Package/$(PKG_NAME)/postinst
+define Package/$(PKG_NAME)/preinst
 #!/bin/sh
 [ -z "$${IPKG_INSTROOT}" ] && exit 0
 echo "########################################################################## Inside package $(PKG_NAME) preinst"
