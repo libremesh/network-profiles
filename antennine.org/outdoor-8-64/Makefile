@@ -2,6 +2,7 @@ include $(TOPDIR)/rules.mk
 
 PROFILE_DESCRIPTION:=Generic metapackage for 8MB flash and/or 64MB RAM devices
 PKG_CONFLICTS:=\
+	-apk-mbedtls \
 	-dnsmasq \
 	-odhcpd-ipv6only \
 	-opkg \
@@ -11,7 +12,6 @@ PROFILE_DEPENDS:=\
 	+batctl-default \
 	+babeld-auto-gw-mode \
 	+check-date-http \
-  +lime-debug \
 	+lime-docs-minimal \
 	+lime-hwd-openwrt-wan \
 	+lime-proto-anygw \
