@@ -8,6 +8,7 @@ PKG_NAME:=profile-$(PROFILE_COMMUNITY)-$(PROFILE_NAME)
 define Package/$(PKG_NAME)/preinst
 #!/bin/sh
 [ -z "$${IPKG_INSTROOT}" ] && exit 0
+[ -f "$${TOPDIR}/version" ] && exit 0
 echo "########################################################################## Inside package $(PKG_NAME) preinst"
 grep -q IB_MODIFIED_BY_$(PKG_NAME) $${TOPDIR}/Makefile && exit 0
 echo "########################################################################## Backup original Makefile"
@@ -25,7 +26,7 @@ echo "##########################################################################
 need_run=0
 for p in $(PKG_CONFLICTS); do
   i=$$(echo $$p | sed 's|-||')
-  echo "Verifing the removal of package: $${i}"
+  echo "Verifying the removal of package: $${i}"
   present=$$(echo $$build_packages | sed 's|\s|\n|g' | grep $$i | grep -v "\-$$i" )
   removed=$$(echo $$build_packages | sed 's|\s|\n|g' | grep "\-$$i")
   if [ -n "$${removed}" ]; then
@@ -41,12 +42,13 @@ for p in $(PKG_CONFLICTS); do
 done
 if [ $${need_run} = 0 ]; then
   echo "Continue build without hack"
+  rm /tmp/hack_pkg_conflicts $${TOPDIR}/Makefile.orig
   cp $${TOPDIR}/Makefile.orig $${TOPDIR}/Makefile
   exit 0
 fi
 echo "########################################################################## Determine make's target"
-R=$$(for cmd in $$(ls -l /proc/*/exe | grep make | sed 's|.*/proc/\(.*\)/exe.*|\1|' | tr '\n' ' ' | tr -d '\0' ) ; do cat "/proc/$${cmd}/cmdline"; done)
-make_target=$$(echo "$${R}" | grep -q makemanifest && echo 'manifest' || echo 'image')
+cmdline_args=$$(for cmd in $$(ls -l /proc/*/exe | grep make | sed 's|.*/proc/\(.*\)/exe.*|\1|' | tr '\n' ' ' | tr -d '\0' ) ; do cat "/proc/$${cmd}/cmdline"; done)
+make_target=$$(echo "$${cmdline_args}" | grep -q makemanifest && echo 'manifest' || echo 'image')
 echo "make_target: $${make_target}"
 echo "########################################################################## Add PKG_CONFLICTS to be removed in the main Makefile"
 sed -i 's|\($$(USER_PACKAGES)\) \($$(BUILD_PACKAGES)\)|\1 $(PKG_CONFLICTS) \2|' $${TOPDIR}/Makefile

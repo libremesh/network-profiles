@@ -23,8 +23,7 @@ This file can also be used to include a list of extra packages which will be inc
 ### hack_pkg_conflicts (imagebuilder)
 Define a list of packages to be removed in PKG_CONFLICTS.    
 Include then the `preinst` defined in `hack_pkg_conflicts.mk` to do the package removal, like in the example below:    
-Warn: To use it with asu, the server must support this hack.    
-Warn: To use it with the firmware-selector (by now) be sure to include the profile as first in the package's list.
+Warn: To use it with asu, the server must support this hack.
 ```
 include $(TOPDIR)/rules.mk
 
