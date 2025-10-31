@@ -1,0 +1,19 @@
+#!/bin/sh
+
+pushgateway_host=$(uci get lime-autogen.pushgateway.host)
+pushgateway_user=$(uci get lime-autogen.pushgateway.user)
+pushgateway_password=$(uci get lime-autogen.pushgateway.password)
+metrics_file=/tmp/prometheus-metrics
+domain=$(uci get lime-autogen.system.domain)
+main_ipv4=$(ip -o route get to 4.2.2.2 | sed -n 's|.*src \([0-9.]\+\).*|\1|p')
+host=$(uci get system.@system[0].hostname)
+
+prometheus-node-exporter-lua > "$metrics_file"
+wget -qO /dev/null \
+  --post-file "$metrics_file" \
+  --user "$pushgateway_user" \
+  --password "$pushgateway_password" \
+  https://${pushgateway_host}/metrics/job/remote_nodes/instance/${main_ipv4}\
+/port/9090/host/${host}/domain/${domain}
+
+rm "$metrics_file"

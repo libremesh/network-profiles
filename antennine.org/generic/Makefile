@@ -1,6 +1,6 @@
 include $(TOPDIR)/rules.mk
 
-PROFILE_DESCRIPTION:=Generic package with authorized_keys and prometheus configs
+PROFILE_DESCRIPTION:=Generic package with authorized_keys and lime files
 
 include ../../profile.mk
 

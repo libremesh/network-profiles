@@ -1,0 +1,8 @@
+#!/bin/sh
+/etc/init.d/prometheus-node-exporter-lua enable
+
+unique_append() {
+  [ ! -f "$2" ] && mkdir -p "$(dirname "$2")" && touch "$2";
+  grep -qF "$1" "$2" || echo "$1" >> "$2"; 
+}
+unique_append '*/5 * * * * prometheus-push' /etc/crontabs/root
