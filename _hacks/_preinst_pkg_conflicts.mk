@@ -29,7 +29,7 @@ done
 
 echo "########################################################################## pkg_conflicts: Add PKG_CONFLICTS to be removed in the main Makefile"
 sed -i 's|\($$(USER_PACKAGES)\) \($$(BUILD_PACKAGES)\)|\1 $(PKG_CONFLICTS) \2|' $${TOPDIR}/Makefile
-echo "########################################################################## Prevent unnecessary opkg/apk update in the main Makefile"
+echo "########################################################################## pkg_conflicts: Prevent unnecessary opkg/apk update in the main Makefile"
 sed -i '/update/d' $${TOPDIR}/Makefile
 if [ "$${make_target}" = "manifest" ]; then
 	echo "########################################################################## pkg_conflicts: make manifest: use the BIN_DIR of asu if available"
