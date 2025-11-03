@@ -20,12 +20,11 @@ PROFILE_DEPENDS:=\
 	+lime-proto-anygw \
 	+lime-proto-babeld \
 	+lime-proto-batadv \
-	+owut \
 	+shared-state \
 	+shared-state-babeld_hosts \
 	+shared-state-nodes_and_links
 
-include ../../_hacks/preinst.mk
+include ../../_hacks/index.mk
 include ../../profile.mk
 
 # call BuildPackage - OpenWrt buildroot signature
