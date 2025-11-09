@@ -3,6 +3,7 @@ include $(TOPDIR)/rules.mk
 PROFILE_DESCRIPTION:=Generic metapackage for 8MB flash and/or 64MB RAM devices
 PKG_CONFLICTS:=\
 	-apk-mbedtls \
+	-batctl-tiny \
 	-ca-bundle \
 	-dnsmasq \
 	-odhcpd-ipv6only \
