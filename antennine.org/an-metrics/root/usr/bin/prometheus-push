@@ -8,13 +8,18 @@ domain=$(uci get lime-autogen.system.domain)
 lan_ipv4=$(uci get network.lan.ipaddr)
 wan_ipv4=$(ip -o route get to 4.2.2.2 | sed -n 's|.*src \([0-9.]\+\).*|\1|p')
 host=$(uci get system.@system[0].hostname)
+token="$(echo -n "$pushgateway_user:$pushgateway_password" | base64)"
 
 prometheus-node-exporter-lua > "$metrics_file"
 wget -qO /dev/null \
-  --post-file "$metrics_file" \
-  --user "$pushgateway_user" \
-  --password "$pushgateway_password" \
-  https://${pushgateway_host}/metrics/job/remote_nodes/instance/${lan_ipv4}\
-/port/9090/host/${host}/domain/${domain}/wan/${wan_ipv4}
+--post-file "$metrics_file" \
+--header="Authorization: Basic $token" \
+https://${pushgateway_host}/metrics\
+/job/remote_nodes\
+/domain/${domain}\
+/instance/${lan_ipv4}\
+/port/9090\
+/host/${host}\
+$( [ $wan_ipv4 != $lan_ipv4 ] && echo "/wan/$wan_ipv4" )
 
 rm "$metrics_file"
