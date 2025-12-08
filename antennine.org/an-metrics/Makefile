@@ -7,6 +7,7 @@ PROFILE_DEPENDS:=\
 	+prometheus-node-exporter-lua-openwrt \
 	+prometheus-node-exporter-lua-wifi \
 	+prometheus-node-exporter-lua-wifi_stations \
+	+prometheus-node-exporter-lua-wifi-stations-extra \
 	+prometheus-node-exporter-lua-location-latlon
 
 include ../../profile.mk
