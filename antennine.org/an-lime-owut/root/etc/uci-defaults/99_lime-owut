@@ -1,7 +1,7 @@
 #!/bin/sh
 
 feed_host="http://feed.libremesh.org"
-sysupgrade_server="https://sysupgrade.antennine.org"
+sysupgrade_server="https://sysupgrade-01.antennine.org"
 openwrt_branch_ref="$(grep -m 1 "openwrt.org/" /etc/*/distfeeds* | sed 's|.*openwrt.org/\(.*\)|\1|' )"
 arch="$(grep OPENWRT_ARCH /etc/os-release | sed 's|OPENWRT_ARCH="\(.*\)"|\1|')"
 

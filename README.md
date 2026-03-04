@@ -25,7 +25,7 @@ Supported hacks:
 
 Warn: Usable safely with imagebuilder-docker.
 Warn: To use it with asu, the server must support this hack.    
-Currently the asu server https://sysupgrade.antennine.org supports it:
+Currently the asu server https://sysupgrade-01.antennine.org supports it:
 - do not returning errors if the main build was killed after the second build completes
 - prepending packages that starts with 'profile-' at the beginning of the packages list (to use it with the firmware-selector)
 - checking the manifest from a file printed in BIN_DIR/manifest instead from STDOUT
