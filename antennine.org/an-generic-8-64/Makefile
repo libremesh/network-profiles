@@ -7,7 +7,7 @@ PROFILE_DEPENDS:=\
 	+profile-antennine.org-an-generic \
 	+profile-antennine.org-an-lime-owut \
 	+profile-antennine.org-an-metrics \
-	+profile-antennine.org-an-outdoor-8-64
+	+profile-antennine.org-an-8-64
 
 include ../../profile.mk
 

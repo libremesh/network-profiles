@@ -1,4 +1,4 @@
-OW_BRANCH:=$(shell echo $$(grep -m1 -o "releases/.*" $(TOPDIR)/include/version.mk 	
+OW_BRANCH:=$(shell echo $$(grep -m1 -o "releases/.*" $(TOPDIR)/include/version.mk \
 	|| echo "main") | cut -d"/" -f2 | cut -d"-" -f1 | cut -d"." -f1,2)
 ifneq ($(OW_BRANCH),main)
 	ifeq ($(shell test $$(echo "$(OW_BRANCH)" | cut -d"." -f1) -lt 25; echo $$?),0)

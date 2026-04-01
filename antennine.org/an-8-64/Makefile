@@ -10,8 +10,6 @@ PKG_CONFLICTS:=\
 	-opkg \
 	-ppp \
 	-ppp-mod-pppoe
-PKG_CONFIGS:=\
-	CONFIG_CLEAN_IPKG=y
 PROFILE_DEPENDS:=\
 	+batctl-default \
 	+babeld-auto-gw-mode \
@@ -24,6 +22,9 @@ PROFILE_DEPENDS:=\
 	+shared-state \
 	+shared-state-babeld_hosts \
 	+shared-state-nodes_and_links
+# opkg in openwrt-24.10 and previous
+PKG_CONFIGS:=\
+	CONFIG_CLEAN_IPKG=y
 
 include ../../_hacks/index.mk
 include ../../profile.mk
