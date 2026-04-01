@@ -19,18 +19,31 @@ A special file named `Makefile` have to be placed in the device directory `commu
 This file can also be used to include a list of extra packages which will be included in the firmware.
 
 ## Hacking (imagebuilder)
-Supported hacks:
-- `_hacks/pkg_configs`: Define a list of configs to be modified in PKG_CONFIGS.
-- `_hacks/pkg_conflicts`: Define a list of packages to be removed in PKG_CONFLICTS.
+Add to your network profile a script that **contains build instructions**.    
+And that triggers a nested build with adjusted options if some packages weren't removed or some configs were missing.   
+This is done using a package `preinst` with opkg or a `postinst` with apk.
 
-Warn: Usable safely with imagebuilder-docker.
-Warn: To use it with asu, the server must support this hack.    
-Currently the asu server https://sysupgrade-01.antennine.org supports it:
-- do not returning errors if the main build was killed after the second build completes
-- prepending packages that starts with 'profile-' at the beginning of the packages list (to use it with the firmware-selector)
-- checking the manifest from a file printed in BIN_DIR/manifest instead from STDOUT
+This hacks is meant to be sure to build saving firmware space and ram on **8/64 devices**:
+- To prevent flashing a firmware that fit in the flash but cause the device to reboot for OOM
+- To simplify the removal of openwrt's default packages allowing one to build libremesh specifing a single package,   
+  i.e. `make image profile-antennine.org-an-8-64`
 
-To use the defined PKG_CONFIGS or PKG_CONFLICTS include the preinst defined in `_hacks/index.mk` that will trigger a new build with the defined modifications, like in the example below:
+### Supported options:
+- `PKG_CONFIGS`: Define a list of configs to be modified, i.e `CONFIG_CLEAN_IPKG` (opkg only).
+- `PKG_CONFLICTS`: Define a list of packages to be removed, i.e. `-dnsmasq -odhcpd-ipv6only` (apk and opkg).
+
+### Warnings:
+- Usable safely with **ImageBuilder docker**, since it will try to kill every `pidof make`.
+- To use it with **ASU** (online imagebuilder), the server must support this hack.    
+	Currently the ASU server https://sysupgrade-01.antennine.org supports it:
+	- Do not return errors if the main build was killed after the nested build completes
+	- Prepend packages that starts with `profile-` at the beginning of the packages list    
+  	to speed up the build making the nested build happens as first `preinst` (opkg only),    
+		needed when using the **firmware-selector** that do request builds including all packages and using the ASU's `diff_packages` feature
+	- Checking the manifest from a file printed in BIN_DIR/manifest instead from STDOUT (opkg only)
+
+### Usage:   
+Inside a network-profile add an include for `../../_hacks/index.mk` before the inclusion of `../../profile.mk`
 ```
 include $(TOPDIR)/rules.mk
 
