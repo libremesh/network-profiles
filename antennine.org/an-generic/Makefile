@@ -5,6 +5,7 @@ PROFILE_DESCRIPTION:=Generic package with authorized_keys and lime files
 PROFILE_NAME=$(notdir ${CURDIR})
 PROFILE_COMMUNITY=$(lastword $(filter-out $(PROFILE_NAME),$(subst /, ,$(CURDIR))))
 PKG_NAME:=profile-$(PROFILE_COMMUNITY)-$(PROFILE_NAME)
+PROFILE_DEPENDS:=+iperf3
 
 define Package/$(PKG_NAME)/postinst
 #!/bin/sh
