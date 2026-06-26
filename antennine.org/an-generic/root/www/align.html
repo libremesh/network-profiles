@@ -1,0 +1,39 @@
+<html>
+<head>
+  <title>Alignment</title>
+</head> 
+<body>
+<select id="mode">
+    <option value="mesh">mesh</option>
+    <option value="ap">ap</option>
+    <option value="apname">apname</option>
+</select>
+<button id="toggle">Start/Stop</button>
+<span id="status"></span>
+<pre id="result"></pre>
+<script>
+document.getElementById('toggle').addEventListener('click', () => {
+	let res = new XMLHttpRequest()
+	res.onreadystatechange = function() {
+		if (this.readyState == 4 && this.status == 200) {
+			document.getElementById('status').innerText = this.responseText
+		}
+	};
+    let mode = document.getElementById('mode').value
+	res.open('GET', '/cgi-bin/align?'+mode)
+	res.send()
+})
+
+setInterval(function () {
+	let res = new XMLHttpRequest()
+	res.onreadystatechange = function() {
+		if (this.readyState == 4 && this.status == 200) {
+			document.getElementById('result').innerText = this.responseText
+		}
+	};
+	res.open('GET', '/align_result.txt')
+	res.send()
+}, 2000)
+</script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+#!/bin/sh
+
+echo "Status: 200"
+echo "Content-type: text/plain;"
+echo "Cache-control: max-age=0, no-cache;"
+echo "Access-Control-Allow-Origin: *"
+echo "Access-Control-Allow-Methods: GET;"
+echo
+
+running=$(pidof align.sh)
+if [ "${running}" ]; then
+	kill "${running}"
+	echo "align.sh stopped"
+else
+    mode="mesh"
+    if [[ "$QUERY_STRING" =~ "^(ap|apname|mesh)$" ]]; then
+        mode="$QUERY_STRING"
+    else
+	    return
+    fi
+    align.sh $mode &
+    echo "align.sh $mode started"
+fi
