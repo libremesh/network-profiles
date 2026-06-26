@@ -6,7 +6,6 @@
 # cgi-script
 if [ ! -f /www/cgi-bin/align ]; then
 cat  << EOF > /www/cgi-bin/align
-
 #!/bin/sh
 
 echo "Status: 200"
@@ -31,6 +30,7 @@ else
     echo "align.sh \$mode started"
 fi
 EOF
+chmod +x /www/cgi-bin/align
 fi
 
 # html
