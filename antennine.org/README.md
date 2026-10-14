@@ -19,6 +19,7 @@ set lime-node.system=lime
 # set lime-node.system.domain='${domain}'
 set lime-node.pushgateway=lime
 set lime-node.pushgateway.token='${pushgateway_token}'
+set lime-node.@wireguard_wg1[0]=wireguard_wg1
 set lime-node.@wireguard_wg1[0].private_key='${wireguard_wg1_private_key}'
 commit lime-node
 EOF
