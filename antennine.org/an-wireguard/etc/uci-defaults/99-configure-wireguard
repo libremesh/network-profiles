@@ -1,0 +1,45 @@
+#!/bin/sh
+
+iface="wg1"
+wg_config="lime-autogen.$iface"
+wg_config_peer0="lime-autogen.@wireguard_$iface[0]"
+[ "$(uci get $wg_config)" = "wireguard" ]
+[ "$(uci get $wg_config_peer0)" = "wireguard_$iface" ] || exit 0
+[ -z "$(uci -q get $wg_config_peer0.public_key)" ] || exit 0
+
+private_key=$(uci get $wg_config.private_key) || echo ''
+listen_port=$(uci get $wg_config.listen_port) || echo ''
+addresses=$(uci get $wg_config.addresses) || echo ''
+
+public_key=$(uci get $wg_config_peer0.public_key)
+endpoint_host="$(uci get $wg_config_peer0.endpoint | cut -d ':' -f1)"
+endpoint_port="$(uci get $wg_config_peer0.endpoint | cut -d ':' -f2)"
+allowed_ips=$(uci get $wg_config_peer0.allowed_ips)
+persistent_keepalive=$(uci get $wg_config_peer0.persistent_keepalive)
+
+# https://github.com/openwrt/openwrt/issues/13211#issuecomment-2504873753
+uci -q batch << EOF
+set network.$iface=interface
+set network.$iface.proto='wireguard'
+set network.globals.packet_steering='1'
+
+add network wireguard_$iface
+set network.@wireguard_$iface[0].description='Remote debug $iface'
+set network.@wireguard_$iface[0].public_key='${public_key}'
+add_list network.@wireguard_$iface[0].allowed_ips='${allowed_ips}'
+set network.@wireguard_$iface[0].persistent_keepalive='25'
+set network.@wireguard_$iface[0].endpoint_host='${endpoint_host}'
+set network.@wireguard_$iface[0].endpoint_port='${endpoint_port}'
+
+set network.$iface.private_key='${private_key}'
+set network.$iface.listen_port='${listen_port}'
+add_list network.$iface.addresses='${addresses}'
+set network.$iface.nohostroute='1'
+
+add network route
+set network.@route[-1].interface='$iface'
+set network.@route[-1].target='${allowed_ips}'
+commit network
+EOF
+
+exit 0

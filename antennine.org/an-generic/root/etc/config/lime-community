@@ -1,14 +1,12 @@
 config lime system
 	option hostname 'ninux-%M4%M5%M6'
-	option domain 'valsamoggia.ninux.org'
-	option keep_on_upgrade 'libremesh base-files-essential /etc/sysupgrade.conf'
+	option domain 'antennine.org'
+	option keep_on_upgrade 'dropbear-full base-files-essential /etc/sysupgrade.conf'
 
 config lime network
-	option primary_interface 'eth0'
 	option main_ipv4_address '10.170.128.0/16/17'
 	option anygw_dhcp_start '5120'
 	option anygw_dhcp_limit '27648'
-	option main_ipv6_address 'fd%N1:%N2%N3:%N4%N5::/64'
 	list protocols ieee80211s
 	list protocols lan
 	list protocols anygw
@@ -23,21 +21,25 @@ config lime network
 config lime 'wifi'
 	option ap_ssid 'ninux'
 	option apname_ssid 'ninux/%H'
-	option ieee80211s_mesh_fwding '0'
-	option ieee80211s_mesh_id 'LiMe'
-	list modes 'ap'
-  list modes 'apname'
-	list modes 'ieee80211s'
 
 config lime-wifi-band '2ghz'
-	option channel '11'
 	option distance '1000'
 
 config lime-wifi-band '5ghz'
 	option distance '10000'
-	option channel '48'
 
 config generic_uci_config prometheus
-	list uci_set "prometheus-node-exporter-lua.main.listen_interface=*"
-	list uci_set "prometheus-node-exporter-lua.main.listen_ipv6=0"
-	list uci_set "prometheus-node-exporter-lua.main.listen_port=9090"
+	list uci_set "prometheus-node-exporter-ucode.pushgateway0=pushgateway"
+	list uci_set "prometheus-node-exporter-ucode.pushgateway0.host='panorama.antennine.org/pushgateway'"
+	list uci_set "prometheus-node-exporter-ucode.pushgateway0.token=''"
+
+config wireguard 'wg1'
+	option private_key ''
+	option listen_port '51800'
+	option addresses ''
+
+config wireguard_wg1
+	option public_key 'l2aW0F6yXppR4g/+yh6C4bhiq4mdo7+qZPB74l3XfT4='
+	option endpoint '135.181.109.184:51800'
+	option allowed_ips '192.168.0.0/16'
+	option persistent_keepalive '25'
