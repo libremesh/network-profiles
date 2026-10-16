@@ -8,7 +8,8 @@ PROFILE_DEPENDS:=+lime-hwd-openwrt-wan         \
 +shared-state                                  \
 +shared-state-babeld_hosts                     \
 +lime-docs-minimal                             \
-+babeld-auto-gw-mode
++babeld-auto-gw-mode                           \
++lime-report
 
 include ../../profile.mk
 
