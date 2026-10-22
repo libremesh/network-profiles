@@ -6,8 +6,8 @@ trap 'rm -f -- "$tmpfile"' EXIT
 pushgateway_host=$(uci get prometheus-node-exporter-ucode.pushgateway0.host)
 token=$(uci get prometheus-node-exporter-ucode.pushgateway0.token)
 domain=$(uci get dhcp.@dnsmasq[0].domain)
-lan_ipv4=$(uci get network.lan.ipaddr)
-host=$(cat /proc/sys/kernel/hostname | tr -d '\n')
+lan_ipv4=$(uci get network.lan.ipaddr | cut -d '/' -f1)
+host=$(cat /proc/sys/kernel/hostname)
 
 # push a subset of metrics
 prometheus-node-exporter-ucode | grep \
