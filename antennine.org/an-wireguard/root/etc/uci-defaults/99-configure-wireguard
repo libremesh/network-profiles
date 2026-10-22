@@ -3,7 +3,7 @@
 iface="wg1"
 wg_config="lime-autogen.$iface"
 wg_config_peer0="lime-autogen.@wireguard_$iface[0]"
-[ "$(uci get network.$iface.proto)" = "wireguard" ] || exit 0
+[ "$(uci get network.$iface 2>/dev/null)" = "interface" ] && exit 0
 
 private_key=$(uci get $wg_config.private_key) || echo ''
 listen_port=$(uci get $wg_config.listen_port) || echo ''
