@@ -4,3 +4,6 @@ unique_append() {
   grep -qF "$1" "$2" || echo "$1" >> "$2"; 
 }
 unique_append '*/5 * * * * prometheus-push' /etc/crontabs/root
+
+cp /usr/share/lime/prometheus-node-exporter-ucode-wifi.uc \
+  /usr/share/ucode/node-exporter/lib/wifi.uc
