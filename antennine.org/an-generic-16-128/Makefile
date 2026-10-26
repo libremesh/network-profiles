@@ -6,7 +6,8 @@ PROFILE_DEPENDS:=\
 	+lime-owut \
 	+profile-antennine.org-an-ca-bundle \
 	+profile-antennine.org-an-generic \
-	+profile-antennine.org-an-metrics
+	+profile-antennine.org-an-metrics \
+	+profile-antennine.org-an-16-128
 
 include ../../profile.mk
 
